@@ -11,10 +11,25 @@ Design spec: [`orbix-design-handoff/`](orbix-design-handoff/README.md) (35 HTML 
 flutter pub get
 dart run build_runner build   # Riverpod + Drift codegen (*.g.dart)
 flutter gen-l10n              # also runs automatically on build
-flutter run
+flutter run                   # dev flavor (the default): includes the demo provider
 ```
 
-Android 9+ (`minSdk 28`), application ID `app.orbix.player`.
+Android 9+ (`minSdk 28`).
+
+**Flavors.** `dev` (default) installs as `app.orbix.player.dev` ("Orbix Dev") and bundles
+the demo provider with `assets/demo/` (a pubspec asset flavor). `prod` is the store app,
+`app.orbix.player`, with neither. Gradle refuses to build `dev` in release mode, so a
+plain `flutter build … --release` fails on purpose.
+
+```bash
+flutter build appbundle --release --flavor prod   # Play Store upload
+flutter build apk --release --flavor prod         # sideloadable APK
+```
+
+**Release signing.** `android/key.properties` (git-ignored) points at the upload
+keystore, kept outside the repo. Without it, release builds fall back to the debug key
+and can't be uploaded. Back up the keystore and its password: Play updates must be
+signed with the same key (or enrol in Play App Signing).
 
 ## Layout
 
@@ -56,11 +71,11 @@ tool/launcher_icon/          renders the Android launcher icons from OxLogoMark
                              (`flutter test tool/launcher_icon/render_test.dart`)
 ```
 
-**Demo provider (debug builds only).** `features/dev/demo/` serves a fake Xtream server
+**Demo provider (dev flavor only).** `features/dev/demo/` serves a fake Xtream server
 (`demo.orbix.invalid`, demo/demo) with guide data anchored to "now" and the design
 artwork. Add it from Add account › "Use demo provider". Tests use it through
 `test/support/app_harness.dart`, which runs the real app with in-memory storage.
-The artwork under `assets/demo/` must be dropped from release builds.
+Onboarding illustrations live in `assets/onboarding/` so they ship in `prod`.
 
 **Player.** The screen talks to a `PlayerEngine` (`features/player/engine.dart`):
 `MediaKitEngine` in the app, `test/support/fake_engine.dart` in widget tests
@@ -73,7 +88,7 @@ PiP and window brightness go through `MainActivity.kt` (`player_window.dart`).
 - No `BackdropFilter` over video: re-blurring a frame that changes every 1/30 s
   stalls input and timers on mid-range tablets. Use `VideoGlass` (solid
   translucent fill) for overlays on the player.
-- Debug builds map demo-provider streams to `assets/demo/demo_{vod,live}.mkv`
+- The dev flavor maps demo-provider streams to `assets/demo/demo_{vod,live}.mkv`
   (two audio tracks, English + Arabic subtitles) via `streamUrlRewriterProvider`.
 - Debug builds draw Flutter errors on screen (`features/dev/debug_errors.dart`):
   some devices keep almost nothing in logcat.

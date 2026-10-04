@@ -72,11 +72,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true # gen-l10n (see l10n.yaml)
+  # `flutter run` without --flavor = dev (demo provider). Store builds:
+  # `flutter build appbundle --release --flavor prod` (Gradle refuses dev release).
+  default-flavor: dev
 
   assets:
-    # Demo artwork from the design handoff — used by the dev gallery only.
-    # TODO(release): drop from release builds once real playlists drive all art.
-    - assets/demo/
+    # Onboarding illustrations (always bundled).
+    - assets/onboarding/
+    # Demo provider artwork + clips: dev flavor only, never in release builds.
+    - path: assets/demo/
+      flavors:
+        - dev
 
   # Static instances (one file per weight) — Flutter does not reliably map
   # FontWeight onto a variable font's wght axis.

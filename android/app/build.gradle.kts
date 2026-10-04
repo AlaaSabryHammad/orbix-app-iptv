@@ -1,8 +1,18 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+// Release signing: android/key.properties (never committed, see .gitignore)
+// points at the upload keystore kept outside the repository.
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+val hasReleaseKey = keystorePropertiesFile.exists()
+if (hasReleaseKey) FileInputStream(keystorePropertiesFile).use { keystoreProperties.load(it) }
 
 android {
     namespace = "app.orbix.player"
@@ -29,12 +39,53 @@ android {
         versionName = flutter.versionName
     }
 
+    buildFeatures {
+        resValues = true
+    }
+
+    // dev: demo provider + its artwork and clips (pubspec asset flavor), installs
+    // beside the store app. prod: what ships — no demo code paths or assets.
+    flavorDimensions += "env"
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "Orbix Dev")
+        }
+        create("prod") {
+            dimension = "env"
+            resValue("string", "app_name", "Orbix")
+        }
+    }
+
+    signingConfigs {
+        if (hasReleaseKey) {
+            create("release") {
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                logger.warn("android/key.properties not found: release build signed with the DEBUG key (not uploadable).")
+                signingConfigs.getByName("debug")
+            }
         }
+    }
+}
+
+// The dev flavor bundles demo content; refuse to build it in release mode.
+gradle.taskGraph.whenReady {
+    if (allTasks.any { it.name.contains("DevRelease") }) {
+        throw GradleException("The dev flavor is for development only. Build releases with --flavor prod.")
     }
 }
 

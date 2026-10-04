@@ -413,7 +413,7 @@ class _ArtLibrary extends StatelessWidget {
           left: 34,
           top: 84,
           width: 150,
-          child: _Rise(delay: const Duration(milliseconds: 100), child: _rotated(-11, const Opacity(opacity: 0.9, child: OxPoster(image: 'assets/demo/p-neon.jpg', title: 'Neon Requiem')))),
+          child: _Rise(delay: const Duration(milliseconds: 100), child: _rotated(-11, const Opacity(opacity: 0.9, child: OxPoster(image: 'assets/onboarding/p-neon.jpg', title: 'Neon Requiem')))),
         ),
         Positioned(
           right: 34,
@@ -421,7 +421,7 @@ class _ArtLibrary extends StatelessWidget {
           width: 150,
           child: _Rise(
             delay: const Duration(milliseconds: 200),
-            child: _rotated(11, const Opacity(opacity: 0.9, child: OxPoster(image: 'assets/demo/p-hollow.jpg', title: 'Hollow Crown District'))),
+            child: _rotated(11, const Opacity(opacity: 0.9, child: OxPoster(image: 'assets/onboarding/p-hollow.jpg', title: 'Hollow Crown District'))),
           ),
         ),
         Positioned(
@@ -434,7 +434,7 @@ class _ArtLibrary extends StatelessWidget {
                 borderRadius: BorderRadius.circular(OxRadius.md),
                 boxShadow: const [BoxShadow(color: Color(0xE6000000), blurRadius: 60, spreadRadius: -10, offset: Offset(0, 30)), BoxShadow(color: Color(0x1FFFFFFF), spreadRadius: 1)],
               ),
-              child: OxPoster(image: 'assets/demo/p-meridian.jpg', title: 'The Last Meridian', titleSize: 15, badges: [OxBadge.quality('4K')]),
+              child: OxPoster(image: 'assets/onboarding/p-meridian.jpg', title: 'The Last Meridian', titleSize: 15, badges: [OxBadge.quality('4K')]),
             ),
           ),
         ),
@@ -455,7 +455,7 @@ class _ArtLibrary extends StatelessWidget {
                     width: 96,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: OxThumb(image: 'assets/demo/b-stadium.jpg', shade: false, topStart: Transform.translate(offset: const Offset(-2, -2), child: OxBadge.live(context))),
+                      child: OxThumb(image: 'assets/onboarding/b-stadium.jpg', shade: false, topStart: Transform.translate(offset: const Offset(-2, -2), child: OxBadge.live(context))),
                     ),
                   ),
                   Expanded(
@@ -508,7 +508,7 @@ class _ArtResume extends StatelessWidget {
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
-                          const OxThumb(image: 'assets/demo/b-hollow.jpg'),
+                          const OxThumb(image: 'assets/onboarding/b-hollow.jpg'),
                           Center(
                             child: OxGlass(
                               lite: true,

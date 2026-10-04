@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +7,7 @@ import 'package:media_kit/media_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
+import 'core/build_flavor.dart';
 import 'core/design/theme.dart';
 import 'core/l10n/l10n.dart';
 import 'core/settings/app_settings.dart';
@@ -31,14 +31,14 @@ Future<void> main() async {
   runApp(ProviderScope(
     overrides: [
       sharedPreferencesProvider.overrideWithValue(prefs),
-      // Debug builds also answer the in-process demo provider (demo.orbix.invalid).
-      if (kDebugMode)
+      // The dev flavor also answers the in-process demo provider (demo.orbix.invalid).
+      if (isDevFlavor)
         dioProvider.overrideWith((ref) {
           final dio = createDio()..httpClientAdapter = DemoAdapter(createDio().httpClientAdapter);
           ref.onDispose(dio.close);
           return dio;
         }),
-      if (kDebugMode) streamUrlRewriterProvider.overrideWithValue(DemoServer.rewriteStream),
+      if (isDevFlavor) streamUrlRewriterProvider.overrideWithValue(DemoServer.rewriteStream),
     ],
     child: const OrbixApp(),
   ));

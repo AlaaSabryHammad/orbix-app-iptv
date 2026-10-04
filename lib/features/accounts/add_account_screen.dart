@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/build_flavor.dart';
 import '../../core/design/design.dart';
 import '../../core/l10n/l10n.dart';
 import '../../core/router/routes.dart';
@@ -319,7 +319,7 @@ class _AddAccountScreenState extends ConsumerState<AddAccountScreen> {
                           Semantics(header: true, child: Text(l.addAccountTitle, style: t.h1.copyWith(fontSize: 26))),
                           const SizedBox(height: 8),
                           Text(l.addAccountIntro, style: t.body),
-                          if (kDebugMode && widget.editId == null) ...[
+                          if (isDevFlavor && widget.editId == null) ...[
                             const SizedBox(height: 12),
                             Align(
                               alignment: AlignmentDirectional.centerStart,
