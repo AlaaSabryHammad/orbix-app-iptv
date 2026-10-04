@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Design foundations</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.sec{display:flex;flex-direction:column;gap:20px}
+.sech{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px}
+.sech b{font-family:'Unbounded',sans-serif;font-weight:600;font-size:13px;color:#FF9663}
+.sech h2{margin:0;font-family:'Unbounded',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em}
+.sech span{margin-left:auto;font-weight:600;font-size:13px;color:#8E8A97}
+.sw{display:flex;flex-direction:column;gap:8px}
+.sw .chip-c{height:84px;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+.sw .n{font-weight:800;font-size:13px}
+.sw .h{font-family:'Unbounded',sans-serif;font-size:11px;color:#8E8A97}
+.spec{display:flex;align-items:baseline;gap:20px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.spec .m{width:150px;flex:none;font-weight:700;font-size:11.5px;color:#8E8A97;line-height:1.4}
+.icell{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px;border-radius:14px;background:#0E0E13;border:1px solid rgba(255,255,255,.05)}
+.icell span.nm{font-weight:600;font-size:10.5px;color:#8E8A97}
+</style>
+</helmet>
+<div class="ox" style="width: 1440px; height: 2900px; background: #050507; padding: 64px; display: flex; flex-direction: column; gap: 64px">
+
+  <header style="position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding: 48px; border-radius: 36px; background: radial-gradient(70% 120% at 15% 50%, #1E100A 0%, #0B0B0F 70%); border: 1px solid rgba(255,255,255,.06); overflow: hidden">
+    <div style="position: absolute; left: -80px; top: 50%; width: 760px; height: 260px; margin-top: -130px; border-radius: 50%; border: 1px solid rgba(255,122,61,.18); transform: rotate(-12deg)"></div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 22px">
+      <div style="display: flex; align-items: center; gap: 22px">
+        <div style="position: relative; width: 92px; height: 92px">
+          <div style="position: absolute; inset: 0; border-radius: 50%; border: 4px solid #F5F1EB"></div>
+          <div style="position: absolute; left: 50%; top: 50%; margin: -17px 0 0 -8px; border-style: solid; border-width: 17px 0 17px 27px; border-color: transparent transparent transparent #FF7A3D"></div>
+          <div style="position: absolute; inset: -12px; animation: ox-orbit 6s linear infinite"><div style="position: absolute; top: 0; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #FF7A3D; box-shadow: 0 0 16px 3px rgba(255,122,61,.7)"></div></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span class="wordmark" style="font-size: 56px; letter-spacing: .16em; line-height: 1">ORBIX</span>
+          <span style="font-family: 'Readex Pro', sans-serif; font-weight: 600; font-size: 20px; color: #B4B0BA">أوربكس</span>
+        </div>
+      </div>
+      <p class="t-body" style="font-size: 16px; max-width: 520px; color: #D2CED8">A cinematic IPTV player for Android. The mark is a play button held in orbit — the ember moon traces every loading state, focus ring and live indicator in the product.</p>
+      <div style="display: flex; gap: 8px"><span class="badge b-soft" style="height: 26px; padding: 0 10px">v1.0 · October 2026</span><span class="badge b-soft" style="height: 26px; padding: 0 10px">Android 9+ · phone · foldable · tablet</span></div>
+    </div>
+    <div style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+      <div class="glass" style="border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px"><span class="ic ic-lg i-film" style="color: #FF7A3D"></span><span class="t-title">Cinema first</span><span class="t-cap" style="line-height: 1.5">Artwork leads. Chrome recedes into glass and gradient.</span></div>
+      <div class="glass" style="border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px"><span class="ic ic-lg i-play" style="color: #FF7A3D"></span><span class="t-title">Two taps to play</span><span class="t-cap" style="line-height: 1.5">Account → Home → playing. Resume is always one tap.</span></div>
+      <div class="glass" style="border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px"><span class="ic ic-lg i-shield" style="color: #FF7A3D"></span><span class="t-title">Player, not provider</span><span class="t-cap" style="line-height: 1.5">Orbix never supplies content. Users bring their own service.</span></div>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="sech"><b>01</b><h2>Color</h2><span>Dark-only ground · one warm accent · one cool signal</span></div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 14px">
+      <sc-for list="{{ink}}" as="c" hint-placeholder-count="8">
+        <div class="sw"><div class="chip-c" style="background: {{c.hex}}"></div><span class="n">{{c.name}}</span><span class="h">{{c.hex}}</span><span class="t-cap">{{c.use}}</span></div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 14px">
+      <sc-for list="{{acc}}" as="c" hint-placeholder-count="8">
+        <div class="sw"><div class="chip-c" style="background: {{c.hex}}; box-shadow: {{c.glow}}"></div><span class="n">{{c.name}}</span><span class="h">{{c.hex}}</span><span class="t-cap">{{c.use}}</span></div>
+      </sc-for>
+    </div>
+    <div style="display: flex; gap: 14px">
+      <div style="flex: 1; display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 16px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)"><span class="btn btn-primary btn-sm">Play</span><span class="t-small">Ember buttons carry <b style="color: #F5F1EB">dark ink text</b> (#1C0C04) — 7.3 : 1 contrast</span></div>
+      <div style="flex: 1; display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 16px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)"><span class="t-title">Aa</span><span class="t-small">Text 1 on Ink 1: 17.8 : 1 · Text 2: 9.4 : 1 · Text 3: 5.9 : 1 · LIVE: 5.0 : 1</span></div>
+      <div style="flex: 1; display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 16px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)"><span class="badge b-4k">4K</span><span class="badge b-live">LIVE</span><span class="t-small">Halo marks quality and time; Ember marks action and live</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sech"><b>02</b><h2>Typography</h2><span>Unbounded · Manrope · Readex Pro (Arabic)</span></div>
+    <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px">
+      <div>
+        <div class="spec"><span class="m">Hero · Unbounded 600<br>34–42 / 1.02 · −2.5%</span><span class="t-hero" style="text-transform: uppercase">The Last Meridian</span></div>
+        <div class="spec"><span class="m">Display · Unbounded 600<br>28 / 1.08</span><span class="t-display">Choose an account</span></div>
+        <div class="spec"><span class="m">H1 · Unbounded 600<br>22 / 1.15</span><span class="t-h1">Live TV</span></div>
+        <div class="spec"><span class="m">H2 · Manrope 800<br>18 / 1.25</span><span class="t-h2">Continue watching</span></div>
+        <div class="spec"><span class="m">Title · Manrope 700<br>15 / 1.3</span><span class="t-title">Coastal FC vs Northern United</span></div>
+        <div class="spec"><span class="m">Body · Manrope 500<br>14 / 1.55</span><span class="t-body">When the last relay on a dying world goes silent, one engineer crosses the meridian.</span></div>
+        <div class="spec"><span class="m">Caption · Manrope 600<br>11.5 · Overline 800 / 16%</span><span style="display: flex; gap: 20px; align-items: baseline"><span class="t-cap">Pulse Sports 1 · 20:30–22:30</span><span class="t-over">Featured series</span></span></div>
+      </div>
+      <div dir="rtl" class="ar" style="font-family: 'Readex Pro', sans-serif">
+        <div class="spec"><span class="m" style="text-align: right">بطل · Readex Pro 700<br>34–38 / 1.3</span><span style="font-weight: 700; font-size: 36px; line-height: 1.3">خط الزوال الأخير</span></div>
+        <div class="spec"><span class="m" style="text-align: right">عرض · 700 · 28</span><span style="font-weight: 700; font-size: 28px; line-height: 1.3">اختر حسابًا</span></div>
+        <div class="spec"><span class="m" style="text-align: right">عنوان 1 · 700 · 22</span><span style="font-weight: 700; font-size: 22px">البث المباشر</span></div>
+        <div class="spec"><span class="m" style="text-align: right">عنوان 2 · 600 · 18</span><span style="font-weight: 600; font-size: 18px">متابعة المشاهدة</span></div>
+        <div class="spec"><span class="m" style="text-align: right">نص · 400 · 15 / 1.8</span><span style="font-weight: 400; font-size: 15px; line-height: 1.8; color: #B4B0BA">حين يصمت آخر مُرحِّل للإشارة على كوكب يحتضر، يعبر مهندس وحيد خط الزوال.</span></div>
+        <div class="spec"><span class="m" style="text-align: right">تسمية · 500 · 12.5</span><span style="font-weight: 500; font-size: 12.5px; color: #8E8A97">بلس الرياضية 1 · 20:30–22:30</span></div>
+        <p class="t-cap" style="margin: 14px 0 0; line-height: 1.6; text-align: right">في العربية: لا تباعد بين الأحرف ولا أحرف كبيرة، وارتفاع سطر أكبر بنسبة 15–25٪، والأرقام بالصيغة الغربية لتوحيد الأوقات والقنوات.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sech"><b>03</b><h2>Space, shape &amp; depth</h2><span>4-pt grid · 20 px phone gutter · 32 px tablet gutter</span></div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{space}}" as="s" hint-placeholder-count="9">
+          <div style="display: flex; align-items: center; gap: 14px"><span class="mono-time" style="width: 30px; font-size: 11px; color: #8E8A97">{{s.v}}</span><span style="height: 12px; border-radius: 3px; background: #FF7A3D; opacity: .85; width: {{s.w}}px"></span><span class="t-cap">{{s.use}}</span></div>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+        <sc-for list="{{radii}}" as="r" hint-placeholder-count="6">
+          <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 76px; background: #17171E; border: 1px solid rgba(255,255,255,.1); border-radius: {{r.v}}"></div><span class="n" style="font-weight: 800; font-size: 12.5px">{{r.name}} · {{r.v}}</span><span class="t-cap">{{r.use}}</span></div>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 88px; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08)"></div><span style="font-weight: 800; font-size: 12.5px">E0 · Surface</span><span class="t-cap">Lists, groups</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><div class="elev-1" style="height: 88px; border-radius: 18px; background: #17171E"></div><span style="font-weight: 800; font-size: 12.5px">E1 · Raised</span><span class="t-cap">Cards, posters</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><div class="elev-2" style="height: 88px; border-radius: 18px; background: #15151C; border: 1px solid rgba(255,255,255,.12)"></div><span style="font-weight: 800; font-size: 12.5px">E2 · Overlay</span><span class="t-cap">Dialogs, sheets, menus</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><div style="position: relative; height: 88px; border-radius: 18px; overflow: hidden"><img class="fill-img" src="../assets/b-neon.jpg" alt=""><div class="glass" style="position: absolute; inset: 14px; border-radius: 12px"></div></div><span style="font-weight: 800; font-size: 12.5px">Glass · blur 22</span><span class="t-cap">Nav bar, over artwork</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sech"><b>04</b><h2>Iconography</h2><span>24 px grid · 1.8 px rounded stroke · media glyphs filled · never mirror playback icons in RTL</span></div>
+    <div style="display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{icons}}" as="i" hint-placeholder-count="28">
+        <div class="icell"><span class="ic {{i.c}}"></span><span class="nm">{{i.n}}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sech"><b>05</b><h2>Motion &amp; layout</h2><span>Respect “Remove animations” — every motion has a fade-only fallback</span></div>
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{motion}}" as="m" hint-placeholder-count="7">
+          <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 14px; background: #0E0E13; border: 1px solid rgba(255,255,255,.05)">
+            <span style="font-weight: 800; font-size: 13.5px; width: 170px">{{m.n}}</span>
+            <span class="mono-time" style="font-size: 11.5px; color: #FF9663; width: 90px">{{m.d}}</span>
+            <span class="t-cap" style="flex: 1">{{m.how}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 20px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)">
+          <span class="t-over" style="color: #FF9663">Compact · &lt;600 dp</span>
+          <div style="align-self: center; width: 92px; height: 170px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,.2); position: relative; padding: 8px; display: flex; flex-direction: column; gap: 5px"><div style="height: 60px; border-radius: 6px; background: rgba(255,122,61,.35)"></div><div style="display: flex; gap: 4px"><span style="flex: 1; height: 26px; border-radius: 4px; background: #2C2C38"></span><span style="flex: 1; height: 26px; border-radius: 4px; background: #2C2C38"></span><span style="flex: 1; height: 26px; border-radius: 4px; background: #2C2C38"></span></div><div style="position: absolute; left: 6px; right: 6px; bottom: 6px; height: 14px; border-radius: 6px; background: #7CC4FF; opacity: .6"></div></div>
+          <span class="t-cap" style="line-height: 1.5">Phones, folded screens. Floating glass bottom nav, 4-col grid, 120 dp posters, single-pane details.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 20px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)">
+          <span class="t-over" style="color: #FF9663">Medium · 600–839</span>
+          <div style="align-self: center; width: 150px; height: 170px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,.2); display: flex; gap: 5px; padding: 6px"><div style="width: 14px; border-radius: 4px; background: #7CC4FF; opacity: .6"></div><div style="flex: 1; border-radius: 6px; background: rgba(255,122,61,.35)"></div><div style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span style="height: 22px; border-radius: 4px; background: #2C2C38"></span><span style="height: 22px; border-radius: 4px; background: #2C2C38"></span><span style="height: 22px; border-radius: 4px; background: #2C2C38"></span></div></div>
+          <span class="t-cap" style="line-height: 1.5">Foldables, 7″ tablets. Navigation rail, two panes split at the hinge, 8-col grid.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 20px; background: #0E0E13; border: 1px solid rgba(255,255,255,.06)">
+          <span class="t-over" style="color: #FF9663">Expanded · ≥840</span>
+          <div style="align-self: center; width: 180px; height: 120px; margin: 25px 0; border-radius: 12px; border: 1.5px solid rgba(255,255,255,.2); display: flex; gap: 4px; padding: 6px"><div style="width: 12px; border-radius: 4px; background: #7CC4FF; opacity: .6"></div><div style="width: 30px; border-radius: 4px; background: #2C2C38"></div><div style="width: 44px; border-radius: 4px; background: #20202A"></div><div style="flex: 1; border-radius: 6px; background: rgba(255,122,61,.35)"></div></div>
+          <span class="t-cap" style="line-height: 1.5">10″ tablets, landscape. Rail + three-pane Live TV, hero with side column, 12-col grid.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const icons = 'home live film series heart heart-fill search mic cast bell user user-plus play pause prev next rew fwd volume sun aspect rotate fullscreen pip cc audio speed hd epg calendar clock star filter grid list lock unlock shield key settings palette translate cpu database refresh signal server wifi-off alert info share trash edit grip'.split(' ');
+    return {
+      ink: [
+        { name: 'Ink 0', hex: '#050507', use: 'Canvas, rail' },
+        { name: 'Ink 1', hex: '#08080B', use: 'App background' },
+        { name: 'Ink 2', hex: '#101015', use: 'Surface' },
+        { name: 'Ink 3', hex: '#17171E', use: 'Raised, inputs' },
+        { name: 'Ink 4', hex: '#20202A', use: 'Tonal controls' },
+        { name: 'Ink 5', hex: '#2C2C38', use: 'Pressed, selected' },
+        { name: 'Text 2', hex: '#B4B0BA', use: 'Secondary text' },
+        { name: 'Text 1', hex: '#F5F1EB', use: 'Primary text' }
+      ],
+      acc: [
+        { name: 'Ember', hex: '#FF7A3D', use: 'Action, live, focus', glow: '0 12px 30px -10px rgba(255,122,61,.8)' },
+        { name: 'Ember Hi', hex: '#FF9663', use: 'Hover, labels on dark', glow: 'none' },
+        { name: 'Ember Ink', hex: '#1C0C04', use: 'Text on ember', glow: 'none' },
+        { name: 'Halo', hex: '#7CC4FF', use: 'Quality, time, info', glow: '0 12px 30px -10px rgba(124,196,255,.6)' },
+        { name: 'Live Red', hex: '#C93F0E', use: 'LIVE badge only', glow: 'none' },
+        { name: 'Success', hex: '#5BD69B', use: 'Connected, watched', glow: 'none' },
+        { name: 'Caution', hex: '#FFC65C', use: 'Locks, expiry', glow: 'none' },
+        { name: 'Error', hex: '#FF6B6B', use: 'Failures', glow: 'none' }
+      ],
+      space: [
+        { v: '4', w: 4, use: 'Icon-to-label' }, { v: '8', w: 8, use: 'Chip gaps' }, { v: '12', w: 12, use: 'Poster gaps' },
+        { v: '16', w: 16, use: 'Card padding' }, { v: '20', w: 20, use: 'Phone gutter' }, { v: '24', w: 24, use: 'Section inset' },
+        { v: '32', w: 32, use: 'Tablet gutter' }, { v: '40', w: 40, use: 'Block spacing' }, { v: '56', w: 56, use: 'Hero breathing room' }
+      ],
+      radii: [
+        { name: 'XS', v: '6px', use: 'Badges' }, { name: 'SM', v: '10px', use: 'Logos, thumbs' }, { name: 'MD', v: '14px', use: 'Posters, buttons' },
+        { name: 'LG', v: '20px', use: 'Cards, groups' }, { name: 'XL', v: '28px', use: 'Sheets, dialogs' }, { name: 'Pill', v: '999px', use: 'Chips, search' }
+      ],
+      icons: icons.map((n) => ({ n, c: 'i-' + n })),
+      motion: [
+        { n: 'Poster press / hover', d: '140 ms', how: 'Scale .97 on press, lift 4 px + 1.03 on hover/focus · ease-out' },
+        { n: 'Hero transition', d: '600 ms', how: 'Cross-fade between titles; slow 18 s Ken Burns drift on artwork' },
+        { n: 'Page transition', d: '300 ms', how: 'Shared-axis: poster expands into the details backdrop' },
+        { n: 'Bottom sheet', d: '420 ms', how: 'Rise 40 px + fade, scrim blur 6 px' },
+        { n: 'Favorite heart', d: '900 ms', how: 'Spring 1 → 1.35 → .9 → 1 with ember ring burst' },
+        { n: 'Play button', d: '2.4 s loop', how: 'Soft ember glow pulse on the hero CTA only' },
+        { n: 'Skeleton / image', d: '1.4 s / 600 ms', how: 'Shimmer sweep, then artwork fades in over it' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

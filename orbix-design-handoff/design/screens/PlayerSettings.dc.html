@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Player settings</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.opt{display:flex;align-items:center;gap:10px;height:42px;padding:0 12px;border-radius:12px;font-weight:700;font-size:13px;color:#D2CED8;background:none;border:0;width:100%;text-align:left}
+.opt.sel{background:rgba(255,122,61,.12);color:#F5F1EB}
+.radio{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.3);flex:none;position:relative}
+.opt.sel .radio{border-color:#FF7A3D}
+.opt.sel .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#FF7A3D}
+</style>
+</helmet>
+<div class="ox" style="width: 915px; height: 412px; background: #000">
+  <img class="fill-img" src="../assets/b-meridian.jpg" alt="" style="filter: brightness(.45) saturate(.8)">
+  <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 330px; display: flex; flex-direction: column; justify-content: space-between; padding: 22px 26px">
+    <div style="display: flex; align-items: center; gap: 8px"><span class="ic ic-md i-pause"></span><span class="t-title">Paused · 1:12:44</span></div>
+    <div class="t-cap" style="color: #B4B0BA">Changes apply instantly. Your choices are remembered for this account.</div>
+  </div>
+
+  <aside class="sheet" style="position: absolute; right: 0; top: 0; bottom: 0; width: 600px; border-radius: 28px 0 0 28px; border-top: 0; border-left: 1px solid rgba(255,255,255,.12); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; animation: ox-rise 400ms both">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 class="t-h2" style="font-size: 17px">Playback settings</h2>
+      <a href="PlayerVOD.dc.html" class="ibtn" aria-label="Close" style="width: 36px; height: 36px"><span class="ic ic-sm i-close"></span></a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span class="t-over" style="display: flex; align-items: center; gap: 6px; font-size: 10px"><span class="ic ic-xs i-audio"></span>Audio track</span>
+          <button class="opt sel"><span class="radio"></span>English<span class="t-cap" style="margin-left: auto">5.1 Surround</span></button>
+          <button class="opt"><span class="radio"></span>Arabic<span class="t-cap" style="margin-left: auto">Stereo</span></button>
+          <button class="opt"><span class="radio"></span>French<span class="t-cap" style="margin-left: auto">Stereo</span></button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="t-over" style="display: flex; align-items: center; gap: 6px; font-size: 10px"><span class="ic ic-xs i-cc"></span>Subtitles</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <button class="chip chip-sm">Off</button><button class="chip chip-sm on">English</button><button class="chip chip-sm">العربية</button><button class="chip chip-sm">Español</button>
+          </div>
+          <button class="btn btn-ghost btn-sm" style="justify-content: flex-start; padding: 0 4px; color: #B4B0BA">Size &amp; style <span class="ic ic-xs i-chev-r"></span></button>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="t-over" style="display: flex; align-items: center; gap: 6px; font-size: 10px"><span class="ic ic-xs i-speed"></span>Playback speed</span>
+          <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: #17171E">
+            <button class="btn btn-ghost" style="height: 34px; padding: 0; font-size: 12px; color: #B4B0BA">0.5</button>
+            <button class="btn btn-ghost" style="height: 34px; padding: 0; font-size: 12px; color: #B4B0BA">.75</button>
+            <button class="btn" style="height: 34px; padding: 0; font-size: 12px; background: #FF7A3D; color: #1C0C04; border-radius: 10px">1×</button>
+            <button class="btn btn-ghost" style="height: 34px; padding: 0; font-size: 12px; color: #B4B0BA">1.25</button>
+            <button class="btn btn-ghost" style="height: 34px; padding: 0; font-size: 12px; color: #B4B0BA">1.5</button>
+            <button class="btn btn-ghost" style="height: 34px; padding: 0; font-size: 12px; color: #B4B0BA">2×</button>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span class="t-over" style="display: flex; align-items: center; gap: 6px; font-size: 10px"><span class="ic ic-xs i-hd"></span>Video quality</span>
+          <button class="opt sel"><span class="radio"></span>Auto<span class="badge b-4k" style="margin-left: auto">4K NOW</span></button>
+          <button class="opt"><span class="radio"></span>1080p</button>
+          <button class="opt"><span class="radio"></span>720p · data saver</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="t-over" style="display: flex; align-items: center; gap: 6px; font-size: 10px"><span class="ic ic-xs i-aspect"></span>Aspect ratio</span>
+          <div style="display: flex; gap: 6px"><button class="chip chip-sm on">Fit</button><button class="chip chip-sm">Fill</button><button class="chip chip-sm">Zoom</button><button class="chip chip-sm">16:9</button></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":915,"height":412}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

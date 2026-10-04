@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Player (movie)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 915px; height: 412px; background: #000">
+  <img class="fill-img" src="../assets/b-meridian.jpg" alt="">
+  <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.1) 30%, rgba(0,0,0,.1) 60%, rgba(0,0,0,.85) 100%)"></div>
+
+  <div style="position: absolute; left: 20px; right: 20px; top: 16px; display: flex; align-items: center; gap: 6px">
+    <a href="MovieDetails.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <div style="display: flex; flex-direction: column; margin-right: auto">
+      <span class="t-title" style="font-size: 16px">The Last Meridian</span>
+      <span class="t-cap" style="color: #B4B0BA">Sci-Fi · 2026 · <span style="color: #7CC4FF">4K HDR</span> · English 5.1</span>
+    </div>
+    <button class="ibtn" aria-label="Cast"><span class="ic i-cast"></span></button>
+    <button class="ibtn" aria-label="Picture in picture"><span class="ic i-pip"></span></button>
+    <a href="PlayerSettings.dc.html" class="ibtn" aria-label="Subtitles"><span class="ic i-cc"></span></a>
+    <a href="PlayerSettings.dc.html" class="ibtn" aria-label="Audio track"><span class="ic i-audio"></span></a>
+    <a href="PlayerSettings.dc.html" class="ibtn" aria-label="Playback settings"><span class="ic i-settings"></span></a>
+    <button class="ibtn ibtn-glass" aria-label="Lock controls" style="margin-left: 6px"><span class="ic i-lock"></span></button>
+  </div>
+
+  <div class="glass" style="position: absolute; left: 24px; top: 128px; width: 44px; height: 150px; border-radius: 22px; display: flex; flex-direction: column; align-items: center; padding: 12px 0; gap: 10px">
+    <span class="ic ic-sm i-sun" style="color: #F5F1EB"></span>
+    <div style="position: relative; flex: 1; width: 4px; border-radius: 4px; background: rgba(255,255,255,.2)"><span style="position: absolute; left: 0; right: 0; bottom: 0; height: 62%; border-radius: 4px; background: #F5F1EB"></span></div>
+    <span class="mono-time" style="font-size: 10px">62</span>
+  </div>
+  <div class="glass" style="position: absolute; right: 24px; top: 128px; width: 44px; height: 150px; border-radius: 22px; display: flex; flex-direction: column; align-items: center; padding: 12px 0; gap: 10px">
+    <span class="ic ic-sm i-volume" style="color: #F5F1EB"></span>
+    <div style="position: relative; flex: 1; width: 4px; border-radius: 4px; background: rgba(255,255,255,.2)"><span style="position: absolute; left: 0; right: 0; bottom: 0; height: 74%; border-radius: 4px; background: #FF7A3D"></span></div>
+    <span class="mono-time" style="font-size: 10px">74</span>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 108px; display: flex; align-items: center; justify-content: center; gap: 30px">
+    <button class="ibtn" aria-label="Previous chapter" style="width: 52px; height: 52px; opacity: .85"><span class="ic i-prev"></span></button>
+    <button class="ibtn" aria-label="Back 10 seconds" style="width: 56px; height: 56px"><span class="ic ic-lg i-rew"></span></button>
+    <button class="ibtn ibtn-xl" aria-label="Pause" style="background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(16px); box-shadow: 0 0 0 10px rgba(255,255,255,.04)"><span class="ic ic-xl i-pause"></span></button>
+    <button class="ibtn" aria-label="Forward 10 seconds" style="width: 56px; height: 56px"><span class="ic ic-lg i-fwd"></span></button>
+    <button class="ibtn" aria-label="Next chapter" style="width: 52px; height: 52px; opacity: .85"><span class="ic i-next"></span></button>
+  </div>
+
+  <div style="position: absolute; left: 28px; right: 28px; bottom: 18px; display: flex; flex-direction: column; gap: 10px">
+    <div style="position: relative; display: flex; align-items: center; gap: 14px">
+      <span class="mono-time" style="font-size: 12px">1:12:44</span>
+      <div style="position: relative; flex: 1; height: 20px; display: flex; align-items: center">
+        <div style="position: absolute; left: 0; right: 0; height: 4px; border-radius: 4px; background: rgba(255,255,255,.2)"></div>
+        <div style="position: absolute; left: 0; width: 66%; height: 4px; border-radius: 4px; background: rgba(255,255,255,.38)"></div>
+        <div style="position: absolute; left: 0; width: 52.7%; height: 4px; border-radius: 4px; background: #FF7A3D; box-shadow: 0 0 10px rgba(255,122,61,.6)"></div>
+        <div style="position: absolute; left: 52.7%; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255,122,61,.35)"></div>
+        <div style="position: absolute; left: 52.7%; bottom: 26px; width: 132px; margin-left: -66px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+          <div style="position: relative; width: 132px; height: 74px; border-radius: 10px; overflow: hidden; border: 2px solid #F5F1EB; box-shadow: 0 10px 30px rgba(0,0,0,.6)"><img class="fill-img" src="../assets/b-northbound.jpg" alt=""></div>
+          <span class="mono-time" style="font-size: 11px; padding: 2px 8px; border-radius: 6px; background: rgba(0,0,0,.6)">1:12:44</span>
+        </div>
+      </div>
+      <span class="mono-time" style="font-size: 12px; color: #B4B0BA">-1:05:21</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-aspect"></span>Fit</button>
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-speed"></span>1.0×</button>
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-hd"></span>4K</button>
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-cc"></span>English</button>
+      <span style="flex: 1"></span>
+      <button class="ibtn" aria-label="Rotate screen" style="width: 40px; height: 40px"><span class="ic ic-md i-rotate"></span></button>
+      <button class="ibtn" aria-label="Exit fullscreen" style="width: 40px; height: 40px"><span class="ic ic-md i-fullscreen"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":915,"height":412}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

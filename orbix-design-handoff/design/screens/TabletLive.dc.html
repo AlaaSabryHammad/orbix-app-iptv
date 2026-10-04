@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Tablet live TV</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 1280px; height: 800px; background: #08080B; display: flex">
+  <nav class="rail-nav" aria-label="Main" style="height: 800px">
+    <div class="logo-mark" style="width: 34px; height: 34px; margin-bottom: 22px"><div class="ring"></div><div class="core"></div><div class="moon"></div></div>
+    <a href="TabletHome.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="TabletLive.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="TabletEPG.dc.html"><span class="pill"><span class="ic i-epg"></span></span>Guide</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <span style="flex: 1"></span>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-settings"></span></span>Settings</a>
+  </nav>
+
+  <aside style="width: 224px; flex: none; padding: 24px 12px; border-right: 1px solid rgba(255,255,255,.06); display: flex; flex-direction: column; gap: 4px">
+    <h1 class="t-h1" style="font-size: 22px; padding: 0 10px 14px">Live TV</h1>
+    <sc-for list="{{cats}}" as="c" hint-placeholder-count="8">
+      <button style="display: flex; align-items: center; gap: 12px; height: 46px; padding: 0 12px; border-radius: 14px; border: 0; font-weight: 700; font-size: 14px; text-align: left; {{c.style}}">
+        <span class="ic ic-sm {{c.icon}}"></span><span style="flex: 1">{{c.name}}</span><span class="num" style="font-size: 12px; opacity: .65">{{c.n}}</span>
+      </button>
+    </sc-for>
+  </aside>
+
+  <section style="width: 380px; flex: none; display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,.06)">
+    <div style="padding: 24px 16px 12px; display: flex; align-items: center; gap: 8px">
+      <div class="search" style="flex: 1; height: 44px"><span class="ic ic-sm i-search" style="color: #8E8A97"></span><label for="tl-q" class="hide">Filter channels</label><input id="tl-q" placeholder="Filter Sports"></div>
+      <button class="ibtn ibtn-tonal" aria-label="Sort"><span class="ic ic-sm i-filter"></span></button>
+    </div>
+    <div style="display: flex; flex-direction: column; padding: 0 8px; gap: 2px">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+        <a href="PlayerLive.dc.html" style="position: relative; display: flex; align-items: center; gap: 12px; height: 70px; padding: 0 12px; border-radius: 16px; text-decoration: none; background: {{r.bgRow}}">
+          <span style="position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 3px; background: {{r.bar}}"></span>
+          <span class="mono-time" style="width: 26px; font-size: 11px; color: #8E8A97">{{r.num}}</span>
+          <div class="chlogo" style="width: 44px; height: 44px; font-size: 11px; background: {{r.bg}}">{{r.logo}}</div>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+            <div style="display: flex; align-items: center; gap: 6px"><span class="t-title" style="font-size: 14px">{{r.name}}</span><span class="badge {{r.qc}}" style="height: 17px; font-size: 9.5px">{{r.q}}</span><sc-if value="{{r.playing}}" hint-placeholder-val="{{false}}"><span class="eq"><i></i><i></i><i></i></span></sc-if></div>
+            <div style="display: flex; align-items: center; gap: 8px"><span class="t-cap" style="flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.prog}}</span><div class="progress" style="width: 44px; flex: none"><span style="width: {{r.p}}%"></span></div></div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <main style="position: relative; flex: 1; min-width: 0; padding: 24px 24px 0; display: flex; flex-direction: column; gap: 18px">
+    <div class="ambient" style="width: 400px; height: 260px; left: 60px; top: 80px; background: #2FBF71; opacity: .14"></div>
+    <a href="PlayerLive.dc.html" class="thumb" style="border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(47,191,113,.5), 0 0 0 1px rgba(255,255,255,.08)">
+      <img src="../assets/b-stadium.jpg" alt="">
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(0,0,0,.75))"></div>
+      <div style="position: absolute; left: 14px; top: 14px; display: flex; gap: 6px"><span class="badge b-live">LIVE</span><span class="badge b-fhd">FHD</span></div>
+      <div style="position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(12px)"><span class="ic ic-lg i-pause"></span></div>
+      <div style="position: absolute; left: 14px; right: 10px; bottom: 10px; display: flex; align-items: center; gap: 4px">
+        <span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-volume"></span></span>
+        <div class="progress" style="flex: 1; margin: 0 8px"><span style="width: 12%"></span></div>
+        <span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-cc"></span></span>
+        <span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-pip"></span></span>
+        <span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-fullscreen"></span></span>
+      </div>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 14px">
+      <div class="chlogo" style="width: 52px; height: 52px; font-size: 13px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div>
+      <div style="flex: 1; min-width: 0">
+        <div class="t-cap" style="color: #7CC4FF">Pulse Sports 1 · Channel 102</div>
+        <div class="t-h2" style="font-size: 19px">Coastal FC vs Northern United</div>
+      </div>
+      <button class="ibtn ibtn-tonal" aria-label="Favorite" aria-pressed="true" style="color: #FF7A3D"><span class="ic i-heart-fill"></span></button>
+      <a href="TabletEPG.dc.html" class="btn btn-tonal btn-sm" style="height: 44px"><span class="ic ic-sm i-epg"></span>Guide</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; border-radius: 20px; background: #101015; border: 1px solid rgba(255,255,255,.08); padding: 6px">
+      <sc-for list="{{sched}}" as="s" hint-placeholder-count="4">
+        <div style="display: flex; align-items: center; gap: 14px; height: 48px; padding: 0 12px; border-radius: 14px; {{s.style}}">
+          <span class="mono-time" style="width: 92px; font-size: 12px; color: {{s.tc}}">{{s.time}}</span>
+          <span style="flex: 1; font-weight: 700; font-size: 13.5px">{{s.t}}</span>
+          <span class="t-cap" style="color: {{s.tc}}">{{s.tag}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const on = 'background: rgba(255,122,61,.14); color: #F5F1EB;';
+    const off = 'background: transparent; color: #B4B0BA;';
+    const r = (o) => Object.assign({ playing: false, bgRow: 'transparent', bar: 'transparent' }, o);
+    return {
+      cats: [
+        { name: 'All channels', n: '1,284', icon: 'i-live', style: off },
+        { name: 'Favorites', n: '12', icon: 'i-heart', style: off },
+        { name: 'News', n: '86', icon: 'i-globe', style: off },
+        { name: 'Sports', n: '142', icon: 'i-trending', style: on },
+        { name: 'Entertainment', n: '210', icon: 'i-series', style: off },
+        { name: 'Kids', n: '48', icon: 'i-sun', style: off },
+        { name: 'Documentaries', n: '64', icon: 'i-film', style: off },
+        { name: 'Movies', n: '120', icon: 'i-film', style: off },
+        { name: 'Music', n: '37', icon: 'i-audio', style: off },
+        { name: 'International', n: '515', icon: 'i-globe', style: off },
+        { name: 'Locked', n: '3', icon: 'i-lock', style: 'background: transparent; color: #FFC65C;' }
+      ],
+      rows: [
+        r({ num: '102', logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', name: 'Pulse Sports 1', q: 'FHD', qc: 'b-fhd', prog: 'Coastal FC vs Northern United', p: 12, playing: true, bgRow: 'rgba(255,122,61,.1)', bar: '#FF7A3D' }),
+        r({ num: '103', logo: 'P2', bg: 'linear-gradient(145deg,#1FA88A,#0B3A33)', name: 'Pulse Sports 2', q: '4K', qc: 'b-4k', prog: 'Grand Prix Qualifying', p: 50 }),
+        r({ num: '110', logo: 'A4', bg: 'linear-gradient(145deg,#7CC4FF,#163A5C)', name: 'Arena 4K', q: '4K', qc: 'b-4k', prog: 'Basketball: Harbor vs Summit', p: 64 }),
+        r({ num: '111', logo: 'GT', bg: 'linear-gradient(145deg,#C9A7FF,#3A2470)', name: 'Golf Today', q: 'HD', qc: 'b-hd', prog: 'Coastal Open · Round 3', p: 22 }),
+        r({ num: '112', logo: 'RX', bg: 'linear-gradient(145deg,#FF6B6B,#5A1414)', name: 'Rally X', q: 'FHD', qc: 'b-fhd', prog: 'Desert Stage Highlights', p: 80 }),
+        r({ num: '113', logo: 'TN', bg: 'linear-gradient(145deg,#FFC65C,#6B4A0B)', name: 'Tennis Now', q: 'HD', qc: 'b-hd', prog: 'Classic Finals: 2019', p: 40 }),
+        r({ num: '114', logo: 'FC', bg: 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', name: 'Fight Club HD', q: 'HD', qc: 'b-hd', prog: 'Championship Countdown', p: 55 }),
+        r({ num: '115', logo: 'OS', bg: 'linear-gradient(145deg,#9B8CFF,#2B1A6B)', name: 'Outdoor Sport', q: 'FHD', qc: 'b-fhd', prog: 'Trail Running: Alps', p: 15 }),
+        r({ num: '116', logo: 'CY', bg: 'linear-gradient(145deg,#E2508F,#4E1235)', name: 'Cycle TV', q: 'HD', qc: 'b-hd', prog: 'Mountain Stage 14', p: 70 })
+      ],
+      sched: [
+        { time: '20:30–22:30', t: 'Coastal FC vs Northern United', tag: 'Now', tc: '#FF9663', style: 'background: rgba(255,122,61,.08);' },
+        { time: '22:30–23:00', t: 'Match Review', tag: 'Next', tc: '#B4B0BA', style: '' },
+        { time: '23:00–00:00', t: 'Goals of the Week', tag: '', tc: '#8E8A97', style: '' },
+        { time: '00:00–02:00', t: 'Replay: Harbor Derby', tag: '', tc: '#8E8A97', style: '' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

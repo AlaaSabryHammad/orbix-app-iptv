@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Tablet home</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 1280px; height: 800px; background: #08080B; display: flex">
+  <nav class="rail-nav" aria-label="Main" style="height: 800px">
+    <div class="logo-mark" style="width: 34px; height: 34px; margin-bottom: 22px"><div class="ring"></div><div class="core"></div><div class="moon"></div></div>
+    <a href="TabletHome.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="TabletLive.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="TabletEPG.dc.html"><span class="pill"><span class="ic i-epg"></span></span>Guide</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <span style="flex: 1"></span>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-settings"></span></span>Settings</a>
+  </nav>
+
+  <div style="position: relative; flex: 1; min-width: 0; overflow: hidden">
+    <div class="ambient" style="width: 600px; height: 300px; left: 100px; top: 120px; background: #FF7A3D; opacity: .12"></div>
+    <header style="display: flex; align-items: center; gap: 8px; padding: 20px 28px 0 32px">
+      <div style="display: flex; flex-direction: column; margin-right: auto">
+        <span class="t-cap">Saturday, 3 October</span>
+        <span class="t-h1" style="font-size: 22px">Good evening</span>
+      </div>
+      <a href="SearchResults.dc.html" class="search" style="width: 340px; text-decoration: none"><span class="ic ic-sm i-search" style="color: #8E8A97"></span><span style="flex: 1; color: #8E8A97; font-weight: 600">Search channels, movies, series</span><span class="ic ic-sm i-mic" style="color: #FF7A3D; margin-right: 8px"></span></a>
+      <button class="ibtn" aria-label="Cast"><span class="ic i-cast"></span></button>
+      <button class="ibtn" aria-label="Notifications"><span class="ic i-bell"></span></button>
+      <a href="Profiles.dc.html" class="ibtn" aria-label="Switch account"><span style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(145deg, #FF8A4C, #B43A12); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 11px">LR</span></a>
+    </header>
+
+    <div style="display: flex; gap: 20px; padding: 18px 28px 0 32px">
+      <a href="MovieDetails.dc.html" style="position: relative; flex: 1; height: 360px; border-radius: 28px; overflow: hidden; text-decoration: none; box-shadow: 0 30px 60px -30px rgba(255,122,61,.5), 0 0 0 1px rgba(255,255,255,.06)">
+        <img class="fill-img kenburns" src="../assets/b-meridian.jpg" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,8,11,.9) 0%, rgba(8,8,11,.4) 45%, rgba(8,8,11,0) 75%)"></div>
+        <div style="position: absolute; left: 36px; top: 0; bottom: 0; width: 380px; display: flex; flex-direction: column; justify-content: center; gap: 14px">
+          <div style="display: flex; gap: 6px"><span class="badge b-new">NEW</span><span class="badge b-4k">4K HDR</span><span class="badge b-fhd">5.1</span></div>
+          <h1 class="t-hero" style="font-size: 42px; text-transform: uppercase">The Last Meridian</h1>
+          <div class="meta"><span class="rating"><span class="ic i-star"></span>8.6</span><span class="dot-sep"></span><span>2026</span><span class="dot-sep"></span><span>Sci-Fi · Drama</span><span class="dot-sep"></span><span>2h 18m</span></div>
+          <p class="t-body" style="color: #D9D5DE">When the last relay on a dying world goes silent, one engineer crosses the frozen meridian to bring the signal home.</p>
+          <div style="display: flex; gap: 10px; margin-top: 4px">
+            <span class="btn btn-primary"><span class="ic ic-md i-play"></span>Play</span>
+            <span class="btn btn-glass"><span class="ic ic-md i-info"></span>More info</span>
+            <span class="ibtn ibtn-glass" style="width: 50px; height: 50px"><span class="ic i-plus"></span></span>
+          </div>
+        </div>
+        <div style="position: absolute; right: 24px; bottom: 22px; display: flex; gap: 5px">
+          <span style="width: 22px; height: 4px; border-radius: 4px; background: #F5F1EB"></span><span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.3)"></span><span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.3)"></span><span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.3)"></span>
+        </div>
+      </a>
+
+      <aside style="width: 330px; flex: none; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: center; justify-content: space-between; height: 24px"><h2 class="t-h2" style="font-size: 16px; display: flex; align-items: center; gap: 8px"><span class="live-dot"></span>Live now</h2><a href="TabletLive.dc.html" class="t-cap" style="text-decoration: none; color: #B4B0BA; font-weight: 700">All channels</a></div>
+        <sc-for list="{{live}}" as="l" hint-placeholder-count="3">
+          <a href="PlayerLive.dc.html" class="card" style="display: flex; gap: 12px; padding: 8px; border-radius: 18px; text-decoration: none; align-items: center">
+            <div class="thumb" style="width: 132px; border-radius: 12px"><img src="{{l.img}}" alt=""><div class="chlogo" style="position: absolute; left: 6px; bottom: 6px; width: 28px; height: 28px; font-size: 8.5px; border-radius: 8px; background: {{l.bg}}">{{l.logo}}</div></div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+              <span class="t-cap" style="color: #7CC4FF">{{l.ch}}</span>
+              <span style="font-weight: 800; font-size: 13.5px; line-height: 1.25">{{l.prog}}</span>
+              <div class="progress"><span style="width: {{l.p}}%"></span></div>
+            </div>
+          </a>
+        </sc-for>
+      </aside>
+    </div>
+
+    <section style="padding: 26px 0 0 12px">
+      <div class="rail-head"><h2 class="t-h2">Continue watching</h2><a href="Favorites.dc.html">See all <span class="ic ic-xs i-chev-r"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{cont}}" as="c" hint-placeholder-count="4">
+          <a href="PlayerVOD.dc.html" style="width: 250px; flex: none; display: flex; flex-direction: column; gap: 8px; text-decoration: none">
+            <div class="thumb" style="width: 250px"><img src="{{c.img}}" alt=""><div class="shade"></div><div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{c.p}}%"></span></div></div>
+            <div><div class="t-title" style="font-size: 14px">{{c.title}}</div><div class="t-cap">{{c.sub}}</div></div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      live: [
+        { img: B('b-stadium.jpg'), logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', ch: 'Pulse Sports 1 · 20:30–22:30', prog: 'Coastal FC vs Northern United', p: 12 },
+        { img: B('b-news.jpg'), logo: 'MN', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)', ch: 'Meridian News · 20:00–21:00', prog: 'The Evening Bulletin', p: 75 },
+        { img: B('b-concert.jpg'), logo: 'WV', bg: 'linear-gradient(145deg,#E2508F,#4E1235)', ch: 'Wave Music · 20:00–22:00', prog: 'Live at the Arena', p: 38 }
+      ],
+      cont: [
+        { img: B('e-1.jpg'), title: 'Hollow Crown District', sub: 'S3 · E4 · 18 min left', p: 64 },
+        { img: B('b-northbound.jpg'), title: 'Northbound', sub: '42 min left', p: 58 },
+        { img: B('b-signal.jpg'), title: 'Signal & Noise', sub: 'S1 · E7 · 9 min left', p: 82 },
+        { img: B('b-avar.jpg'), title: 'Sands of Avar', sub: '1 h 01 min left', p: 51 },
+        { img: B('b-embers.jpg'), title: 'Embers of Kesh', sub: 'S1 · E2 · 31 min left', p: 30 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

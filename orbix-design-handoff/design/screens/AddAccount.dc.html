@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Add account (Xtream Codes)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <div class="ambient" style="width: 300px; height: 220px; left: 160px; top: -60px; background: #FF7A3D; opacity: .16"></div>
+
+  <div style="position: absolute; top: 36px; left: 10px; right: 16px; display: flex; align-items: center; justify-content: space-between">
+    <a href="Onboarding3.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <span class="badge b-soft" style="height: 26px; padding: 0 10px; font-size: 11px">2 saved profiles</span>
+  </div>
+
+  <div style="position: absolute; top: 96px; left: 24px; right: 24px; display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h1 class="t-h1" style="font-size: 26px">Add IPTV account</h1>
+      <p class="t-body">Use a service you are authorized to access. Orbix doesn’t sell or provide channels.</p>
+    </div>
+
+    <div class="seg" role="tablist">
+      <button class="on" role="tab" aria-selected="true"><span class="ic ic-sm i-server"></span>Xtream</button>
+      <a href="AddAccountM3U.dc.html" role="tab" aria-selected="false" style="text-decoration: none"><span class="ic ic-sm i-playlist"></span>M3U</a>
+      <a href="AddAccountM3U.dc.html" role="tab" aria-selected="false" style="text-decoration: none"><span class="ic ic-sm i-file"></span>File</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <div class="field">
+        <label for="acc-name">Account name</label>
+        <div class="input focus"><span class="ic ic-sm i-user" style="color: #FF7A3D"></span><input id="acc-name" value="Living Room"><span style="width: 2px; height: 20px; background: #FF7A3D; border-radius: 2px; animation: ox-pulse 1s infinite"></span></div>
+      </div>
+      <div class="field">
+        <label for="acc-url">Server URL</label>
+        <div class="input"><span class="ic ic-sm i-link"></span><input id="acc-url" value="http://line.yourprovider.tv:8080"></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div class="field">
+          <label for="acc-user">Username</label>
+          <div class="input"><input id="acc-user" value="living_room"></div>
+        </div>
+        <div class="field">
+          <label for="acc-pass">Password</label>
+          <div class="input"><input id="acc-pass" type="password" value="orbitpass99"><button class="ibtn" aria-label="Show password" style="width: 32px; height: 32px; margin-right: -8px; color: #8E8A97"><span class="ic ic-sm i-eye"></span></button></div>
+        </div>
+      </div>
+      <div class="card" style="border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+        <span class="ic ic-md i-epg" style="color: #7CC4FF"></span>
+        <div style="flex: 1">
+          <div class="t-title" style="font-size: 14px">EPG URL <span style="color: #8E8A97; font-weight: 600">· optional</span></div>
+          <div class="t-cap">Uses your provider’s guide when empty</div>
+        </div>
+        <span class="ic ic-sm i-chev-d" style="color: #8E8A97"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 0 2px">
+        <span class="ic ic-sm i-shield" style="color: #5BD69B"></span>
+        <span class="t-small" style="flex: 1">Save as profile · stored encrypted on this device</span>
+        <button class="switch on" aria-label="Save as profile" aria-pressed="true"></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 24px; right: 24px; bottom: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+    <a href="AddAccountM3U.dc.html" class="btn btn-tonal"><span class="ic ic-md i-signal"></span>Test</a>
+    <a href="Profiles.dc.html" class="btn btn-primary">Connect</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

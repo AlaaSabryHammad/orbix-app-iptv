@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — System states</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.cell{display:flex;flex-direction:column;gap:14px}
+.lbl{display:flex;align-items:baseline;gap:10px}
+.lbl b{font-family:'Unbounded',sans-serif;font-weight:600;font-size:12px;color:#FF9663}
+.lbl span{font-weight:800;font-size:16px}
+.lbl i{font-style:normal;margin-left:auto;font-weight:600;font-size:12px;color:#8E8A97}
+.scr{position:relative;width:360px;height:600px;border-radius:30px;overflow:hidden;background:#08080B;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 34px;text-align:center}
+.emblem{position:relative;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.emblem::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(255,255,255,.12)}
+</style>
+</helmet>
+<div class="ox" style="width: 1640px; height: 2280px; background: #050507; padding: 56px 28px">
+  <header style="display: flex; align-items: flex-end; justify-content: space-between; padding: 0 0 48px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span class="t-over" style="color: #FF9663">Orbix · System states</span>
+      <h1 class="t-display" style="font-size: 40px">Every state, designed</h1>
+    </div>
+    <p class="t-body" style="max-width: 520px; text-align: right">Loading, empty, error and success states share one language: an emblem inside a dashed orbit, one sentence that says what happened, and one primary action that fixes it.</p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px">
+
+    <div class="cell">
+      <div class="lbl"><b>01</b><span>Skeleton loading</span><i>Home, first paint</i></div>
+      <div class="scr" style="padding: 24px 16px">
+        <div class="sk" style="height: 300px; border-radius: 22px"></div>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px"><div class="sk" style="height: 22px; width: 60%"></div><div class="sk" style="height: 12px; width: 85%"></div><div class="sk" style="height: 12px; width: 70%"></div></div>
+        <div class="sk" style="height: 16px; width: 40%; margin-top: 26px"></div>
+        <div style="display: flex; gap: 10px; margin-top: 12px"><div class="sk" style="width: 96px; height: 144px; flex: none; border-radius: 14px"></div><div class="sk" style="width: 96px; height: 144px; flex: none; border-radius: 14px"></div><div class="sk" style="width: 96px; height: 144px; flex: none; border-radius: 14px"></div><div class="sk" style="width: 96px; height: 144px; flex: none; border-radius: 14px"></div></div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>02</b><span>Playlist loading</span><i>Progressive</i></div>
+      <div class="scr">
+        <div class="center" style="justify-content: flex-start; padding-top: 110px">
+          <div class="orbit-loader" style="width: 84px; height: 84px"><i></i></div>
+          <h2 class="t-h1" style="font-size: 20px; margin-top: 10px">Loading your playlist</h2>
+          <p class="t-body" style="font-size: 13px">Live TV is ready first — movies and series keep loading in the background.</p>
+          <div style="align-self: stretch; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; text-align: left">
+            <div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between" class="t-small"><span style="color: #F5F1EB">Channels</span><span class="num" style="color: #5BD69B">1,284 ✓</span></div><div class="progress"><span style="width: 100%; background: #5BD69B"></span></div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between" class="t-small"><span style="color: #F5F1EB">Movies</span><span class="num">2,140 / 8,930</span></div><div class="progress"><span style="width: 24%"></span></div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between" class="t-small"><span>Series</span><span>Waiting</span></div><div class="progress"><span style="width: 0%"></span></div></div>
+          </div>
+          <a href="LiveTV.dc.html" class="btn btn-primary btn-block" style="margin-top: 14px"><span class="ic ic-md i-live"></span>Watch Live TV now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>03</b><span>EPG loading</span><i>Guide refresh</i></div>
+      <div class="scr">
+        <div style="padding: 26px 16px 12px; display: flex; align-items: center; justify-content: space-between"><span class="t-h1" style="font-size: 18px">TV Guide</span><span class="badge b-soft" style="height: 26px; padding: 0 10px; gap: 8px"><span style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid #7CC4FF; border-right-color: transparent; animation: ox-spin .9s linear infinite"></span>Updating 62%</span></div>
+        <div style="display: flex; flex-direction: column">
+          <sc-for list="{{epgSk}}" as="r" hint-placeholder-count="8">
+            <div style="display: flex; height: 58px; border-bottom: 1px solid rgba(255,255,255,.05)">
+              <div style="width: 64px; flex: none; display: flex; align-items: center; justify-content: center; background: #0B0B0F"><div class="sk" style="width: 34px; height: 34px"></div></div>
+              <div style="flex: 1; display: flex; gap: 4px; padding: 6px 4px"><div class="sk" style="width: {{r.a}}px; flex: none; border-radius: 10px"></div><div class="sk" style="width: {{r.b}}px; flex: none; border-radius: 10px"></div><div class="sk" style="flex: 1; border-radius: 10px"></div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="snack" style="position: absolute; left: 14px; right: 14px; bottom: 16px; background: #1C1C24; color: #F5F1EB; border: 1px solid rgba(255,255,255,.1)"><span class="ic ic-md i-epg" style="color: #7CC4FF"></span><span style="font-size: 12.5px">Guide data from 2 sources · 7 days</span></div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>04</b><span>Empty search</span><i>No results</i></div>
+      <div class="scr">
+        <div style="padding: 24px 14px 0"><div class="search"><span class="ic ic-sm i-search"></span><span style="flex: 1; font-weight: 700">zxqv</span><span class="ic ic-sm i-close" style="color: #8E8A97; margin-right: 8px"></span></div></div>
+        <div class="center" style="top: 80px">
+          <div class="emblem" style="background: rgba(255,255,255,.05); color: #B4B0BA"><span class="ic ic-xl i-search"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">No matches for “zxqv”</h2>
+          <p class="t-body" style="font-size: 13px">Check the spelling, or remove the 2026 filter to search everything.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center"><span class="chip chip-sm">Sci-Fi</span><span class="chip chip-sm">Live sports</span><span class="chip chip-sm">Kids</span></div>
+          <button class="btn btn-tonal btn-sm" style="margin-top: 6px">Clear filters</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>05</b><span>No favorites</span><i>Empty collection</i></div>
+      <div class="scr">
+        <div style="padding: 28px 20px 0" class="t-h1">Favorites</div>
+        <div class="center">
+          <div class="emblem" style="background: rgba(255,122,61,.12); color: #FF7A3D"><span class="ic ic-xl i-heart anim-heart"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">Nothing saved yet</h2>
+          <p class="t-body" style="font-size: 13px">Tap the heart on any channel, movie or series and it will wait for you here.</p>
+          <a href="LiveTV.dc.html" class="btn btn-primary" style="margin-top: 6px">Browse Live TV</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>06</b><span>No internet</span><i>Offline</i></div>
+      <div class="scr">
+        <div style="position: absolute; left: 0; right: 0; top: 0; height: 40px; background: rgba(255,198,92,.14); color: #FFC65C; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 12px"><span class="ic ic-xs i-wifi-off"></span>No connection</div>
+        <div class="center">
+          <div class="emblem" style="background: rgba(255,198,92,.1); color: #FFC65C"><span class="ic ic-xl i-wifi-off"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">You’re offline</h2>
+          <p class="t-body" style="font-size: 13px">Check Wi‑Fi or mobile data. Orbix reconnects on its own as soon as you’re back.</p>
+          <button class="btn btn-primary" style="margin-top: 6px"><span class="ic ic-md i-refresh"></span>Try again</button>
+          <button class="btn btn-ghost btn-sm" style="color: #B4B0BA">Network settings</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>07</b><span>Server unavailable</span><i>Provider down</i></div>
+      <div class="scr">
+        <div class="center">
+          <div class="emblem" style="background: rgba(255,107,107,.1); color: #FF8C8C"><span class="ic ic-xl i-server"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">Server isn’t responding</h2>
+          <p class="t-body" style="font-size: 13px">line.yourprovider.tv didn’t answer within 10 seconds. This is usually temporary on the provider’s side.</p>
+          <div style="display: flex; align-items: center; gap: 10px; align-self: stretch; padding: 10px 14px; border-radius: 14px; background: #101015; border: 1px solid rgba(255,255,255,.08)"><div class="orbit-loader" style="width: 22px; height: 22px"></div><span class="t-small" style="flex: 1; text-align: left">Retrying automatically</span><span class="mono-time" style="font-size: 12px; color: #FF9663">0:08</span></div>
+          <button class="btn btn-primary btn-block">Retry now</button>
+          <a href="Profiles.dc.html" class="btn btn-ghost btn-sm" style="color: #B4B0BA">Switch account</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>08</b><span>Expired account</span><i>Provider status</i></div>
+      <div class="scr">
+        <div class="center">
+          <div class="emblem" style="background: rgba(255,198,92,.1); color: #FFC65C"><span class="ic ic-xl i-calendar"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">This account has expired</h2>
+          <p class="t-body" style="font-size: 13px">Your provider reports that “Sports Pack” ended on 30 Sep 2026. Renew it with your provider, then refresh here.</p>
+          <div style="align-self: stretch; display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: #101015; border: 1px solid rgba(255,255,255,.08)" class="t-small"><span>Status</span><span style="color: #FFC65C; font-weight: 800">Expired</span></div>
+          <button class="btn btn-primary btn-block"><span class="ic ic-md i-refresh"></span>Refresh status</button>
+          <a href="Profiles.dc.html" class="btn btn-ghost btn-sm" style="color: #B4B0BA">Use another account</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>09</b><span>Incorrect credentials</span><i>Inline errors</i></div>
+      <div class="scr" style="padding: 28px 20px; display: flex; flex-direction: column; gap: 14px">
+        <span class="t-h1" style="font-size: 20px">Add IPTV account</span>
+        <div style="display: flex; gap: 10px; padding: 12px 14px; border-radius: 14px; background: rgba(255,107,107,.1); border: 1px solid rgba(255,107,107,.3); align-items: flex-start"><span class="ic ic-md i-alert" style="color: #FF8C8C"></span><span class="t-small" style="color: #FFC9C9">Username or password is incorrect. Check the details from your provider and try again.</span></div>
+        <div class="field"><label>Server URL</label><div class="input ok"><span class="ic ic-sm i-link"></span><span style="flex: 1; font-weight: 600; font-size: 14px">line.yourprovider.tv:8080</span><span class="ic ic-sm i-check" style="color: #5BD69B"></span></div></div>
+        <div class="field"><label>Username</label><div class="input error"><span style="flex: 1; font-weight: 600; font-size: 14px">livingroom</span></div></div>
+        <div class="field"><label>Password</label><div class="input error"><span style="flex: 1; font-weight: 800; letter-spacing: 3px">••••••••</span><span class="ic ic-sm i-eye"></span></div><span class="hint error">Passwords are case-sensitive</span></div>
+        <button class="btn btn-primary btn-block" style="margin-top: auto">Try again</button>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>10</b><span>Connection failed</span><i>Test result</i></div>
+      <div class="scr">
+        <div style="padding: 28px 20px; display: flex; flex-direction: column; gap: 12px; opacity: .35">
+          <span class="t-h1" style="font-size: 20px">Add IPTV account</span>
+          <div class="sk" style="height: 54px"></div><div class="sk" style="height: 54px"></div><div class="sk" style="height: 54px"></div>
+        </div>
+        <div class="sheet" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 22px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div class="handle"></div>
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(255,107,107,.12); color: #FF8C8C; display: flex; align-items: center; justify-content: center; margin-top: 8px"><span class="ic ic-xl i-close"></span></div>
+          <h2 class="t-h1" style="font-size: 20px">Couldn’t connect</h2>
+          <p class="t-body" style="font-size: 13px">We couldn’t find this server. Check the URL and port.</p>
+          <code style="align-self: stretch; padding: 10px 12px; border-radius: 12px; background: #0B0B0F; color: #B4B0BA; font-size: 11.5px; text-align: left">DNS lookup failed · line.yourprovider.tv:8080</code>
+          <div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px"><a href="AddAccount.dc.html" class="btn btn-tonal">Edit details</a><button class="btn btn-primary"><span class="ic ic-md i-refresh"></span>Retry</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>11</b><span>Success</span><i>Account connected</i></div>
+      <div class="scr" style="background: radial-gradient(80% 50% at 50% 35%, rgba(91,214,155,.14), #08080B 70%)">
+        <div class="center">
+          <div class="emblem" style="background: #5BD69B; color: #04150C; box-shadow: 0 0 50px rgba(91,214,155,.45)"><span class="ic ic-xl i-check"></span></div>
+          <h2 class="t-h1" style="font-size: 22px">You’re all set</h2>
+          <p class="t-body" style="font-size: 13px">“Living Room” is connected and saved on this device.</p>
+          <div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+            <div class="card" style="border-radius: 14px; padding: 10px 12px; text-align: left"><div class="mono-time" style="font-size: 16px">1,284</div><div class="t-cap">Live channels</div></div>
+            <div class="card" style="border-radius: 14px; padding: 10px 12px; text-align: left"><div class="mono-time" style="font-size: 16px">8,930</div><div class="t-cap">Movies</div></div>
+            <div class="card" style="border-radius: 14px; padding: 10px 12px; text-align: left"><div class="mono-time" style="font-size: 16px">642</div><div class="t-cap">Series</div></div>
+            <div class="card" style="border-radius: 14px; padding: 10px 12px; text-align: left"><div class="mono-time" style="font-size: 16px">7 days</div><div class="t-cap">TV guide</div></div>
+          </div>
+          <a href="Home.dc.html" class="btn btn-primary btn-block" style="margin-top: 6px">Start watching</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl"><b>12</b><span>Feedback &amp; toasts</span><i>Snackbars</i></div>
+      <div class="scr" style="padding: 22px 16px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px; border-radius: 999px; background: rgba(124,196,255,.12); color: #7CC4FF; font-weight: 800; font-size: 12.5px; align-self: center"><span class="orbit-loader" style="width: 16px; height: 16px"></span>Reconnecting to stream…</div>
+        <div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px; border-radius: 999px; background: rgba(255,255,255,.08); font-weight: 800; font-size: 12.5px; align-self: center"><span class="ic ic-sm i-lock"></span>Controls locked · tap to unlock</div>
+        <div style="flex: 1"></div>
+        <div class="snack"><span class="ic ic-md i-heart-fill" style="color: #C93F0E"></span><span>Added to favorites</span><button class="act">Undo</button></div>
+        <div class="snack"><span class="ic ic-md i-playlist" style="color: #2F6FB0"></span><span>Playlist updated · 12 new channels</span></div>
+        <div class="snack" style="background: #2A1414; color: #FFD6D6; border: 1px solid rgba(255,107,107,.35)"><span class="ic ic-md i-alert" style="color: #FF8C8C"></span><span>Stream unavailable</span><button class="act" style="color: #FFB4A0">Retry</button></div>
+        <div class="snack" style="background: #10261B; color: #CFF5E2; border: 1px solid rgba(91,214,155,.35)"><span class="ic ic-md i-check" style="color: #5BD69B"></span><span>Cache cleared · 248 MB freed</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1640,"height":2280}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      epgSk: [[60, 110], [140, 50], [90, 90], [40, 130], [120, 70], [70, 100], [100, 60], [50, 120]].map(([a, b]) => ({ a, b }))
+    };
+  }
+}
+</script>
+</body>
+</html>

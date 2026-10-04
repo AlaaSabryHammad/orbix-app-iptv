@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Series details</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 1800px; background: #08080B">
+  <div style="position: absolute; left: 0; right: 0; top: 0; height: 460px; overflow: hidden">
+    <img class="fill-img kenburns" src="../assets/b-hollow.jpg" alt="">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,11,.6) 0%, rgba(8,8,11,0) 25%, rgba(8,8,11,.35) 55%, #08080B 100%)"></div>
+  </div>
+  <div class="ambient" style="width: 380px; height: 240px; left: 20px; top: 380px; background: #FFB060; opacity: .1"></div>
+
+  <header class="topbar" style="padding-left: 10px">
+    <a href="Series.dc.html" class="ibtn ibtn-glass" aria-label="Back" style="margin-right: auto"><span class="ic i-back flip"></span></a>
+    <button class="ibtn ibtn-glass" aria-label="Cast" style="margin-right: 8px"><span class="ic i-cast"></span></button>
+    <button class="ibtn ibtn-glass" aria-label="Share"><span class="ic i-share"></span></button>
+  </header>
+
+  <div style="position: relative; padding: 292px 20px 0; display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: flex-end; gap: 16px">
+      <div class="poster" style="width: 112px; border-radius: 16px; box-shadow: 0 24px 50px -12px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.14)"><img src="../assets/p-hollow.jpg" alt=""></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; padding-bottom: 4px">
+        <div style="display: flex; gap: 5px"><span class="badge b-4k">4K</span><span class="badge b-fhd">ATMOS</span><span class="badge b-soft">16+</span></div>
+        <h1 class="t-h1" style="font-size: 23px; text-transform: uppercase">Hollow Crown District</h1>
+        <div class="meta"><span class="rating"><span class="ic i-star"></span>8.7</span><span class="dot-sep"></span><span>2024</span><span class="dot-sep"></span><span>Crime · Drama</span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <a href="PlayerVOD.dc.html" class="btn btn-primary btn-lg btn-block anim-glow"><span class="ic ic-md i-play"></span>Resume S3 · E4</a>
+      <div style="display: flex; align-items: center; gap: 10px"><div class="progress" style="flex: 1"><span style="width: 64%"></span></div><span class="t-cap num">18 min left</span></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <button style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 14px; background: #101015; border: 1px solid rgba(255,255,255,.08)"><span class="ic ic-md i-trailer"></span><span style="font-weight: 800; font-size: 13px">Trailer</span></button>
+      <button aria-pressed="false" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 14px; background: #101015; border: 1px solid rgba(255,255,255,.08)"><span class="ic ic-md i-heart"></span><span style="font-weight: 800; font-size: 13px">Favorite</span></button>
+      <button style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 14px; background: #101015; border: 1px solid rgba(255,255,255,.08)"><span class="ic ic-md i-share"></span><span style="font-weight: 800; font-size: 13px">Share</span></button>
+    </div>
+
+    <p class="t-body" style="color: #D2CED8; font-size: 14.5px">In a rain-soaked harbor city, a disgraced detective and a dockworkers’ union boss form an uneasy pact to bring down the family that has quietly owned every street for forty years.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <h2 class="t-h2">Episodes</h2>
+        <button class="btn btn-tonal btn-sm" style="gap: 6px">Season 3 <span class="ic ic-sm i-chev-d"></span></button>
+      </div>
+      <div style="display: flex; gap: 8px" role="tablist">
+        <button class="chip" role="tab" aria-selected="false">Season 1</button>
+        <button class="chip" role="tab" aria-selected="false">Season 2</button>
+        <button class="chip on" role="tab" aria-selected="true">Season 3</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px; padding-bottom: 40px">
+      <sc-for list="{{eps}}" as="e" hint-placeholder-count="6">
+        <a href="PlayerVOD.dc.html" style="display: flex; flex-direction: column; gap: 10px; text-decoration: none; opacity: {{e.op}}">
+          <div style="display: flex; gap: 14px; align-items: center">
+            <div class="thumb" style="width: 140px; border-radius: 12px">
+              <img src="{{e.img}}" alt="">
+              <div style="position: absolute; inset: 0; background: rgba(0,0,0,.18)"></div>
+              <span style="position: absolute; left: 50%; top: 50%; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%; background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center"><span class="ic ic-xs i-play" style="margin-left: 2px"></span></span>
+              <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{e.p}}%"></span></div>
+            </div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+              <span class="t-cap" style="color: {{e.col}}">{{e.state}}</span>
+              <span class="t-title" style="font-size: 14.5px">{{e.n}}. {{e.title}}</span>
+              <span class="t-cap">{{e.dur}}</span>
+            </div>
+          </div>
+          <p class="t-body" style="font-size: 13px; line-height: 1.5">{{e.desc}}</p>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":1800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    const W = { state: 'Watched', col: '#5BD69B', p: 100, op: 0.78 };
+    return {
+      eps: [
+        { ...W, n: 1, img: B('e-1.jpg'), title: 'The Quiet Succession', dur: '52 min', desc: 'A funeral on the waterfront leaves an empty chair at the head of the Varro table.' },
+        { ...W, n: 2, img: B('e-2.jpg'), title: 'Paper Kings', dur: '49 min', desc: 'Ines follows a ledger that should not exist into the port authority archive.' },
+        { ...W, n: 3, img: B('e-3.jpg'), title: 'Lanterns Out', dur: '55 min', desc: 'A citywide blackout gives both sides one night to move without being seen.' },
+        { n: 4, img: B('e-4.jpg'), title: 'Ash on the Avenue', dur: '51 min · 18 min left', state: 'Continue watching', col: '#FF9663', p: 64, op: 1, desc: 'The union vote is moved up, and someone inside the precinct makes a call.' },
+        { n: 5, img: B('e-5.jpg'), title: 'Low Tide at Pier 9', dur: '47 min', state: 'Up next', col: '#7CC4FF', p: 0, op: 1, desc: 'An old witness surfaces with a photograph that rewrites the first season.' },
+        { n: 6, img: B('e-6.jpg'), title: 'Crown of Nothing', dur: '58 min', state: 'Episode 6', col: '#8E8A97', p: 0, op: 1, desc: 'The district chooses its next owner — and the price of keeping it.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

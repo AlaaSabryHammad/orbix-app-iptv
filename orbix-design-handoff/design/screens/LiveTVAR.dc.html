@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>أوربكس — البث المباشر</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" dir="rtl" style="width: 412px; height: 915px; background: #08080B">
+  <div class="ambient" style="width: 360px; height: 240px; right: 26px; top: 120px; background: #2FBF71; opacity: .12"></div>
+
+  <header style="padding: 40px 20px 0 12px; display: flex; align-items: center; gap: 4px">
+    <h1 class="t-h1" style="font-size: 26px; margin-inline-end: auto">البث المباشر</h1>
+    <button class="ibtn" aria-label="ابحث في القنوات"><span class="ic i-search"></span></button>
+    <a href="LiveTVAR.dc.html" class="btn btn-tonal btn-sm"><span class="ic ic-sm i-epg"></span>الدليل</a>
+  </header>
+
+  <div style="padding: 14px 12px 0">
+    <div class="thumb" style="border-radius: 20px; box-shadow: 0 0 0 1px rgba(255,255,255,.08)">
+      <img src="../assets/b-stadium.jpg" alt="">
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7) 100%)"></div>
+      <div style="position: absolute; right: 12px; top: 12px; display: flex; gap: 6px"><span class="badge b-live">مباشر</span><span class="badge b-fhd">FHD</span></div>
+      <div style="position: absolute; left: 8px; top: 6px; display: flex"><span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-pip"></span></span><span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-volume"></span></span></div>
+      <div style="position: absolute; right: 12px; left: 8px; bottom: 10px; display: flex; align-items: center; gap: 10px">
+        <span class="mono-time" style="font-size: 11px">20:30</span>
+        <div class="progress" style="flex: 1"><span style="width: 12%"></span></div>
+        <span class="mono-time" style="font-size: 11px; color: #B4B0BA">22:30</span>
+        <span class="ibtn" style="width: 36px; height: 36px"><span class="ic ic-md i-fullscreen"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 12px 12px 0; padding: 14px; border-radius: 20px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div class="chlogo" style="width: 44px; height: 44px; font-size: 12px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div>
+      <div style="flex: 1; min-width: 0">
+        <div style="display: flex; align-items: center; gap: 6px"><span class="t-title">بلس الرياضية 1</span><span class="mono-time" style="font-size: 11px; color: #8E8A97">102</span></div>
+        <div class="t-small" style="color: #F5F1EB">كوستال × نورثرن يونايتد</div>
+      </div>
+      <button class="ibtn" aria-label="إزالة من المفضلة" aria-pressed="true" style="color: #FF7A3D"><span class="ic i-heart-fill"></span></button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 14px; background: rgba(255,122,61,.08); border: 1px solid rgba(255,122,61,.22)">
+        <span class="t-over" style="color: #FF9663; font-size: 11px">الآن · 20:30–22:30</span>
+        <span style="font-weight: 600; font-size: 13px">الجولة التاسعة، ملعب هاربر</span>
+        <div class="progress"><span style="width: 12%"></span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07)">
+        <span class="t-over" style="font-size: 11px">التالي · 22:30</span>
+        <span style="font-weight: 600; font-size: 13px; color: #D2CED8">تحليل المباراة</span>
+        <span class="t-cap">30 دقيقة</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-x" style="gap: 8px; padding: 14px 12px 6px">
+    <button class="chip chip-sm on">الكل 1,284</button><button class="chip chip-sm">المفضلة 12</button><button class="chip chip-sm">أخبار</button><button class="chip chip-sm">رياضة</button><button class="chip chip-sm">ترفيه</button><button class="chip chip-sm">أطفال</button><button class="chip chip-sm">وثائقي</button>
+  </div>
+
+  <div style="padding: 4px 8px 120px; display: flex; flex-direction: column; gap: 2px">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+      <div style="position: relative; display: flex; align-items: center; gap: 12px; height: 66px; padding: 0 10px; border-radius: 16px; background: {{r.bgRow}}">
+        <span style="position: absolute; right: 0; top: 16px; bottom: 16px; width: 3px; border-radius: 3px; background: {{r.bar}}"></span>
+        <span class="mono-time" style="width: 26px; font-size: 11.5px; color: #8E8A97">{{r.num}}</span>
+        <div class="chlogo" style="width: 42px; height: 42px; font-size: 11px; background: {{r.bg}}">{{r.logo}}</div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+          <div style="display: flex; align-items: center; gap: 6px">
+            <span class="t-title" style="font-size: 14px">{{r.name}}</span>
+            <span class="badge {{r.qc}}" style="height: 17px; font-size: 9.5px">{{r.q}}</span>
+            <sc-if value="{{r.playing}}" hint-placeholder-val="{{false}}"><span class="eq"><i></i><i></i><i></i></span></sc-if>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span class="t-cap" style="flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.prog}}</span>
+            <div class="progress" style="width: 48px; flex: none"><span style="width: {{r.p}}%"></span></div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <nav class="bnav glass" aria-label="التنقل الرئيسي">
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-home"></span></span>الرئيسية</a>
+    <a href="LiveTVAR.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-live"></span></span>مباشر</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-film"></span></span>أفلام</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-series"></span></span>مسلسلات</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-heart"></span></span>المفضلة</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-user"></span></span>حسابي</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const r = (o) => Object.assign({ playing: false, bgRow: 'transparent', bar: 'transparent' }, o);
+    return {
+      rows: [
+        r({ num: '101', logo: 'MN', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)', name: 'ميريديان الإخبارية', q: 'HD', qc: 'b-hd', prog: 'النشرة المسائية · 20:00–21:00', p: 75 }),
+        r({ num: '102', logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', name: 'بلس الرياضية 1', q: 'FHD', qc: 'b-fhd', prog: 'كوستال × نورثرن يونايتد', p: 12, playing: true, bgRow: 'rgba(255,122,61,.1)', bar: '#FF7A3D' }),
+        r({ num: '103', logo: 'P2', bg: 'linear-gradient(145deg,#1FA88A,#0B3A33)', name: 'بلس الرياضية 2', q: '4K', qc: 'b-4k', prog: 'تجارب التأهل · الجائزة الكبرى', p: 50 }),
+        r({ num: '104', logo: 'CP', bg: 'linear-gradient(145deg,#FF7A3D,#6B1E05)', name: 'سينما برايم', q: 'FHD', qc: 'b-fhd', prog: 'ليل النيون · 19:45–21:50', p: 48 }),
+        r({ num: '105', logo: 'AD', bg: 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', name: 'أطلس الوثائقية', q: '4K', qc: 'b-4k', prog: 'أطلس الأنهار: الدلتا', p: 75 })
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

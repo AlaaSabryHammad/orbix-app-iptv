@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Add account (M3U) testing</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <div class="ambient" style="width: 300px; height: 220px; left: -60px; top: 560px; background: #7CC4FF; opacity: .1"></div>
+
+  <div style="position: absolute; top: 36px; left: 10px; right: 16px; display: flex; align-items: center; justify-content: space-between">
+    <a href="AddAccount.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+  </div>
+
+  <div style="position: absolute; top: 96px; left: 24px; right: 24px; display: flex; flex-direction: column; gap: 18px">
+    <h1 class="t-h1" style="font-size: 26px">Add IPTV account</h1>
+
+    <div class="seg" role="tablist">
+      <a href="AddAccount.dc.html" role="tab" aria-selected="false" style="text-decoration: none"><span class="ic ic-sm i-server"></span>Xtream</a>
+      <button class="on" role="tab" aria-selected="true"><span class="ic ic-sm i-playlist"></span>M3U</button>
+      <button role="tab" aria-selected="false"><span class="ic ic-sm i-file"></span>File</button>
+    </div>
+
+    <div class="field">
+      <label for="m-name">Playlist name</label>
+      <div class="input ok"><input id="m-name" value="Travel Pack"><span class="ic ic-sm i-check" style="color: #5BD69B"></span></div>
+    </div>
+    <div class="field">
+      <label for="m-url">M3U playlist URL</label>
+      <div class="input ok"><span class="ic ic-sm i-link"></span><input id="m-url" value="https://lists.yourprovider.tv/get.php?type=m3u_plus"></div>
+    </div>
+    <div class="field">
+      <label for="m-epg">EPG URL (XMLTV)</label>
+      <div class="input"><span class="ic ic-sm i-epg"></span><input id="m-epg" value="https://epg.yourprovider.tv/guide.xml"></div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 12px; color: #8E8A97"><div class="divider" style="flex: 1"></div><span class="t-cap">or</span><div class="divider" style="flex: 1"></div></div>
+
+    <button style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed rgba(255,255,255,.18); background: rgba(255,255,255,.02); text-align: left">
+      <span style="width: 40px; height: 40px; border-radius: 12px; background: #20202A; display: flex; align-items: center; justify-content: center"><span class="ic ic-md i-upload"></span></span>
+      <span style="display: flex; flex-direction: column"><span class="t-title" style="font-size: 14px">Choose a local file</span><span class="t-cap">.m3u or .m3u8 from this device</span></span>
+    </button>
+  </div>
+
+  <div class="glass elev-2" style="position: absolute; left: 16px; right: 16px; bottom: 16px; border-radius: 26px; padding: 20px; display: flex; flex-direction: column; gap: 16px; animation: ox-sheet 500ms cubic-bezier(.2,.8,.2,1) both">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <div class="orbit-loader" style="width: 40px; height: 40px"><i></i></div>
+      <div style="flex: 1">
+        <div class="t-title">Testing connection…</div>
+        <div class="t-cap">Usually takes under 10 seconds</div>
+      </div>
+      <button class="btn btn-ghost btn-sm" style="color: #B4B0BA">Cancel</button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 22px; height: 22px; border-radius: 50%; background: rgba(91,214,155,.16); color: #5BD69B; display: flex; align-items: center; justify-content: center"><span class="ic ic-xs i-check"></span></span>
+        <span class="t-small" style="flex: 1; color: #F5F1EB">Server reachable</span><span class="t-cap num">118 ms</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 22px; height: 22px; border-radius: 50%; background: rgba(91,214,155,.16); color: #5BD69B; display: flex; align-items: center; justify-content: center"><span class="ic ic-xs i-check"></span></span>
+        <span class="t-small" style="flex: 1; color: #F5F1EB">Playlist downloaded</span><span class="t-cap num">4.2 MB</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #FF7A3D; border-right-color: transparent; animation: ox-spin .9s linear infinite"></span>
+          <span class="t-small" style="flex: 1; color: #F5F1EB">Reading channels &amp; VOD</span><span class="t-cap num" style="color: #FF9663">796 / 1,284</span>
+        </div>
+        <div class="progress" style="margin-left: 34px"><span style="width: 62%"></span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; opacity: .55">
+        <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25)"></span>
+        <span class="t-small" style="flex: 1">Guide data (EPG)</span><span class="t-cap">Waiting</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

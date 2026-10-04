@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Home</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 2680px; background: #08080B">
+
+  <!-- HERO -->
+  <section style="position: relative; height: 600px; overflow: hidden">
+    <img class="fill-img kenburns" src="../assets/b-meridian.jpg" alt="" style="object-position: 62% 50%">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,11,.7) 0%, rgba(8,8,11,0) 22%, rgba(8,8,11,0) 42%, rgba(8,8,11,.75) 72%, #08080B 100%)"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,8,11,.55) 0%, rgba(8,8,11,0) 60%)"></div>
+
+    <header class="topbar">
+      <div style="display: flex; align-items: center; gap: 9px; margin-right: auto">
+        <div class="logo-mark" style="width: 26px; height: 26px"><div class="ring" style="border-width: 2px"></div><div class="core" style="border-width: 5px 0 5px 8px"></div><div class="moon" style="width: 7px; height: 7px"></div></div>
+        <span class="wordmark" style="font-size: 15px; letter-spacing: .14em">ORBIX</span>
+      </div>
+      <a href="Search.dc.html" class="ibtn" aria-label="Search"><span class="ic i-search"></span></a>
+      <button class="ibtn" aria-label="Cast"><span class="ic i-cast"></span></button>
+      <button class="ibtn" aria-label="Notifications" style="position: relative"><span class="ic i-bell"></span><span style="position: absolute; top: 11px; right: 12px; width: 8px; height: 8px; border-radius: 50%; background: #FF7A3D; box-shadow: 0 0 0 2px #0b0b0f"></span></button>
+      <a href="Profiles.dc.html" class="ibtn" aria-label="Switch account"><span style="width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(145deg, #FF8A4C, #B43A12); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 11px">LR</span></a>
+    </header>
+
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 26px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 6px">
+        <span class="badge b-new">NEW</span>
+        <span class="badge b-4k">4K HDR</span>
+        <span class="badge b-fhd">5.1</span>
+      </div>
+      <h1 class="t-hero" style="font-size: 38px; text-transform: uppercase; max-width: 330px">The Last Meridian</h1>
+      <div class="meta">
+        <span class="rating"><span class="ic i-star"></span>8.6</span><span class="dot-sep"></span>
+        <span>2026</span><span class="dot-sep"></span><span>Sci-Fi · Drama</span><span class="dot-sep"></span><span>2h 18m</span>
+      </div>
+      <p class="t-body" style="color: #D9D5DE; max-width: 350px">When the last relay on a dying world goes silent, one engineer crosses the frozen meridian to bring the signal home.</p>
+      <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px">
+        <a href="PlayerVOD.dc.html" class="btn btn-primary anim-glow" style="flex: 1"><span class="ic ic-md i-play"></span>Play</a>
+        <a href="MovieDetails.dc.html" class="btn btn-glass" style="flex: 1"><span class="ic ic-md i-info"></span>More info</a>
+        <button class="ibtn ibtn-glass" aria-label="Add to favorites" style="width: 50px; height: 50px"><span class="ic i-plus"></span></button>
+      </div>
+      <div style="display: flex; gap: 5px; margin-top: 6px">
+        <span style="width: 22px; height: 4px; border-radius: 4px; background: #F5F1EB"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.28)"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.28)"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.28)"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.28)"></span>
+      </div>
+    </div>
+  </section>
+
+  <main style="display: flex; flex-direction: column; gap: 30px; padding: 8px 0 120px">
+
+    <!-- Continue watching -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Continue watching</h2><a href="Favorites.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{cont}}" as="c" hint-placeholder-count="3">
+          <a href="PlayerVOD.dc.html" style="width: 232px; flex: none; display: flex; flex-direction: column; gap: 10px; text-decoration: none">
+            <div class="thumb" style="width: 232px">
+              <img src="{{c.img}}" alt="">
+              <div class="shade"></div>
+              <span style="position: absolute; left: 12px; bottom: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.18); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center"><span class="ic ic-sm i-play" style="margin-left: 2px"></span></span>
+              <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{c.p}}%"></span></div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 6px">
+              <div style="flex: 1; min-width: 0">
+                <div class="t-title" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.title}}</div>
+                <div class="t-cap">{{c.sub}}</div>
+              </div>
+              <span class="ic ic-sm i-more" style="color: #8E8A97; margin-top: 2px"></span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Live now -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2" style="display: flex; align-items: center; gap: 10px"><span class="live-dot"></span>Live now</h2><a href="LiveTV.dc.html">All channels <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{live}}" as="l" hint-placeholder-count="3">
+          <a href="PlayerLive.dc.html" style="width: 232px; flex: none; display: flex; flex-direction: column; gap: 10px; text-decoration: none">
+            <div class="thumb" style="width: 232px">
+              <img src="{{l.img}}" alt="">
+              <div class="shade"></div>
+              <div style="position: absolute; left: 10px; top: 10px"><span class="badge b-live">LIVE</span></div>
+              <div style="position: absolute; right: 10px; top: 10px"><span class="badge {{l.qc}}">{{l.q}}</span></div>
+              <div class="chlogo" style="position: absolute; left: 10px; bottom: 10px; width: 38px; height: 38px; font-size: 10.5px; border-radius: 10px; background: {{l.bg}}">{{l.logo}}</div>
+              <span class="mono-time" style="position: absolute; right: 10px; bottom: 12px; font-size: 11px; color: #F5F1EB">{{l.time}}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div class="t-title" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{l.prog}}</div>
+              <div style="display: flex; align-items: center; gap: 8px"><span class="t-cap" style="flex: none">{{l.ch}}</span><div class="progress" style="flex: 1"><span style="width: {{l.p}}%"></span></div></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Recently added -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recently added</h2><a href="Movies.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{recent}}" as="m" hint-placeholder-count="4">
+          <a href="MovieDetails.dc.html" class="poster" style="width: 120px">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div class="tl"><span class="badge b-new">NEW</span></div>
+            <div class="ptitle">{{m.title}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Popular movies -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Popular movies</h2><a href="Movies.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{movies}}" as="m" hint-placeholder-count="4">
+          <a href="MovieDetails.dc.html" style="width: 120px; flex: none; display: flex; flex-direction: column; gap: 8px; text-decoration: none">
+            <div class="poster" style="width: 120px">
+              <img src="{{m.img}}" alt="">
+              <div class="tl"><span class="badge {{m.qc}}">{{m.q}}</span></div>
+            </div>
+            <div>
+              <div class="t-title" style="font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{m.title}}</div>
+              <div class="meta" style="font-size: 11.5px; gap: 6px"><span>{{m.year}}</span><span class="rating" style="font-size: 11.5px"><span class="ic i-star"></span>{{m.r}}</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Popular series -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Popular series</h2><a href="Series.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{series}}" as="m" hint-placeholder-count="4">
+          <a href="SeriesDetails.dc.html" style="width: 120px; flex: none; display: flex; flex-direction: column; gap: 8px; text-decoration: none">
+            <div class="poster" style="width: 120px">
+              <img src="{{m.img}}" alt="">
+              <div class="shade"></div>
+              <div class="ptitle" style="font-size: 12px">{{m.title}}</div>
+            </div>
+            <div>
+              <div class="t-cap" style="color: #B4B0BA">{{m.info}}</div>
+              <div class="meta" style="font-size: 11.5px"><span class="rating" style="font-size: 11.5px"><span class="ic i-star"></span>{{m.r}}</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Recommended -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recommended for you</h2></div>
+      <div class="rail">
+        <sc-for list="{{reco}}" as="r" hint-placeholder-count="2">
+          <a href="MovieDetails.dc.html" style="width: 272px; flex: none; display: flex; flex-direction: column; gap: 10px; text-decoration: none">
+            <div class="thumb" style="width: 272px; border-radius: 18px">
+              <img src="{{r.img}}" alt="">
+              <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.8), rgba(0,0,0,0) 60%)"></div>
+              <div style="position: absolute; left: 14px; right: 14px; bottom: 12px; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: -.01em">{{r.title}}</div>
+            </div>
+            <div class="t-cap" style="display: flex; align-items: center; gap: 6px"><span class="ic ic-xs i-trending" style="color: #FF9663"></span>{{r.why}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Recently watched -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recently watched</h2><a href="Favorites.dc.html">History <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail" style="gap: 10px">
+        <sc-for list="{{watched}}" as="m" hint-placeholder-count="4">
+          <a href="MovieDetails.dc.html" class="poster" style="width: 104px; opacity: .92">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div style="position: absolute; left: 8px; right: 8px; bottom: 8px; display: flex; align-items: center; gap: 4px; font-weight: 800; font-size: 10.5px"><span class="ic ic-xs i-check" style="color: #5BD69B"></span>Watched</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Favorites -->
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Your favorites</h2><a href="Favorites.dc.html">Manage <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail" style="gap: 10px">
+        <sc-for list="{{favCh}}" as="f" hint-placeholder-count="3">
+          <a href="PlayerLive.dc.html" style="width: 104px; height: 120px; flex: none; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-decoration: none">
+            <div class="chlogo" style="width: 52px; height: 52px; font-size: 13px; background: {{f.bg}}">{{f.logo}}</div>
+            <span class="t-cap" style="color: #B4B0BA">{{f.name}}</span>
+          </a>
+        </sc-for>
+        <sc-for list="{{favMv}}" as="m" hint-placeholder-count="2">
+          <a href="MovieDetails.dc.html" style="position: relative; width: 80px; height: 120px; flex: none; border-radius: 14px; overflow: hidden">
+            <img class="fill-img" src="{{m.img}}" alt="">
+            <span style="position: absolute; right: 6px; top: 6px; color: #FF7A3D"><span class="ic ic-sm i-heart-fill"></span></span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bnav glass" aria-label="Main">
+    <a href="Home.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":2680}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      cont: [
+        { img: B('e-1.jpg'), title: 'Hollow Crown District', sub: 'S3 · E4 · 18 min left', p: 64 },
+        { img: B('b-northbound.jpg'), title: 'Northbound', sub: '42 min left', p: 58 },
+        { img: B('b-signal.jpg'), title: 'Signal & Noise', sub: 'S1 · E7 · 9 min left', p: 82 }
+      ],
+      live: [
+        { img: B('b-stadium.jpg'), logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', ch: 'Pulse Sports 1', prog: 'Coastal FC vs Northern United', time: '20:30–22:30', p: 12, q: 'FHD', qc: 'b-fhd' },
+        { img: B('b-news.jpg'), logo: 'MN', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)', ch: 'Meridian News', prog: 'The Evening Bulletin', time: '20:00–21:00', p: 75, q: 'HD', qc: 'b-hd' },
+        { img: B('b-concert.jpg'), logo: 'WV', bg: 'linear-gradient(145deg,#E2508F,#4E1235)', ch: 'Wave Music', prog: 'Live at the Arena', time: '20:00–22:00', p: 38, q: '4K', qc: 'b-4k' }
+      ],
+      recent: [
+        { img: B('p-irontide.jpg'), title: 'Iron Tide' },
+        { img: B('p-parallel.jpg'), title: 'Parallel Station' },
+        { img: B('p-halcyon.jpg'), title: 'Halcyon Drift' },
+        { img: B('p-lantern.jpg'), title: 'Little Lantern' }
+      ],
+      movies: [
+        { img: B('p-avar.jpg'), title: 'Sands of Avar', year: '2025', r: '8.3', q: '4K', qc: 'b-4k' },
+        { img: B('p-neon.jpg'), title: 'Neon Requiem', year: '2026', r: '7.7', q: '4K', qc: 'b-4k' },
+        { img: B('p-ashfall.jpg'), title: 'Ashfall', year: '2025', r: '7.9', q: 'FHD', qc: 'b-fhd' },
+        { img: B('p-harbor.jpg'), title: 'Quiet Harbor', year: '2024', r: '8.1', q: 'FHD', qc: 'b-fhd' }
+      ],
+      series: [
+        { img: B('p-hollow.jpg'), title: 'Hollow Crown District', info: '3 seasons · Crime', r: '8.7' },
+        { img: B('p-signal.jpg'), title: 'Signal & Noise', info: '2 seasons · Thriller', r: '8.2' },
+        { img: B('p-embers.jpg'), title: 'Embers of Kesh', info: '1 season · Fantasy', r: '8.5' },
+        { img: B('p-frost.jpg'), title: 'The Frost Line', info: '4 seasons · Survival', r: '8.0' }
+      ],
+      reco: [
+        { img: B('b-irontide.jpg'), title: 'Iron Tide', why: 'Because you watched Ashfall' },
+        { img: B('b-lighthouse.jpg'), title: 'The Keepers', why: 'Mystery picks for tonight' }
+      ],
+      watched: [
+        { img: B('p-saltwater.jpg') },
+        { img: B('p-frost.jpg') },
+        { img: B('p-orchard.jpg') },
+        { img: B('p-cartographer.jpg') }
+      ],
+      favCh: [
+        { logo: 'MN', name: 'Meridian', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)' },
+        { logo: 'P1', name: 'Pulse 1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)' },
+        { logo: 'CP', name: 'Cine Prime', bg: 'linear-gradient(145deg,#FF7A3D,#6B1E05)' }
+      ],
+      favMv: [
+        { img: B('p-northbound.jpg') },
+        { img: B('p-hollow.jpg') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

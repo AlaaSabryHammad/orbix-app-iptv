@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Foldable series details</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 884px; height: 1104px; background: #08080B; display: flex">
+  <section style="position: relative; width: 438px; flex: none; overflow: hidden">
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 520px; overflow: hidden">
+      <img class="fill-img kenburns" src="../assets/b-hollow.jpg" alt="">
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,11,.6) 0%, rgba(8,8,11,0) 25%, rgba(8,8,11,.3) 55%, #08080B 100%)"></div>
+    </div>
+    <header class="topbar" style="padding-left: 14px; padding-right: 14px">
+      <a href="Series.dc.html" class="ibtn ibtn-glass" aria-label="Back" style="margin-right: auto"><span class="ic i-back"></span></a>
+      <button class="ibtn ibtn-glass" aria-label="Cast" style="margin-right: 8px"><span class="ic i-cast"></span></button>
+      <button class="ibtn ibtn-glass" aria-label="Share"><span class="ic i-share"></span></button>
+    </header>
+    <div style="position: relative; padding: 360px 28px 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="display: flex; gap: 6px"><span class="badge b-new">NEW SEASON</span><span class="badge b-4k">4K</span><span class="badge b-fhd">ATMOS</span><span class="badge b-soft">16+</span></div>
+      <h1 class="t-hero" style="font-size: 36px; text-transform: uppercase">Hollow Crown District</h1>
+      <div class="meta"><span class="rating"><span class="ic i-star"></span>8.7</span><span class="dot-sep"></span><span>2024</span><span class="dot-sep"></span><span>Crime · Drama</span><span class="dot-sep"></span><span>3 seasons</span></div>
+      <p class="t-body" style="color: #D2CED8; font-size: 15px">In a rain-soaked harbor city, a disgraced detective and a dockworkers’ union boss form an uneasy pact to bring down the family that has quietly owned every street for forty years.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <a href="PlayerVOD.dc.html" class="btn btn-primary btn-lg btn-block anim-glow"><span class="ic ic-md i-play"></span>Resume S3 · E4</a>
+        <div style="display: flex; align-items: center; gap: 10px"><div class="progress" style="flex: 1"><span style="width: 64%"></span></div><span class="t-cap num">18 min left</span></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+        <button class="btn btn-tonal btn-sm" style="height: 46px"><span class="ic ic-sm i-trailer"></span>Trailer</button>
+        <button class="btn btn-sm" style="height: 46px; background: rgba(255,122,61,.14); color: #FF9663"><span class="ic ic-sm i-heart-fill"></span>Saved</button>
+        <button class="btn btn-tonal btn-sm" style="height: 46px"><span class="ic ic-sm i-share"></span>Share</button>
+      </div>
+      <div style="display: grid; grid-template-columns: 90px 1fr; gap: 8px 12px; font-size: 13px; margin-top: 4px">
+        <span class="t-cap" style="font-size: 12.5px">Created by</span><span style="font-weight: 700">Ines Varro-Klein</span>
+        <span class="t-cap" style="font-size: 12.5px">Starring</span><span style="font-weight: 700">Odile Faure, Kenji Arlo, Selin Marr</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="width: 8px; flex: none; background: linear-gradient(90deg, #050507, #0d0d12, #050507); box-shadow: inset 1px 0 0 rgba(255,255,255,.04), inset -1px 0 0 rgba(255,255,255,.04)" aria-hidden="true"></div>
+
+  <section style="flex: 1; min-width: 0; padding: 40px 24px 24px; display: flex; flex-direction: column; gap: 18px; background: #0B0B0F">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 class="t-h1" style="font-size: 22px">Episodes</h2>
+      <span class="t-cap">Season 3 · 6 episodes</span>
+    </div>
+    <div class="seg" role="tablist">
+      <button role="tab" aria-selected="false">Season 1</button>
+      <button role="tab" aria-selected="false">Season 2</button>
+      <button class="on" role="tab" aria-selected="true">Season 3</button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{eps}}" as="e" hint-placeholder-count="6">
+        <a href="PlayerVOD.dc.html" style="display: flex; gap: 14px; padding: 10px; border-radius: 18px; text-decoration: none; {{e.style}}">
+          <div class="thumb" style="width: 150px; border-radius: 12px">
+            <img src="{{e.img}}" alt="">
+            <span style="position: absolute; left: 8px; top: 8px" class="badge b-soft">{{e.dur}}</span>
+            <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{e.p}}%"></span></div>
+          </div>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+            <span class="t-cap" style="color: {{e.col}}">{{e.state}}</span>
+            <span class="t-title" style="font-size: 14.5px">{{e.n}}. {{e.title}}</span>
+            <span class="t-body" style="font-size: 12.5px; line-height: 1.45">{{e.desc}}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":884,"height":1104}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    const W = { state: 'Watched', col: '#5BD69B', p: 100, style: 'opacity: .75;' };
+    return {
+      eps: [
+        { ...W, n: 1, img: B('e-1.jpg'), title: 'The Quiet Succession', dur: '52m', desc: 'A funeral on the waterfront leaves an empty chair at the head of the Varro table.' },
+        { ...W, n: 2, img: B('e-2.jpg'), title: 'Paper Kings', dur: '49m', desc: 'Ines follows a ledger that should not exist into the port authority archive.' },
+        { ...W, n: 3, img: B('e-3.jpg'), title: 'Lanterns Out', dur: '55m', desc: 'A citywide blackout gives both sides one night to move unseen.' },
+        { n: 4, img: B('e-4.jpg'), title: 'Ash on the Avenue', dur: '51m', state: 'Continue · 18 min left', col: '#FF9663', p: 64, style: 'background: rgba(255,122,61,.08); box-shadow: inset 0 0 0 1px rgba(255,122,61,.28);', desc: 'The union vote is moved up, and someone inside the precinct makes a call.' },
+        { n: 5, img: B('e-5.jpg'), title: 'Low Tide at Pier 9', dur: '47m', state: 'Up next', col: '#7CC4FF', p: 0, style: '', desc: 'An old witness surfaces with a photograph that rewrites the first season.' },
+        { n: 6, img: B('e-6.jpg'), title: 'Crown of Nothing', dur: '58m', state: 'Finale', col: '#8E8A97', p: 0, style: '', desc: 'The district chooses its next owner — and the price of keeping it.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>أوربكس — الرئيسية</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" dir="rtl" style="width: 412px; height: 915px; background: #08080B">
+  <section style="position: relative; height: 560px; overflow: hidden">
+    <img class="fill-img kenburns" src="../assets/b-avar.jpg" alt="" style="object-position: 40% 50%">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,11,.7) 0%, rgba(8,8,11,0) 22%, rgba(8,8,11,0) 40%, rgba(8,8,11,.78) 72%, #08080B 100%)"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(270deg, rgba(8,8,11,.55) 0%, rgba(8,8,11,0) 60%)"></div>
+
+    <header class="topbar">
+      <div style="display: flex; align-items: center; gap: 9px; margin-inline-end: auto">
+        <div class="logo-mark" style="width: 26px; height: 26px"><div class="ring" style="border-width: 2px"></div><div class="core" style="border-width: 5px 0 5px 8px"></div><div class="moon" style="width: 7px; height: 7px"></div></div>
+        <span class="wordmark" style="font-family: 'Unbounded', sans-serif; font-size: 15px; letter-spacing: .14em">ORBIX</span>
+      </div>
+      <button class="ibtn" aria-label="بحث"><span class="ic i-search"></span></button>
+      <button class="ibtn" aria-label="البث إلى شاشة"><span class="ic i-cast"></span></button>
+      <button class="ibtn" aria-label="الإشعارات" style="position: relative"><span class="ic i-bell"></span><span style="position: absolute; top: 11px; left: 12px; width: 8px; height: 8px; border-radius: 50%; background: #FF7A3D; box-shadow: 0 0 0 2px #0b0b0f"></span></button>
+      <button class="ibtn" aria-label="تبديل الحساب"><span style="width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(145deg, #FF8A4C, #B43A12); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 11px">LR</span></button>
+    </header>
+
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 22px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 6px"><span class="badge b-new" style="font-size: 11px">جديد</span><span class="badge b-4k">4K</span><span class="badge b-fhd">5.1</span></div>
+      <h1 class="t-hero" style="font-size: 38px">رمال أفار</h1>
+      <div class="meta">
+        <span class="rating"><span class="ic i-star"></span>8.3</span><span class="dot-sep"></span>
+        <span>2025</span><span class="dot-sep"></span><span>مغامرة · دراما</span><span class="dot-sep"></span><span>2 س 6 د</span>
+      </div>
+      <p class="t-body" style="color: #D9D5DE; max-width: 350px">تتبع ابنة رسّام خرائط آخر خريطة تركها والدها المفقود إلى رمال أفار المتحركة، حيث تنتقل مدينة القوافل مع الكثبان.</p>
+      <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px">
+        <a href="MovieDetailsAR.dc.html" class="btn btn-primary anim-glow" style="flex: 1"><span class="ic ic-md i-play"></span>تشغيل</a>
+        <a href="MovieDetailsAR.dc.html" class="btn btn-glass" style="flex: 1"><span class="ic ic-md i-info"></span>المزيد</a>
+        <button class="ibtn ibtn-glass" aria-label="أضف إلى المفضلة" style="width: 50px; height: 50px"><span class="ic i-plus"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <main style="display: flex; flex-direction: column; gap: 26px; padding: 6px 0 120px">
+    <section>
+      <div class="rail-head"><h2 class="t-h2">متابعة المشاهدة</h2><a href="HomeAR.dc.html">عرض الكل <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{cont}}" as="c" hint-placeholder-count="2">
+          <a href="HomeAR.dc.html" style="width: 232px; flex: none; display: flex; flex-direction: column; gap: 10px; text-decoration: none">
+            <div class="thumb" style="width: 232px">
+              <img src="{{c.img}}" alt="">
+              <div class="shade"></div>
+              <span style="position: absolute; right: 12px; bottom: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center"><span class="ic ic-sm i-play"></span></span>
+              <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{c.p}}%"></span></div>
+            </div>
+            <div>
+              <div class="t-title" style="font-size: 14px">{{c.title}}</div>
+              <div class="t-cap">{{c.sub}}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+    <section>
+      <div class="rail-head"><h2 class="t-h2" style="display: flex; align-items: center; gap: 10px"><span class="live-dot"></span>مباشر الآن</h2><a href="LiveTVAR.dc.html">كل القنوات <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <div class="thumb" style="width: 232px"><img src="../assets/b-stadium.jpg" alt=""><div style="position: absolute; right: 10px; top: 10px"><span class="badge b-live">مباشر</span></div></div>
+        <div class="thumb" style="width: 232px"><img src="../assets/b-news.jpg" alt=""><div style="position: absolute; right: 10px; top: 10px"><span class="badge b-live">مباشر</span></div></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bnav glass" aria-label="التنقل الرئيسي">
+    <a href="HomeAR.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-home"></span></span>الرئيسية</a>
+    <a href="LiveTVAR.dc.html"><span class="pill"><span class="ic i-live"></span></span>مباشر</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-film"></span></span>أفلام</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-series"></span></span>مسلسلات</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-heart"></span></span>المفضلة</a>
+    <a href="HomeAR.dc.html"><span class="pill"><span class="ic i-user"></span></span>حسابي</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      cont: [
+        { img: B('e-1.jpg'), title: 'حيّ التاج الأجوف', sub: 'م3 · ح4 · متبقٍ 18 دقيقة', p: 64 },
+        { img: B('b-northbound.jpg'), title: 'نحو الشمال', sub: 'متبقٍ 42 دقيقة', p: 58 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

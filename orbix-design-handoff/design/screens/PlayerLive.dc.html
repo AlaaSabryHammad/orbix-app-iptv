@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Player (live)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 915px; height: 412px; background: #000">
+  <img class="fill-img" src="../assets/b-stadium.jpg" alt="">
+  <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.05) 30%, rgba(0,0,0,.1) 55%, rgba(0,0,0,.88) 100%)"></div>
+  <div style="position: absolute; inset: 0; background: linear-gradient(270deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 40%)"></div>
+
+  <div style="position: absolute; left: 20px; right: 330px; top: 16px; display: flex; align-items: center; gap: 10px">
+    <a href="LiveTV.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <div class="chlogo" style="width: 40px; height: 40px; font-size: 11px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div>
+    <div style="display: flex; flex-direction: column; margin-right: auto">
+      <div style="display: flex; align-items: center; gap: 8px"><span class="t-title" style="font-size: 15px">Pulse Sports 1</span><span class="badge b-live">LIVE</span><span class="badge b-fhd">FHD</span></div>
+      <span class="t-cap" style="color: #B4B0BA">Channel 102 · Sports</span>
+    </div>
+    <button class="ibtn" aria-label="Cast" style="width: 40px"><span class="ic ic-md i-cast"></span></button>
+    <button class="ibtn" aria-label="Picture in picture" style="width: 40px"><span class="ic ic-md i-pip"></span></button>
+    <a href="PlayerSettings.dc.html" class="ibtn" aria-label="Audio and subtitles" style="width: 40px"><span class="ic ic-md i-cc"></span></a>
+    <button class="ibtn ibtn-glass" aria-label="Lock controls" style="width: 40px; height: 40px"><span class="ic ic-md i-lock"></span></button>
+  </div>
+
+  <div class="glass" style="position: absolute; left: 24px; top: 104px; width: 52px; border-radius: 26px; display: flex; flex-direction: column; align-items: center; padding: 6px 0">
+    <button class="ibtn" aria-label="Channel up"><span class="ic i-chev-u"></span></button>
+    <span class="mono-time" style="font-size: 12px; padding: 6px 0">102</span>
+    <button class="ibtn" aria-label="Channel down"><span class="ic i-chev-d"></span></button>
+  </div>
+
+  <div style="position: absolute; left: 260px; top: 156px; display: flex; align-items: center; gap: 26px">
+    <button class="ibtn" aria-label="Back 10 seconds" style="width: 52px; height: 52px"><span class="ic ic-lg i-rew"></span></button>
+    <button class="ibtn ibtn-xl" aria-label="Pause (timeshift)" style="background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(16px)"><span class="ic ic-xl i-pause"></span></button>
+    <button class="ibtn" aria-label="Forward 10 seconds" style="width: 52px; height: 52px; opacity: .4"><span class="ic ic-lg i-fwd"></span></button>
+  </div>
+
+  <div style="position: absolute; left: 28px; right: 330px; bottom: 18px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: flex-end; gap: 16px">
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+        <span class="t-over" style="color: #FF9663; font-size: 10px">Now · 20:30–22:30</span>
+        <span class="t-title" style="font-size: 17px">Coastal FC vs Northern United</span>
+        <span class="t-cap" style="color: #B4B0BA">Next 22:30 · Match Review</span>
+      </div>
+      <span class="btn btn-sm" style="background: #C93F0E; color: #fff; height: 32px; padding: 0 12px; font-size: 12px"><span class="live-dot" style="background: #fff"></span>LIVE</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span class="mono-time" style="font-size: 11px">20:30</span>
+      <div style="position: relative; flex: 1; height: 4px; border-radius: 4px; background: rgba(255,255,255,.2)">
+        <span style="position: absolute; left: 0; top: 0; bottom: 0; width: 12.5%; border-radius: 4px; background: #FF7A3D"></span>
+        <span style="position: absolute; left: 12.5%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff"></span>
+      </div>
+      <span class="mono-time" style="font-size: 11px; color: #B4B0BA">22:30</span>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <a href="EPG.dc.html" class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB; text-decoration: none"><span class="ic ic-xs i-epg"></span>Guide</a>
+      <button class="chip chip-sm on"><span class="ic ic-xs i-list"></span>Channels</button>
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-aspect"></span>16:9</button>
+      <button class="chip chip-sm" style="background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); color: #F5F1EB"><span class="ic ic-xs i-heart-fill" style="color: #FF7A3D"></span>Favorite</button>
+    </div>
+  </div>
+
+  <aside class="glass" style="position: absolute; right: 12px; top: 12px; bottom: 12px; width: 300px; border-radius: 24px; display: flex; flex-direction: column; overflow: hidden; animation: ox-rise 400ms both">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 10px 8px 16px">
+      <div style="display: flex; flex-direction: column"><span class="t-title" style="font-size: 14px">Sports</span><span class="t-cap">142 channels</span></div>
+      <button class="ibtn" aria-label="Close channel list" style="width: 36px; height: 36px"><span class="ic ic-sm i-close"></span></button>
+    </div>
+    <div style="display: flex; flex-direction: column; padding: 0 6px">
+      <sc-for list="{{chs}}" as="c" hint-placeholder-count="5">
+        <a href="PlayerLive.dc.html" style="display: flex; align-items: center; gap: 10px; height: 60px; padding: 0 10px; border-radius: 14px; text-decoration: none; background: {{c.bgRow}}">
+          <span class="mono-time" style="width: 24px; font-size: 10.5px; color: #8E8A97">{{c.num}}</span>
+          <div class="chlogo" style="width: 36px; height: 36px; font-size: 10px; border-radius: 10px; background: {{c.bg}}">{{c.logo}}</div>
+          <div style="flex: 1; min-width: 0">
+            <div style="display: flex; align-items: center; gap: 6px"><span style="font-weight: 800; font-size: 13px">{{c.name}}</span><sc-if value="{{c.playing}}" hint-placeholder-val="{{false}}"><span class="eq"><i></i><i></i><i></i></span></sc-if></div>
+            <div class="t-cap" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.prog}}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":915,"height":412}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const r = (o) => Object.assign({ playing: false, bgRow: 'transparent' }, o);
+    return {
+      chs: [
+        r({ num: '102', logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', name: 'Pulse Sports 1', prog: 'Coastal FC vs Northern United', playing: true, bgRow: 'rgba(255,122,61,.14)' }),
+        r({ num: '103', logo: 'P2', bg: 'linear-gradient(145deg,#1FA88A,#0B3A33)', name: 'Pulse Sports 2', prog: 'Grand Prix Qualifying' }),
+        r({ num: '110', logo: 'A4', bg: 'linear-gradient(145deg,#7CC4FF,#163A5C)', name: 'Arena 4K', prog: 'Basketball: Harbor vs Summit' }),
+        r({ num: '111', logo: 'GT', bg: 'linear-gradient(145deg,#C9A7FF,#3A2470)', name: 'Golf Today', prog: 'Coastal Open · Round 3' }),
+        r({ num: '112', logo: 'RX', bg: 'linear-gradient(145deg,#FF6B6B,#5A1414)', name: 'Rally X', prog: 'Desert Stage Highlights' })
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

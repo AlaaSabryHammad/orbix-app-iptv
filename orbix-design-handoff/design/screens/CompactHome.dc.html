@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Small phone home</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.cnav a{font-size:0;gap:0}
+.cnav a.on{font-size:10px;gap:3px}
+</style>
+</helmet>
+<div class="ox" style="width: 360px; height: 780px; background: #08080B">
+  <section style="position: relative; height: 470px; overflow: hidden">
+    <img class="fill-img kenburns" src="../assets/b-northbound.jpg" alt="">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,11,.7) 0%, rgba(8,8,11,0) 22%, rgba(8,8,11,0) 40%, rgba(8,8,11,.78) 72%, #08080B 100%)"></div>
+    <header class="topbar" style="padding-left: 16px; padding-right: 8px; height: 84px; padding-top: 30px">
+      <div style="display: flex; align-items: center; gap: 8px; margin-right: auto">
+        <div class="logo-mark" style="width: 24px; height: 24px"><div class="ring" style="border-width: 2px"></div><div class="core" style="border-width: 4.5px 0 4.5px 7px"></div><div class="moon" style="width: 6px; height: 6px"></div></div>
+        <span class="wordmark" style="font-size: 13px; letter-spacing: .14em">ORBIX</span>
+      </div>
+      <button class="ibtn" aria-label="Search"><span class="ic ic-md i-search"></span></button>
+      <button class="ibtn" aria-label="Cast"><span class="ic ic-md i-cast"></span></button>
+      <a href="Profiles.dc.html" class="ibtn" aria-label="Switch account"><span style="width: 28px; height: 28px; border-radius: 9px; background: linear-gradient(145deg, #FF8A4C, #B43A12); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 10px">LR</span></a>
+    </header>
+    <div style="position: absolute; left: 16px; right: 16px; bottom: 20px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; gap: 6px"><span class="badge b-4k">4K</span><span class="badge b-fhd">DRAMA</span></div>
+      <h1 class="t-hero" style="font-size: 30px; text-transform: uppercase">Northbound</h1>
+      <div class="meta" style="font-size: 12px"><span class="rating"><span class="ic i-star"></span>8.0</span><span class="dot-sep"></span><span>2026</span><span class="dot-sep"></span><span>1h 52m</span></div>
+      <div style="display: flex; gap: 8px; margin-top: 2px">
+        <a href="PlayerVOD.dc.html" class="btn btn-primary" style="flex: 1; height: 46px"><span class="ic ic-md i-play"></span>Resume</a>
+        <a href="MovieDetails.dc.html" class="ibtn ibtn-glass" aria-label="More info" style="width: 46px; height: 46px"><span class="ic i-info"></span></a>
+        <button class="ibtn ibtn-glass" aria-label="Add to favorites" style="width: 46px; height: 46px"><span class="ic i-plus"></span></button>
+      </div>
+      <div class="progress"><span style="width: 58%"></span></div>
+    </div>
+  </section>
+
+  <section style="padding-top: 18px">
+    <div class="rail-head" style="padding: 0 16px"><h2 class="t-h2" style="font-size: 16px; display: flex; align-items: center; gap: 8px"><span class="live-dot"></span>Live now</h2><a href="LiveTV.dc.html">All <span class="ic ic-xs i-chev-r"></span></a></div>
+    <div class="rail" style="padding: 0 16px; gap: 10px">
+      <sc-for list="{{live}}" as="l" hint-placeholder-count="2">
+        <a href="PlayerLive.dc.html" class="thumb" style="width: 196px; border-radius: 12px">
+          <img src="{{l.img}}" alt="">
+          <div class="shade"></div>
+          <div style="position: absolute; left: 8px; top: 8px"><span class="badge b-live">LIVE</span></div>
+          <div style="position: absolute; left: 8px; right: 8px; bottom: 8px; display: flex; flex-direction: column; gap: 5px"><span style="font-weight: 800; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{l.prog}}</span><div class="progress"><span style="width: {{l.p}}%"></span></div></div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding-top: 18px">
+    <div class="rail-head" style="padding: 0 16px"><h2 class="t-h2" style="font-size: 16px">Popular movies</h2><a href="Movies.dc.html">All <span class="ic ic-xs i-chev-r"></span></a></div>
+    <div class="rail" style="padding: 0 16px; gap: 10px">
+      <sc-for list="{{movies}}" as="m" hint-placeholder-count="4">
+        <a href="MovieDetails.dc.html" class="poster" style="width: 96px; border-radius: 12px"><img src="{{m.img}}" alt=""></a>
+      </sc-for>
+    </div>
+  </section>
+
+  <nav class="bnav glass cnav" aria-label="Main" style="left: 10px; right: 10px; bottom: 10px; height: 62px; border-radius: 22px">
+    <a href="CompactHome.dc.html" class="on" aria-current="page" aria-label="Home"><span class="pill" style="width: 48px; height: 28px"><span class="ic ic-md i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html" aria-label="Live TV"><span class="pill"><span class="ic ic-md i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html" aria-label="Movies"><span class="pill"><span class="ic ic-md i-film"></span></span>Movies</a>
+    <a href="Series.dc.html" aria-label="Series"><span class="pill"><span class="ic ic-md i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html" aria-label="Favorites"><span class="pill"><span class="ic ic-md i-heart"></span></span>Favorites</a>
+    <a href="Settings.dc.html" aria-label="Profile"><span class="pill"><span class="ic ic-md i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":780}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      live: [
+        { img: B('b-stadium.jpg'), prog: 'Coastal FC vs Northern United', p: 12 },
+        { img: B('b-news.jpg'), prog: 'The Evening Bulletin', p: 75 }
+      ],
+      movies: [
+        { img: B('p-avar.jpg') },
+        { img: B('p-neon.jpg') },
+        { img: B('p-ashfall.jpg') },
+        { img: B('p-harbor.jpg') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

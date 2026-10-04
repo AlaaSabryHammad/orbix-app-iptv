@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Choose account</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: radial-gradient(90% 50% at 50% 0%, #1A1210 0%, #08080B 70%)">
+  <div style="position: absolute; top: 40px; left: 24px; right: 12px; display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <div class="logo-mark" style="width: 26px; height: 26px"><div class="ring" style="border-width: 2px"></div><div class="core" style="border-width: 5px 0 5px 8px"></div><div class="moon" style="width: 7px; height: 7px"></div></div>
+      <span class="wordmark" style="font-size: 15px; letter-spacing: .14em">ORBIX</span>
+    </div>
+    <button class="btn btn-ghost btn-sm"><span class="ic ic-sm i-edit"></span>Edit</button>
+  </div>
+
+  <div style="position: absolute; top: 132px; left: 24px; right: 24px; display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center">
+    <h1 class="t-display">Choose an account</h1>
+    <p class="t-body">Your IPTV profiles on this device</p>
+  </div>
+
+  <div style="position: absolute; top: 246px; left: 24px; right: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 14px">
+    <sc-for list="{{accounts}}" as="a" hint-placeholder-count="4">
+      <a href="Home.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; position: relative">
+        <div style="position: relative; width: 108px; height: 108px; border-radius: 30px; background: {{a.bg}}; display: flex; align-items: center; justify-content: center; box-shadow: {{a.ring}}; overflow: hidden">
+          <div style="position: absolute; width: 90px; height: 90px; right: -30px; top: -30px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.28)"></div>
+          <div style="position: absolute; width: 10px; height: 10px; right: 26px; top: 8px; border-radius: 50%; background: rgba(255,255,255,.85)"></div>
+          <span style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 30px; color: #fff; letter-spacing: -.03em">{{a.mono}}</span>
+          <sc-if value="{{a.locked}}" hint-placeholder-val="{{false}}">
+            <span style="position: absolute; left: 8px; bottom: 8px; width: 26px; height: 26px; border-radius: 9px; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; color: #FFC65C"><span class="ic ic-xs i-lock"></span></span>
+          </sc-if>
+          <span style="position: absolute; right: 8px; bottom: 8px; height: 20px; padding: 0 6px; border-radius: 6px; background: rgba(0,0,0,.45); font-weight: 800; font-size: 9.5px; letter-spacing: .06em; display: flex; align-items: center">{{a.type}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+          <span class="t-title" style="font-size: 14px">{{a.name}}</span>
+          <span class="t-cap">{{a.last}}</span>
+        </div>
+      </a>
+    </sc-for>
+    <a href="AddAccount.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none">
+      <div style="width: 108px; height: 108px; border-radius: 30px; border: 1.5px dashed rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; color: #B4B0BA"><span class="ic ic-xl i-plus"></span></div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+        <span class="t-title" style="font-size: 14px; color: #B4B0BA">Add account</span>
+        <span class="t-cap">Xtream · M3U</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="dialog" role="menu" style="position: absolute; left: 150px; top: 380px; width: 214px; padding: 8px; border-radius: 20px; animation: ox-rise 300ms both; z-index: 4">
+    <div style="padding: 8px 12px 10px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 4px">
+      <div class="t-title" style="font-size: 14px">Sports Pack</div>
+      <div class="t-cap">Xtream · expires 02 Feb 2027</div>
+    </div>
+    <button role="menuitem" class="row" style="min-height: 46px; width: 100%; background: none; border: 0; border-radius: 12px; padding: 0 12px; gap: 12px"><span class="ic ic-sm i-edit"></span><span class="t-title" style="font-size: 14px">Edit account</span></button>
+    <button role="menuitem" class="row" style="min-height: 46px; width: 100%; background: none; border: 0; border-radius: 12px; padding: 0 12px; gap: 12px"><span class="ic ic-sm i-star"></span><span class="t-title" style="font-size: 14px">Set as default</span></button>
+    <button role="menuitem" class="row" style="min-height: 46px; width: 100%; background: rgba(255,107,107,.08); border: 0; border-radius: 12px; padding: 0 12px; gap: 12px; color: #FF8C8C"><span class="ic ic-sm i-trash"></span><span class="t-title" style="font-size: 14px; color: #FF8C8C">Delete</span></button>
+  </div>
+
+  <div style="position: absolute; left: 20px; right: 20px; bottom: 32px; display: flex; flex-direction: column; gap: 14px">
+    <div class="card" style="border-radius: 20px; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+      <span class="ic ic-md i-autoplay" style="color: #FF7A3D"></span>
+      <div style="flex: 1">
+        <div class="t-title" style="font-size: 14px">Open default account on launch</div>
+        <div class="t-cap">Skip this screen next time</div>
+      </div>
+      <button class="switch" aria-label="Auto-open default account" aria-pressed="false"></button>
+    </div>
+    <a href="Home.dc.html" class="btn btn-primary btn-lg btn-block"><span class="ic ic-md i-play"></span>Continue with Living Room</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accounts: [
+        { name: 'Living Room', mono: 'LR', type: 'XTREAM', last: '2 h ago', locked: false, bg: 'linear-gradient(145deg, #FF8A4C 0%, #B43A12 100%)', ring: '0 0 0 3px #08080B, 0 0 0 5px #FF7A3D, 0 18px 36px -12px rgba(255,122,61,.7)' },
+        { name: 'Sports Pack', mono: 'SP', type: 'XTREAM', last: 'Yesterday', locked: false, bg: 'linear-gradient(145deg, #2FBF91 0%, #0D4A44 100%)', ring: '0 0 0 3px #08080B, 0 0 0 5px rgba(255,255,255,.5)' },
+        { name: 'Kids Corner', mono: 'KC', type: 'XTREAM', last: '3 days ago', locked: true, bg: 'linear-gradient(145deg, #FFC65C 0%, #C2457A 100%)', ring: '0 14px 30px -14px rgba(0,0,0,.8)' },
+        { name: 'Travel', mono: 'TR', type: 'M3U', last: '12 Sep', locked: false, bg: 'linear-gradient(145deg, #6C8CFF 0%, #2B1A6B 100%)', ring: '0 14px 30px -14px rgba(0,0,0,.8)' },
+        { name: 'Archive', mono: 'AR', type: 'FILE', last: '28 Aug', locked: false, bg: 'linear-gradient(145deg, #5A5A6E 0%, #1E1E28 100%)', ring: '0 14px 30px -14px rgba(0,0,0,.8)' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "AddAccount.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "05 Add account · Xtream",
+      "w": 412,
+      "x": 1968,
+      "y": 3300
+    },
+    "AddAccountM3U.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "06 Add account · M3U + testing",
+      "w": 412,
+      "x": 2460,
+      "y": 3300
+    },
+    "CompactHome.dc.html": {
+      "h": 780,
+      "title": "32 Small phone · Home",
+      "w": 360,
+      "x": 5044,
+      "y": 12910,
+      "is_interactive": true
+    },
+    "Components.dc.html": {
+      "h": 1960,
+      "title": "Design system — Components",
+      "w": 1440,
+      "x": 1520,
+      "y": 0,
+      "is_interactive": true
+    },
+    "EPG.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "18 TV Guide (EPG)",
+      "w": 412,
+      "x": 492,
+      "y": 7695
+    },
+    "Favorites.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "16 Favorites · reorder",
+      "w": 412,
+      "x": 3936,
+      "y": 4615
+    },
+    "FoldableSeries.dc.html": {
+      "h": 1104,
+      "title": "31 Foldable · Series two-pane",
+      "w": 884,
+      "x": 4080,
+      "y": 12910,
+      "is_interactive": true
+    },
+    "Foundations.dc.html": {
+      "h": 2900,
+      "title": "Design system — Foundations",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Home.dc.html": {
+      "h": 2680,
+      "is_interactive": true,
+      "title": "08 Home",
+      "w": 412,
+      "x": 0,
+      "y": 4615
+    },
+    "HomeAR.dc.html": {
+      "h": 915,
+      "title": "25 الرئيسية · RTL",
+      "w": 412,
+      "x": 0,
+      "y": 11270,
+      "is_interactive": true
+    },
+    "LiveTV.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "17 Live TV",
+      "w": 412,
+      "x": 0,
+      "y": 7695
+    },
+    "LiveTVAR.dc.html": {
+      "h": 915,
+      "title": "26 البث المباشر · RTL",
+      "w": 412,
+      "x": 492,
+      "y": 11270,
+      "is_interactive": true
+    },
+    "Main.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "01 Splash",
+      "w": 412,
+      "x": 0,
+      "y": 3300
+    },
+    "MovieDetails.dc.html": {
+      "h": 1980,
+      "is_interactive": true,
+      "title": "10 Movie details",
+      "w": 412,
+      "x": 984,
+      "y": 4615
+    },
+    "MovieDetailsAR.dc.html": {
+      "h": 1240,
+      "title": "27 تفاصيل الفيلم · RTL",
+      "w": 412,
+      "x": 984,
+      "y": 11270,
+      "is_interactive": true
+    },
+    "Movies.dc.html": {
+      "h": 1980,
+      "is_interactive": true,
+      "title": "09 Movies",
+      "w": 412,
+      "x": 492,
+      "y": 4615
+    },
+    "Onboarding1.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "02 Onboarding · Connect",
+      "w": 412,
+      "x": 492,
+      "y": 3300
+    },
+    "Onboarding2.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "03 Onboarding · Watch",
+      "w": 412,
+      "x": 984,
+      "y": 3300
+    },
+    "Onboarding3.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "04 Onboarding · Organize",
+      "w": 412,
+      "x": 1476,
+      "y": 3300
+    },
+    "Parental.dc.html": {
+      "h": 1100,
+      "is_interactive": true,
+      "title": "23 Parental controls",
+      "w": 412,
+      "x": 492,
+      "y": 9010
+    },
+    "PinEntry.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "24 PIN unlock",
+      "w": 412,
+      "x": 984,
+      "y": 9010
+    },
+    "PlayerLive.dc.html": {
+      "h": 412,
+      "is_interactive": true,
+      "title": "20 Player · live channel",
+      "w": 915,
+      "x": 1979,
+      "y": 7695
+    },
+    "PlayerSettings.dc.html": {
+      "h": 412,
+      "is_interactive": true,
+      "title": "21 Player · tracks & quality",
+      "w": 915,
+      "x": 2974,
+      "y": 7695
+    },
+    "PlayerVOD.dc.html": {
+      "h": 412,
+      "is_interactive": true,
+      "title": "19 Player · movie",
+      "w": 915,
+      "x": 984,
+      "y": 7695
+    },
+    "Profiles.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "07 Choose account",
+      "w": 412,
+      "x": 2952,
+      "y": 3300
+    },
+    "Search.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "13 Search",
+      "w": 412,
+      "x": 2460,
+      "y": 4615
+    },
+    "SearchResults.dc.html": {
+      "h": 915,
+      "is_interactive": true,
+      "title": "14 Search · instant results",
+      "w": 412,
+      "x": 2952,
+      "y": 4615
+    },
+    "SearchVoice.dc.html": {
+      "h": 915,
+      "title": "15 Search · voice",
+      "w": 412,
+      "x": 3444,
+      "y": 4615,
+      "is_interactive": true
+    },
+    "Series.dc.html": {
+      "h": 1660,
+      "is_interactive": true,
+      "title": "11 Series",
+      "w": 412,
+      "x": 1476,
+      "y": 4615
+    },
+    "SeriesDetails.dc.html": {
+      "h": 1840,
+      "is_interactive": true,
+      "title": "12 Series details",
+      "w": 412,
+      "x": 1968,
+      "y": 4615
+    },
+    "Settings.dc.html": {
+      "h": 1860,
+      "is_interactive": true,
+      "title": "22 Settings",
+      "w": 412,
+      "x": 0,
+      "y": 9010
+    },
+    "States.dc.html": {
+      "h": 2280,
+      "title": "System states",
+      "w": 1640,
+      "x": 3040,
+      "y": 0,
+      "is_interactive": true
+    },
+    "TabletEPG.dc.html": {
+      "h": 800,
+      "is_interactive": true,
+      "title": "30 Tablet 10\" · TV Guide",
+      "w": 1280,
+      "x": 2720,
+      "y": 12910
+    },
+    "TabletHome.dc.html": {
+      "h": 800,
+      "is_interactive": true,
+      "title": "28 Tablet 10\" · Home",
+      "w": 1280,
+      "x": 0,
+      "y": 12910
+    },
+    "TabletLive.dc.html": {
+      "h": 800,
+      "is_interactive": true,
+      "title": "29 Tablet 10\" · Live TV",
+      "w": 1280,
+      "x": 1360,
+      "y": 12910
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-03T12:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "tBrowse": {
+      "kind": "title1",
+      "maxW": 4348,
+      "text": "Browse · Home, Movies, Series, Search, Favorites",
+      "w": 240,
+      "x": 0,
+      "y": 4355
+    },
+    "tDS": {
+      "kind": "title1",
+      "maxW": 4680,
+      "text": "Orbix · Design system & states",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "tLaunch": {
+      "kind": "title1",
+      "maxW": 3364,
+      "text": "Launch, onboarding & account setup",
+      "w": 240,
+      "x": 0,
+      "y": 3040
+    },
+    "tLive": {
+      "kind": "title1",
+      "maxW": 3889,
+      "text": "Live TV, TV Guide & Player",
+      "w": 240,
+      "x": 0,
+      "y": 7435
+    },
+    "tRTL": {
+      "kind": "title1",
+      "maxW": 1396,
+      "text": "العربية · Arabic RTL",
+      "w": 240,
+      "x": 0,
+      "y": 11010
+    },
+    "tSettings": {
+      "kind": "title1",
+      "maxW": 1396,
+      "text": "Settings & parental control",
+      "w": 240,
+      "x": 0,
+      "y": 8750
+    },
+    "tTablet": {
+      "kind": "title1",
+      "maxW": 5404,
+      "text": "Tablet, foldable & small-phone layouts",
+      "w": 240,
+      "x": 0,
+      "y": 12650
+    }
+  },
+  "order": [
+    "Foundations.dc.html",
+    "Components.dc.html",
+    "States.dc.html",
+    "Main.dc.html",
+    "Onboarding1.dc.html",
+    "Onboarding2.dc.html",
+    "Onboarding3.dc.html",
+    "AddAccount.dc.html",
+    "AddAccountM3U.dc.html",
+    "Profiles.dc.html",
+    "Home.dc.html",
+    "Movies.dc.html",
+    "MovieDetails.dc.html",
+    "Series.dc.html",
+    "SeriesDetails.dc.html",
+    "Search.dc.html",
+    "SearchResults.dc.html",
+    "SearchVoice.dc.html",
+    "Favorites.dc.html",
+    "LiveTV.dc.html",
+    "EPG.dc.html",
+    "PlayerVOD.dc.html",
+    "PlayerLive.dc.html",
+    "PlayerSettings.dc.html",
+    "Settings.dc.html",
+    "Parental.dc.html",
+    "PinEntry.dc.html",
+    "HomeAR.dc.html",
+    "LiveTVAR.dc.html",
+    "MovieDetailsAR.dc.html",
+    "TabletHome.dc.html",
+    "TabletLive.dc.html",
+    "TabletEPG.dc.html",
+    "FoldableSeries.dc.html",
+    "CompactHome.dc.html"
+  ],
+  "pages": [],
+  "title": "Orbix — IPTV Player"
+}

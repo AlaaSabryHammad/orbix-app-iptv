@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Splash</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<a href="Onboarding1.dc.html" class="ox" style="display: block; width: 412px; height: 915px; text-decoration: none; background: radial-gradient(120% 70% at 50% 46%, #1A0E0A 0%, #08080B 55%, #050507 100%)">
+  <div class="ambient" style="width: 360px; height: 360px; left: 26px; top: 250px; background: #FF7A3D; opacity: .22"></div>
+  <div class="ambient" style="width: 260px; height: 260px; left: 200px; top: 520px; background: #7CC4FF; opacity: .08"></div>
+
+  <div style="position: absolute; left: 50%; top: 430px; width: 620px; height: 210px; margin-left: -310px; margin-top: -105px; border-radius: 50%; border: 1px solid rgba(255,255,255,.06); transform: rotate(-18deg)"></div>
+  <div style="position: absolute; left: 50%; top: 430px; width: 470px; height: 150px; margin-left: -235px; margin-top: -75px; border-radius: 50%; border: 1px solid rgba(255,122,61,.14); transform: rotate(-18deg)"></div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 330px; display: flex; flex-direction: column; align-items: center; gap: 30px">
+    <div style="position: relative; width: 112px; height: 112px; animation: ox-logo 1200ms cubic-bezier(.2,.8,.2,1) both">
+      <div style="position: absolute; inset: 0; border-radius: 50%; border: 5px solid #F5F1EB; box-shadow: 0 0 40px rgba(255,122,61,.25), inset 0 0 30px rgba(255,122,61,.18)"></div>
+      <div style="position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin-left: -10px; margin-top: -21px; border-style: solid; border-width: 21px 0 21px 33px; border-color: transparent transparent transparent #FF7A3D; filter: drop-shadow(0 0 14px rgba(255,122,61,.7))"></div>
+      <div style="position: absolute; inset: -14px; animation: ox-orbit 5s linear infinite">
+        <div style="position: absolute; top: 0; left: 50%; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #FF7A3D; box-shadow: 0 0 18px 4px rgba(255,122,61,.75)"></div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; animation: ox-rise 900ms 500ms cubic-bezier(.2,.8,.2,1) both">
+      <div class="wordmark" style="font-size: 40px; letter-spacing: .22em; color: #F5F1EB; padding-left: .22em">ORBIX</div>
+      <div style="font-weight: 600; font-size: 14px; color: #B4B0BA; letter-spacing: .02em">Every stream you own, in one orbit.</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 64px; right: 64px; bottom: 120px; display: flex; flex-direction: column; align-items: center; gap: 14px; animation: ox-fade 600ms 900ms both">
+    <div style="position: relative; width: 100%; height: 3px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden">
+      <div style="position: absolute; inset-block: 0; left: 0; width: 64%; border-radius: 3px; background: linear-gradient(90deg, rgba(255,122,61,.2), #FF7A3D); box-shadow: 0 0 12px rgba(255,122,61,.8)"></div>
+    </div>
+    <div class="t-cap" style="color: #8E8A97">Loading your library</div>
+  </div>
+  <div style="position: absolute; left: 32px; right: 32px; bottom: 40px; text-align: center; font-weight: 600; font-size: 11px; line-height: 1.5; color: #8E8A97">Orbix is a media player. It does not include channels or content.</div>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — TV Guide</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <header style="padding: 40px 12px 0 8px; display: flex; align-items: center; gap: 4px">
+    <a href="LiveTV.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <h1 class="t-h1" style="font-size: 22px; margin-right: auto">TV Guide</h1>
+    <button class="ibtn" aria-label="Pick date"><span class="ic i-calendar"></span></button>
+    <button class="ibtn" aria-label="Filter categories"><span class="ic i-filter"></span></button>
+  </header>
+
+  <div style="display: flex; gap: 6px; padding: 10px 12px 0; overflow: hidden">
+    <sc-for list="{{days}}" as="d" hint-placeholder-count="6">
+      <button style="flex: none; width: 52px; height: 58px; border-radius: 16px; border: 1px solid {{d.bd}}; background: {{d.bg}}; color: {{d.fg}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; opacity: .8">{{d.w}}</span>
+        <span style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 16px">{{d.n}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="position: relative; margin-top: 14px; border-top: 1px solid rgba(255,255,255,.06)">
+    <div style="display: flex; height: 36px; align-items: center; background: #0B0B0F">
+      <div style="width: 76px; flex: none; padding-left: 14px" class="t-cap">Sat 3 Oct</div>
+      <div style="position: relative; flex: 1; height: 36px; overflow: hidden">
+        <sc-for list="{{ticks}}" as="t" hint-placeholder-count="5">
+          <span class="mono-time" style="position: absolute; left: {{t.x}}px; top: 11px; font-size: 11px; color: #8E8A97; padding-left: 6px; border-left: 1px solid rgba(255,255,255,.12); height: 14px; line-height: 14px">{{t.label}}</span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+        <div style="display: flex; height: 66px; border-bottom: 1px solid rgba(255,255,255,.05)">
+          <div style="width: 76px; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; background: #0B0B0F; border-right: 1px solid rgba(255,255,255,.06)">
+            <div class="chlogo" style="width: 36px; height: 36px; font-size: 10px; border-radius: 10px; background: {{r.bg}}">{{r.logo}}</div>
+            <span class="mono-time" style="font-size: 9.5px; color: #8E8A97">{{r.num}}</span>
+          </div>
+          <div style="position: relative; flex: 1; overflow: hidden">
+            <sc-for list="{{r.progs}}" as="p" hint-placeholder-count="3">
+              <a href="PlayerLive.dc.html" style="position: absolute; top: 5px; bottom: 5px; left: {{p.l}}px; width: {{p.w}}px; border-radius: 12px; padding: 8px 10px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; justify-content: center; gap: 2px; {{p.style}}">
+                <span style="font-weight: 800; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: {{p.fg}}">{{p.t}}</span>
+                <span class="mono-time" style="font-size: 10px; color: {{p.sub}}; white-space: nowrap">{{p.time}}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="position: absolute; top: 0; bottom: 0; left: 184px; width: 2px; background: #FF7A3D; box-shadow: 0 0 12px rgba(255,122,61,.8); pointer-events: none"></div>
+    <span class="mono-time" style="position: absolute; top: 6px; left: 162px; height: 22px; padding: 0 7px; border-radius: 8px; background: #FF7A3D; color: #1C0C04; font-size: 11px; font-weight: 600; display: flex; align-items: center">20:45</span>
+  </div>
+
+  <div class="sheet" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 20px 28px; display: flex; flex-direction: column; gap: 12px">
+    <div class="handle"></div>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div class="thumb" style="width: 112px; border-radius: 12px"><img src="../assets/b-stadium.jpg" alt=""><div style="position: absolute; left: 6px; top: 6px"><span class="badge b-live">LIVE</span></div></div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+        <span class="t-cap" style="color: #7CC4FF">Pulse Sports 1 · 20:30–22:30</span>
+        <span class="t-title">Coastal FC vs Northern United</span>
+        <span class="t-cap">Football · Matchday 9 from Harbor Park</span>
+      </div>
+    </div>
+    <div class="progress"><span style="width: 12%"></span></div>
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px">
+      <a href="PlayerLive.dc.html" class="btn btn-primary btn-sm" style="height: 44px"><span class="ic ic-sm i-play"></span>Watch now</a>
+      <button class="btn btn-tonal btn-sm" style="height: 44px"><span class="ic ic-sm i-bell"></span>Remind</button>
+      <button class="btn btn-tonal btn-sm" style="height: 44px; color: #FF7A3D" aria-label="Favorite channel"><span class="ic ic-sm i-heart-fill"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const PX = 2.4, START = 20 * 60, SPAN = 150, NOW = 45;
+    const m = (s) => { const [h, mm] = s.split(':').map(Number); return h * 60 + mm - START; };
+    const build = (list, sel) => list.map(([s, e, t]) => {
+      const a = m(s), b = m(e);
+      if (b <= 0 || a >= SPAN) return null;
+      const l = Math.max(0, a) * PX + 2, r = Math.min(b, SPAN + 30) * PX - 2;
+      const now = a <= NOW && b > NOW, past = b <= NOW, isSel = sel === t;
+      let style = 'background: #15151B; border: 1px solid rgba(255,255,255,.06);';
+      if (now) style = 'background: linear-gradient(90deg, rgba(255,122,61,.22), rgba(255,122,61,.08)); border: 1px solid rgba(255,122,61,.35);';
+      if (past) style = 'background: #0F0F13; border: 1px solid rgba(255,255,255,.04);';
+      if (isSel) style += ' box-shadow: 0 0 0 2px #FF7A3D, 0 10px 24px rgba(255,122,61,.25);';
+      return { l, w: Math.max(28, r - l), t: (a < 0 ? '‹ ' : '') + t, time: s + '–' + e, style,
+        fg: past ? '#8E8A97' : '#F5F1EB', sub: now ? '#FF9663' : '#8E8A97' };
+    }).filter(Boolean);
+    const ch = [
+      ['101', 'MN', 'linear-gradient(145deg,#2F7DFF,#13306B)', [['19:00','20:00','World at Seven'],['20:00','21:00','The Evening Bulletin'],['21:00','21:30','World Desk'],['21:30','22:00','Markets Tonight'],['22:00','23:00','The Briefing']]],
+      ['102', 'P1', 'linear-gradient(145deg,#2FBF71,#0E4A2B)', [['19:30','20:30','Pre-Match Live'],['20:30','22:30','Coastal FC vs Northern United'],['22:30','23:00','Match Review']]],
+      ['103', 'P2', 'linear-gradient(145deg,#1FA88A,#0B3A33)', [['20:00','21:30','Grand Prix Qualifying'],['21:30','22:00','Paddock Talk'],['22:00','23:30','Tennis Classics']]],
+      ['104', 'CP', 'linear-gradient(145deg,#FF7A3D,#6B1E05)', [['19:45','21:50','Neon Requiem'],['21:50','23:40','Iron Tide']]],
+      ['105', 'AD', 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', [['20:00','21:00','Atlas of Rivers: The Delta'],['21:00','22:00','Deep Ocean Cities'],['22:00','23:00','Wild Plains']]],
+      ['106', 'KZ', 'linear-gradient(145deg,#FFB547,#7A4A0B)', [['20:00','20:30','Little Lantern Tales'],['20:30','21:00','Paper Planets'],['21:00','21:30','Moon Garden'],['21:30','22:30','Bedtime Beats']]],
+      ['107', 'WV', 'linear-gradient(145deg,#E2508F,#4E1235)', [['20:00','22:00','Live at the Arena'],['22:00','23:00','Chart Rewind']]],
+      ['108', 'H1', 'linear-gradient(145deg,#9B8CFF,#2B1A6B)', [['19:30','20:15','Kitchen Duel'],['20:15','21:15','Hollow Crown District'],['21:15','22:30','Late Lounge']]]
+    ];
+    const days = [['Thu','1'],['Fri','2'],['Today','3'],['Sun','4'],['Mon','5'],['Tue','6'],['Wed','7']].map(([w, n]) => {
+      const on = w === 'Today';
+      return { w, n, bg: on ? '#F5F1EB' : '#101015', fg: on ? '#0D0D10' : '#B4B0BA', bd: on ? 'transparent' : 'rgba(255,255,255,.08)' };
+    });
+    return {
+      days,
+      ticks: ['20:00', '20:30', '21:00', '21:30', '22:00'].map((label, i) => ({ label, x: i * 30 * PX })),
+      rows: ch.map(([num, logo, bg, progs]) => ({ num, logo, bg, progs: build(progs, 'Coastal FC vs Northern United') }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Series</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 1660px; background: #08080B">
+  <div class="ambient" style="width: 360px; height: 280px; left: 30px; top: 140px; background: #FFB060; opacity: .12"></div>
+
+  <header style="position: relative; padding: 40px 12px 0 20px; display: flex; align-items: center; gap: 4px">
+    <h1 class="t-h1" style="font-size: 28px; margin-right: auto">Series</h1>
+    <a href="Search.dc.html" class="ibtn" aria-label="Search series"><span class="ic i-search"></span></a>
+    <button class="ibtn" aria-label="Filter"><span class="ic i-filter"></span></button>
+  </header>
+
+  <div class="scroll-x" style="gap: 8px; padding: 18px 20px 4px">
+    <button class="chip on">All</button><button class="chip">Crime</button><button class="chip">Sci-Fi</button><button class="chip">Thriller</button><button class="chip">Fantasy</button><button class="chip">Docuseries</button>
+  </div>
+
+  <main style="display: flex; flex-direction: column; gap: 30px; padding: 18px 0 120px">
+    <section style="padding: 0 20px">
+      <a href="SeriesDetails.dc.html" style="position: relative; display: block; height: 280px; border-radius: 26px; overflow: hidden; text-decoration: none; box-shadow: 0 30px 60px -24px rgba(255,170,90,.35), 0 0 0 1px rgba(255,255,255,.06)">
+        <img class="fill-img" src="../assets/b-hollow.jpg" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,11,.95) 0%, rgba(8,8,11,.25) 55%, rgba(8,8,11,.05) 100%)"></div>
+        <div style="position: absolute; left: 18px; top: 16px; display: flex; gap: 6px"><span class="badge b-new">NEW SEASON</span><span class="badge b-4k">4K</span></div>
+        <div style="position: absolute; left: 18px; right: 18px; bottom: 18px; display: flex; flex-direction: column; gap: 10px">
+          <div class="t-over" style="color: #FFC879">Featured series</div>
+          <div class="t-h1" style="text-transform: uppercase; font-size: 24px; max-width: 280px">Hollow Crown District</div>
+          <div class="meta"><span class="rating"><span class="ic i-star"></span>8.7</span><span class="dot-sep"></span><span>Season 3 now complete</span><span class="dot-sep"></span><span>Crime</span></div>
+          <div style="display: flex; gap: 10px; margin-top: 2px">
+            <span class="btn btn-primary btn-sm"><span class="ic ic-sm i-play"></span>Resume S3 · E4</span>
+            <span class="btn btn-glass btn-sm"><span class="ic ic-sm i-info"></span>Details</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Continue watching</h2></div>
+      <div class="rail">
+        <sc-for list="{{cont}}" as="c" hint-placeholder-count="2">
+          <a href="PlayerVOD.dc.html" style="width: 210px; flex: none; display: flex; flex-direction: column; gap: 9px; text-decoration: none">
+            <div class="thumb" style="width: 210px">
+              <img src="{{c.img}}" alt="">
+              <div class="shade"></div>
+              <span class="badge" style="position: absolute; left: 10px; top: 10px; background: rgba(0,0,0,.55); color: #F5F1EB">{{c.ep}}</span>
+              <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: {{c.p}}%"></span></div>
+            </div>
+            <div>
+              <div class="t-title" style="font-size: 14px">{{c.title}}</div>
+              <div class="t-cap">{{c.sub}}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Popular</h2><a href="Series.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{popular}}" as="m" hint-placeholder-count="4">
+          <a href="SeriesDetails.dc.html" class="poster" style="width: 120px">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div class="tr"><span class="rating" style="height: 22px; padding: 0 6px; border-radius: 6px; background: rgba(0,0,0,.55); font-size: 11px"><span class="ic i-star"></span>{{m.r}}</span></div>
+            <div class="ptitle" style="font-size: 12px">{{m.title}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recently added</h2><a href="Series.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{added}}" as="m" hint-placeholder-count="4">
+          <a href="SeriesDetails.dc.html" class="poster" style="width: 120px">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div class="tl"><span class="badge b-new">{{m.tag}}</span></div>
+            <div class="ptitle" style="font-size: 12px">{{m.title}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Genres</h2></div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 20px">
+        <sc-for list="{{genres}}" as="g" hint-placeholder-count="4">
+          <a href="Series.dc.html" style="position: relative; height: 96px; border-radius: 18px; overflow: hidden; text-decoration: none; display: block">
+            <img class="fill-img" src="{{g.img}}" alt="">
+            <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,8,11,.85), rgba(8,8,11,.15))"></div>
+            <div style="position: absolute; left: 14px; bottom: 12px; display: flex; flex-direction: column">
+              <span style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 15px">{{g.name}}</span>
+              <span class="t-cap" style="color: #D2CED8">{{g.count}}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bnav glass" aria-label="Main">
+    <a href="Home.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":1660}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      cont: [
+        { img: B('e-4.jpg'), ep: 'S3 · E4', title: 'Hollow Crown District', sub: 'Ash on the Avenue · 18 min left', p: 64 },
+        { img: B('b-signal.jpg'), ep: 'S1 · E7', title: 'Signal & Noise', sub: 'Dead Air · 9 min left', p: 82 },
+        { img: B('b-embers.jpg'), ep: 'S1 · E2', title: 'Embers of Kesh', sub: 'The Ash Road · 31 min left', p: 30 }
+      ],
+      popular: [
+        { img: B('p-hollow.jpg'), title: 'Hollow Crown District', r: '8.7' },
+        { img: B('p-embers.jpg'), title: 'Embers of Kesh', r: '8.5' },
+        { img: B('p-signal.jpg'), title: 'Signal & Noise', r: '8.2' },
+        { img: B('p-frost.jpg'), title: 'The Frost Line', r: '8.0' }
+      ],
+      added: [
+        { img: B('p-parallel.jpg'), title: 'Parallel Station', tag: 'NEW' },
+        { img: B('p-lighthouse.jpg'), title: 'The Keepers', tag: 'NEW EP' },
+        { img: B('p-rivers.jpg'), title: 'Atlas of Rivers', tag: 'NEW' },
+        { img: B('p-hollow.jpg'), title: 'Hollow Crown District', tag: 'S3' }
+      ],
+      genres: [
+        { img: B('b-hollow.jpg'), name: 'Crime', count: '86 series' },
+        { img: B('b-signal.jpg'), name: 'Sci-Fi', count: '64 series' },
+        { img: B('b-rivers.jpg'), name: 'Docuseries', count: '112 series' },
+        { img: B('b-embers.jpg'), name: 'Fantasy', count: '41 series' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Voice search</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <div style="padding: 40px 16px 0 8px; display: flex; align-items: center; gap: 6px; opacity: .5">
+    <span class="ibtn"><span class="ic i-back"></span></span>
+    <div class="search" style="flex: 1"><span class="ic ic-sm i-search"></span><span class="t-body">Channels, movies, series</span></div>
+  </div>
+  <div style="display: flex; gap: 8px; padding: 16px 20px 0; opacity: .4"><span class="chip on">All</span><span class="chip">Movies</span><span class="chip">Series</span><span class="chip">Channels</span></div>
+  <div style="padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; opacity: .3">
+    <div class="sk" style="height: 18px; width: 140px"></div><div class="sk" style="height: 14px; width: 260px"></div><div class="sk" style="height: 14px; width: 220px"></div><div class="sk" style="height: 14px; width: 240px"></div>
+  </div>
+
+  <div class="scrim-full"></div>
+
+  <div class="sheet" style="position: absolute; left: 0; right: 0; bottom: 0; height: 560px; display: flex; flex-direction: column; align-items: center; padding: 0 28px 40px">
+    <div class="handle"></div>
+    <div style="align-self: stretch; display: flex; justify-content: space-between; align-items: center; margin-top: 8px">
+      <button class="chip chip-sm"><span class="ic ic-xs i-globe"></span>English (US) <span class="ic ic-xs i-chev-d"></span></button>
+      <a href="Search.dc.html" class="ibtn" aria-label="Close voice search"><span class="ic i-close"></span></a>
+    </div>
+
+    <div style="position: relative; width: 200px; height: 200px; margin-top: 30px; display: flex; align-items: center; justify-content: center">
+      <div style="position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,122,61,.5); animation: ox-ring 2.2s infinite"></div>
+      <div style="position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,122,61,.5); animation: ox-ring 2.2s .7s infinite"></div>
+      <div style="position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,122,61,.5); animation: ox-ring 2.2s 1.4s infinite"></div>
+      <div style="position: absolute; inset: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFB085, #FF7A3D 45%, #B43A12 100%); box-shadow: 0 0 60px rgba(255,122,61,.55), inset 0 -10px 30px rgba(0,0,0,.25)"></div>
+      <div style="position: relative; display: flex; align-items: center; gap: 5px; height: 48px; color: #1C0C04">
+        <span style="width: 6px; height: 22px; border-radius: 4px; background: #1C0C04; animation: ox-bar .8s ease-in-out infinite"></span>
+        <span style="width: 6px; height: 40px; border-radius: 4px; background: #1C0C04; animation: ox-bar .8s .15s ease-in-out infinite"></span>
+        <span style="width: 6px; height: 48px; border-radius: 4px; background: #1C0C04; animation: ox-bar .8s .3s ease-in-out infinite"></span>
+        <span style="width: 6px; height: 34px; border-radius: 4px; background: #1C0C04; animation: ox-bar .8s .45s ease-in-out infinite"></span>
+        <span style="width: 6px; height: 18px; border-radius: 4px; background: #1C0C04; animation: ox-bar .8s .6s ease-in-out infinite"></span>
+      </div>
+    </div>
+
+    <div style="margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+      <div class="t-over" style="color: #FF9663">Listening…</div>
+      <div class="t-h1" style="font-size: 24px; line-height: 1.25">“Sci-fi movies<span style="color: #8E8A97"> from 2026</span><span style="display: inline-block; width: 2px; height: 24px; margin-left: 3px; vertical-align: -3px; background: #FF7A3D; animation: ox-pulse 1s infinite"></span>”</div>
+      <p class="t-body" style="margin-top: 6px">Try “Pulse Sports 1” or “Comedy series”</p>
+    </div>
+
+    <a href="SearchResults.dc.html" class="btn btn-tonal" style="margin-top: auto; align-self: stretch">Tap to stop</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

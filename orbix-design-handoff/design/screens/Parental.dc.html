@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Parental controls</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.gt{padding:0 6px 8px;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A97;display:flex;justify-content:space-between;align-items:center}
+.row .t-title{font-size:14.5px}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 1100px; background: #08080B">
+  <div class="ambient" style="width: 300px; height: 220px; left: 56px; top: 90px; background: #FFC65C; opacity: .12"></div>
+  <header style="padding: 40px 12px 0 8px; display: flex; align-items: center; gap: 4px">
+    <a href="Settings.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <h1 class="t-h1" style="font-size: 22px">Parental controls</h1>
+  </header>
+
+  <div style="padding: 18px 16px 40px; display: flex; flex-direction: column; gap: 22px">
+    <div class="card elev-1" style="border-radius: 24px; padding: 20px; display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, rgba(255,198,92,.1), rgba(16,16,21,1) 60%)">
+      <div style="position: relative; width: 60px; height: 60px; border-radius: 20px; background: rgba(255,198,92,.14); border: 1px solid rgba(255,198,92,.35); color: #FFC65C; display: flex; align-items: center; justify-content: center"><span class="ic ic-lg i-shield"></span></div>
+      <div style="flex: 1">
+        <div class="t-title" style="font-size: 16px">Protection is on</div>
+        <div class="t-cap" style="line-height: 1.45">PIN needed for locked categories, channels and these settings.</div>
+      </div>
+    </div>
+
+    <section>
+      <div class="group">
+        <div class="row"><span class="ico-box"><span class="ic ic-sm i-key"></span></span><div class="grow"><div class="t-title">PIN protection</div><div class="t-cap">4-digit PIN · set 12 Sep</div></div><button class="switch on" aria-label="PIN protection" aria-pressed="true"></button></div>
+        <a href="PinEntry.dc.html" class="row" style="text-decoration: none"><span class="ico-box"><span class="ic ic-sm i-edit"></span></span><div class="grow"><div class="t-title">Change PIN</div></div><span class="ic ic-sm i-chev-r flip" style="color: #8E8A97"></span></a>
+        <div class="row"><span class="ico-box"><span class="ic ic-sm i-eye-off"></span></span><div class="grow"><div class="t-title">Adult content protection</div><div class="t-cap">Hide 18+ titles and categories everywhere</div></div><button class="switch on" aria-label="Adult content protection" aria-pressed="true"></button></div>
+        <div class="row"><span class="ico-box"><span class="ic ic-sm i-clock"></span></span><div class="grow"><div class="t-title">Re-lock after</div></div><span class="val">5 minutes</span><span class="ic ic-sm i-chev-r flip" style="color: #8E8A97"></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="gt"><span>Locked categories</span><span style="letter-spacing: 0; text-transform: none; font-size: 12px; color: #FFC65C">3 of 9</span></div>
+      <div class="group">
+        <sc-for list="{{cats}}" as="c" hint-placeholder-count="5">
+          <div class="row" style="min-height: 56px">
+            <div class="grow"><div class="t-title">{{c.name}}</div><div class="t-cap">{{c.count}}</div></div>
+            <button aria-pressed="{{c.pressed}}" aria-label="Toggle lock" style="display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 999px; font-weight: 800; font-size: 12px; {{c.style}}"><span class="ic ic-xs {{c.icon}}"></span>{{c.label}}</button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="gt"><span>Locked channels</span><span style="letter-spacing: 0; text-transform: none; font-size: 12px; color: #B4B0BA">Add</span></div>
+      <div class="group">
+        <sc-for list="{{chs}}" as="c" hint-placeholder-count="3">
+          <div class="row">
+            <div class="chlogo" style="width: 40px; height: 40px; font-size: 10.5px; filter: saturate(.4); background: {{c.bg}}">{{c.logo}}<span style="position: absolute; right: -1px; bottom: -1px; width: 18px; height: 18px; border-radius: 6px; background: #FFC65C; color: #1C1204; display: flex; align-items: center; justify-content: center"><span class="ic i-lock" style="width: 11px; height: 11px"></span></span></div>
+            <div class="grow"><div class="t-title">{{c.name}}</div><div class="t-cap">{{c.cat}}</div></div>
+            <button class="ibtn" aria-label="Unlock channel" style="color: #8E8A97"><span class="ic ic-sm i-close"></span></button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const L = { label: 'Locked', icon: 'i-lock', pressed: 'true', style: 'background: rgba(255,198,92,.14); border: 1px solid rgba(255,198,92,.4); color: #FFC65C;' };
+    const U = { label: 'Open', icon: 'i-unlock', pressed: 'false', style: 'background: transparent; border: 1px solid rgba(255,255,255,.14); color: #B4B0BA;' };
+    return {
+      cats: [
+        { name: 'Adult 18+', count: '42 channels · hidden', ...L },
+        { name: 'Horror', count: '310 movies', ...L },
+        { name: 'Late Night', count: '18 channels', ...L },
+        { name: 'Reality', count: '64 series', ...U },
+        { name: 'International', count: '515 channels', ...U }
+      ],
+      chs: [
+        { logo: 'LN', bg: 'linear-gradient(145deg,#5A5A6E,#1E1E28)', name: 'Late Night Cinema', cat: 'Movies · 190' },
+        { logo: 'FX', bg: 'linear-gradient(145deg,#FF6B6B,#5A1414)', name: 'Fright Xtra', cat: 'Entertainment · 214' },
+        { logo: 'AR', bg: 'linear-gradient(145deg,#7CC4FF,#163A5C)', name: 'After Dark Radio', cat: 'Music · 233' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

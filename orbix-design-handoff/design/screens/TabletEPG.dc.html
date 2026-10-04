@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Tablet TV guide</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 1280px; height: 800px; background: #08080B; display: flex">
+  <nav class="rail-nav" aria-label="Main" style="height: 800px">
+    <div class="logo-mark" style="width: 34px; height: 34px; margin-bottom: 22px"><div class="ring"></div><div class="core"></div><div class="moon"></div></div>
+    <a href="TabletHome.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="TabletLive.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="TabletEPG.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-epg"></span></span>Guide</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <span style="flex: 1"></span>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-settings"></span></span>Settings</a>
+  </nav>
+
+  <div style="position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <header style="display: flex; align-items: center; gap: 12px; padding: 22px 24px 16px">
+      <h1 class="t-h1" style="font-size: 24px; margin-right: 12px">TV Guide</h1>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{days}}" as="d" hint-placeholder-count="5">
+          <button class="chip {{d.on}}">{{d.label}}</button>
+        </sc-for>
+      </div>
+      <span style="flex: 1"></span>
+      <button class="chip"><span class="ic ic-xs i-filter"></span>Sports, News +3</button>
+      <button class="btn btn-primary btn-sm"><span class="ic ic-sm i-clock"></span>Now</button>
+    </header>
+
+    <div style="position: relative; flex: 1; border-top: 1px solid rgba(255,255,255,.06); overflow: hidden">
+      <div style="display: flex; height: 40px; background: #0B0B0F; border-bottom: 1px solid rgba(255,255,255,.06)">
+        <div style="width: 210px; flex: none; display: flex; align-items: center; padding-left: 20px" class="t-cap">Saturday 3 Oct</div>
+        <div style="position: relative; flex: 1; overflow: hidden">
+          <sc-for list="{{ticks}}" as="t" hint-placeholder-count="7">
+            <span class="mono-time" style="position: absolute; left: {{t.x}}px; top: 13px; font-size: 11.5px; color: #8E8A97; padding-left: 8px; border-left: 1px solid rgba(255,255,255,.14); height: 14px; line-height: 14px">{{t.label}}</span>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+        <div style="display: flex; height: 60px; border-bottom: 1px solid rgba(255,255,255,.05)">
+          <div style="width: 210px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 16px; background: #0B0B0F; border-right: 1px solid rgba(255,255,255,.06)">
+            <span class="mono-time" style="width: 26px; font-size: 10.5px; color: #8E8A97">{{r.num}}</span>
+            <div class="chlogo" style="width: 38px; height: 38px; font-size: 10px; border-radius: 10px; background: {{r.bg}}">{{r.logo}}</div>
+            <span style="font-weight: 800; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.name}}</span>
+          </div>
+          <div style="position: relative; flex: 1; overflow: hidden">
+            <sc-for list="{{r.progs}}" as="p" hint-placeholder-count="3">
+              <a href="PlayerLive.dc.html" style="position: absolute; top: 5px; bottom: 5px; left: {{p.l}}px; width: {{p.w}}px; border-radius: 12px; padding: 0 12px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; justify-content: center; gap: 2px; {{p.style}}">
+                <span style="font-weight: 800; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: {{p.fg}}">{{p.t}}</span>
+                <span class="mono-time" style="font-size: 10.5px; color: {{p.sub}}; white-space: nowrap">{{p.time}}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <div style="position: absolute; top: 0; bottom: 0; left: 586px; width: 2px; background: #FF7A3D; box-shadow: 0 0 14px rgba(255,122,61,.8)"></div>
+      <span class="mono-time" style="position: absolute; top: 9px; left: 561px; height: 22px; padding: 0 8px; border-radius: 8px; background: #FF7A3D; color: #1C0C04; font-size: 11px; font-weight: 600; display: flex; align-items: center">20:45</span>
+    </div>
+
+    <div class="glass elev-2" style="position: absolute; right: 20px; bottom: 20px; width: 380px; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 12px; animation: ox-rise 400ms both">
+      <div class="thumb" style="border-radius: 16px">
+        <img src="../assets/b-neon.jpg" alt="">
+        <div class="shade"></div>
+        <div style="position: absolute; left: 10px; top: 10px; display: flex; gap: 6px"><span class="badge b-live">ON NOW</span><span class="badge b-fhd">FHD</span></div>
+        <div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: 48%"></span></div>
+      </div>
+      <div>
+        <div class="t-cap" style="color: #7CC4FF">Cine Prime · 19:45–21:50 · 65 min left</div>
+        <div class="t-h2" style="font-size: 17px">Neon Requiem</div>
+        <p class="t-body" style="font-size: 13px; margin-top: 4px">A rain-city detective hunts a signal thief through a night that refuses to end. Thriller · 2026 · 16+</p>
+      </div>
+      <div style="display: flex; gap: 8px">
+        <a href="PlayerLive.dc.html" class="btn btn-primary btn-sm" style="flex: 1"><span class="ic ic-sm i-play"></span>Watch</a>
+        <button class="btn btn-tonal btn-sm" style="flex: 1"><span class="ic ic-sm i-bell"></span>Remind next</button>
+        <button class="ibtn ibtn-tonal" aria-label="Favorite channel" style="width: 38px; height: 38px; border-radius: 12px"><span class="ic ic-sm i-heart"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const PX = 5, START = 19 * 60 + 30, SPAN = 200, NOW = 75;
+    const m = (s) => { const [h, mm] = s.split(':').map(Number); return h * 60 + mm - START; };
+    const build = (list, sel) => list.map(([s, e, t]) => {
+      const a = m(s), b = m(e);
+      if (b <= 0 || a >= SPAN) return null;
+      const l = Math.max(0, a) * PX + 3, r = Math.min(b, SPAN + 40) * PX - 3;
+      const now = a <= NOW && b > NOW, past = b <= NOW, isSel = sel === t;
+      let style = 'background: #15151B; border: 1px solid rgba(255,255,255,.06);';
+      if (now) style = 'background: linear-gradient(90deg, rgba(255,122,61,.22), rgba(255,122,61,.07)); border: 1px solid rgba(255,122,61,.35);';
+      if (past) style = 'background: #0F0F13; border: 1px solid rgba(255,255,255,.04);';
+      if (isSel) style += ' box-shadow: 0 0 0 2px #FF7A3D, 0 10px 24px rgba(255,122,61,.25);';
+      return { l, w: r - l, t: (a < 0 ? '‹ ' : '') + t, time: s + '–' + e, style, fg: past ? '#8E8A97' : '#F5F1EB', sub: now ? '#FF9663' : '#8E8A97' };
+    }).filter(Boolean);
+    const ch = [
+      ['101', 'MN', 'Meridian News', 'linear-gradient(145deg,#2F7DFF,#13306B)', [['19:00','20:00','World at Seven'],['20:00','21:00','The Evening Bulletin'],['21:00','21:30','World Desk'],['21:30','22:00','Markets Tonight'],['22:00','23:00','The Briefing']]],
+      ['102', 'P1', 'Pulse Sports 1', 'linear-gradient(145deg,#2FBF71,#0E4A2B)', [['19:30','20:30','Pre-Match Live'],['20:30','22:30','Coastal FC vs Northern United'],['22:30','23:00','Match Review']]],
+      ['103', 'P2', 'Pulse Sports 2', 'linear-gradient(145deg,#1FA88A,#0B3A33)', [['19:00','20:00','Paddock Preview'],['20:00','21:30','Grand Prix Qualifying'],['21:30','22:00','Paddock Talk'],['22:00','23:30','Tennis Classics']]],
+      ['104', 'CP', 'Cine Prime', 'linear-gradient(145deg,#FF7A3D,#6B1E05)', [['19:45','21:50','Neon Requiem'],['21:50','23:40','Iron Tide']]],
+      ['105', 'AD', 'Atlas Docs', 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', [['19:00','20:00','Salt and Stone'],['20:00','21:00','Atlas of Rivers: The Delta'],['21:00','22:00','Deep Ocean Cities'],['22:00','23:00','Wild Plains']]],
+      ['106', 'KZ', 'Kitezoo Kids', 'linear-gradient(145deg,#FFB547,#7A4A0B)', [['19:30','20:00','Robo Garden'],['20:00','20:30','Little Lantern Tales'],['20:30','21:00','Paper Planets'],['21:00','21:30','Moon Garden'],['21:30','22:30','Bedtime Beats']]],
+      ['107', 'WV', 'Wave Music', 'linear-gradient(145deg,#E2508F,#4E1235)', [['19:00','20:00','Studio Sessions'],['20:00','22:00','Live at the Arena'],['22:00','23:00','Chart Rewind']]],
+      ['108', 'H1', 'Horizon One', 'linear-gradient(145deg,#9B8CFF,#2B1A6B)', [['19:30','20:15','Kitchen Duel'],['20:15','21:15','Hollow Crown District'],['21:15','22:30','Late Lounge']]],
+      ['109', 'N+', 'North+ Nature', 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', [['19:00','20:00','Coral Nights'],['20:00','21:00','Northbound: An Arctic Year'],['21:00','22:30','Frontier Skies']]],
+      ['110', 'G24', 'Globe 24', 'linear-gradient(145deg,#7CC4FF,#163A5C)', [['19:30','21:00','World Tonight'],['21:00','21:30','Business Hour'],['21:30','23:00','Global Debate']]]
+    ];
+    return {
+      days: [{ label: 'Yesterday', on: '' }, { label: 'Today', on: 'on' }, { label: 'Sun 4', on: '' }, { label: 'Mon 5', on: '' }, { label: 'Tue 6', on: '' }],
+      ticks: ['19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30'].map((label, i) => ({ label, x: i * 30 * PX })),
+      rows: ch.map(([num, logo, name, bg, progs]) => ({ num, logo, name, bg, progs: build(progs, 'Neon Requiem') }))
+    };
+  }
+}
+</script>
+</body>
+</html>

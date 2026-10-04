@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Components</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.kit{display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:28px;background:#0B0B0F;border:1px solid rgba(255,255,255,.07)}
+.kh{display:flex;align-items:baseline;gap:10px}
+.kh b{font-family:'Unbounded',sans-serif;font-weight:600;font-size:12px;color:#FF9663}
+.kh span{font-family:'Unbounded',sans-serif;font-weight:600;font-size:17px}
+.kh i{font-style:normal;margin-left:auto;font-weight:600;font-size:12px;color:#8E8A97}
+.lab{font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8E8A97}
+.wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+</style>
+</helmet>
+<div class="ox" style="width: 1440px; height: 1960px; background: #050507; padding: 64px 48px">
+  <header style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 40px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span class="t-over" style="color: #FF9663">Orbix · Components</span>
+      <h1 class="t-display" style="font-size: 40px">Component library</h1>
+    </div>
+    <p class="t-body" style="max-width: 520px; text-align: right">Every screen is assembled from these parts. Touch targets are 44 dp minimum; every control has default, pressed, focused and disabled states.</p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start">
+
+    <div style="display: flex; flex-direction: column; gap: 32px">
+      <section class="kit">
+        <div class="kh"><b>C1</b><span>Buttons</span><i>50 / 38 / 56 dp</i></div>
+        <div class="lab">Variants</div>
+        <div class="wrap">
+          <button class="btn btn-primary"><span class="ic ic-md i-play"></span>Play</button>
+          <button class="btn btn-light">Continue</button>
+          <button class="btn btn-glass"><span class="ic ic-md i-info"></span>More info</button>
+          <button class="btn btn-tonal"><span class="ic ic-md i-signal"></span>Test</button>
+          <button class="btn btn-ghost">Skip</button>
+          <button class="btn btn-danger"><span class="ic ic-md i-trash"></span>Delete</button>
+        </div>
+        <div class="lab">Sizes &amp; states</div>
+        <div class="wrap">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Medium</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+        <div class="wrap">
+          <button class="btn btn-primary" style="transform: scale(.97); background: #E86A30">Pressed</button>
+          <button class="btn btn-primary" style="box-shadow: 0 0 0 3px #08080B, 0 0 0 5px #F5F1EB">Focused</button>
+          <button class="btn btn-primary" disabled="">Disabled</button>
+        </div>
+        <div class="lab">Icon buttons</div>
+        <div class="wrap">
+          <button class="ibtn" aria-label="Search"><span class="ic i-search"></span></button>
+          <button class="ibtn ibtn-tonal" aria-label="Filter"><span class="ic i-filter"></span></button>
+          <button class="ibtn ibtn-glass" aria-label="Back"><span class="ic i-back"></span></button>
+          <button class="ibtn ibtn-tonal ibtn-round" aria-label="Favorite" style="color: #FF7A3D"><span class="ic i-heart-fill"></span></button>
+          <button class="ibtn ibtn-lg" aria-label="Play" style="background: #FF7A3D; color: #1C0C04; border-radius: 50%"><span class="ic ic-lg i-play" style="margin-left: 3px"></span></button>
+          <button class="ibtn ibtn-xl" aria-label="Pause" style="background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25)"><span class="ic ic-xl i-pause"></span></button>
+        </div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C2</b><span>Chips, badges &amp; meta</span></div>
+        <div class="lab">Filter chips</div>
+        <div class="wrap"><button class="chip on">All</button><button class="chip">Movies</button><button class="chip"><span class="ic ic-xs i-live"></span>Channels</button><button class="chip">Genre <span class="ic ic-xs i-chev-d"></span></button><button class="chip ember">2026 <span class="ic ic-xs i-close"></span></button></div>
+        <div class="lab">Badges</div>
+        <div class="wrap"><span class="badge b-live">LIVE</span><span class="badge b-4k">4K</span><span class="badge b-4k">4K HDR</span><span class="badge b-fhd">FHD</span><span class="badge b-hd">HD</span><span class="badge b-new">NEW</span><span class="badge b-soft">16+</span><span class="badge b-lock"><span class="ic ic-xs i-lock"></span>PIN</span></div>
+        <div class="lab">Metadata line</div>
+        <div class="meta"><span class="rating"><span class="ic i-star"></span>8.6</span><span class="dot-sep"></span><span>2026</span><span class="dot-sep"></span><span>Sci-Fi · Drama</span><span class="dot-sep"></span><span>2h 18m</span></div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C3</b><span>Inputs &amp; selection</span></div>
+        <div class="field"><label for="c-a">Default</label><div class="input"><span class="ic ic-sm i-link"></span><input id="c-a" placeholder="http://server:port"></div></div>
+        <div class="field"><label for="c-b">Focused</label><div class="input focus"><span class="ic ic-sm i-user" style="color: #FF7A3D"></span><input id="c-b" value="Living Room"></div></div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="field"><label for="c-c">Valid</label><div class="input ok"><input id="c-c" value="living_room"><span class="ic ic-sm i-check" style="color: #5BD69B"></span></div></div>
+          <div class="field"><label for="c-d">Error</label><div class="input error"><input id="c-d" type="password" value="wrongpass"></div><span class="hint error">Incorrect password</span></div>
+        </div>
+        <div class="search"><span class="ic ic-sm i-search" style="color: #8E8A97"></span><label for="c-s" class="hide">Search</label><input id="c-s" placeholder="Channels, movies, series"><span class="ibtn ibtn-round" style="width: 36px; height: 36px; background: rgba(255,122,61,.16); color: #FF7A3D"><span class="ic ic-md i-mic"></span></span></div>
+        <div style="display: flex; align-items: center; gap: 22px"><div style="display: flex; align-items: center; gap: 10px"><button class="switch on" aria-label="On" aria-pressed="true"></button><span class="t-small">On</span></div><div style="display: flex; align-items: center; gap: 10px"><button class="switch" aria-label="Off" aria-pressed="false"></button><span class="t-small">Off</span></div></div>
+        <div class="seg"><button class="on">Xtream</button><button>M3U</button><button>File</button></div>
+        <div class="tabs" style="padding: 0"><button class="on">Channels</button><button>Movies</button><button>Series</button></div>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 32px">
+      <section class="kit">
+        <div class="kh"><b>C4</b><span>Posters &amp; media cards</span><i>2:3 · 16:9</i></div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 6px"><div class="poster" style="width: 100%"><img src="../assets/p-meridian.jpg" alt=""><div class="tl"><span class="badge b-4k">4K</span></div></div><span class="t-cap">Default</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><div class="poster" style="width: 100%"><img src="../assets/p-irontide.jpg" alt=""><div class="shade"></div><div class="tl"><span class="badge b-new">NEW</span></div><div class="ptitle" style="font-size: 10px">Iron Tide</div></div><span class="t-cap">Titled</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><div class="poster" style="width: 100%"><img src="../assets/p-northbound.jpg" alt=""><div class="progress" style="position: absolute; left: 6px; right: 6px; bottom: 6px"><span style="width: 58%"></span></div></div><span class="t-cap">In progress</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><div class="poster" style="width: 100%"><img src="../assets/b-neon.jpg" alt="" style="filter: blur(10px) brightness(.5)"><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #FFC65C"><span style="width: 40px; height: 40px; border-radius: 14px; background: rgba(0,0,0,.5); border: 1px solid rgba(255,198,92,.4); display: flex; align-items: center; justify-content: center"><span class="ic ic-md i-lock"></span></span></div></div><span class="t-cap">Locked</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 8px"><div class="thumb"><img src="../assets/e-1.jpg" alt=""><div class="shade"></div><div class="progress" style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0"><span style="width: 64%"></span></div></div><span class="t-title" style="font-size: 13px">Continue card</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px"><div class="thumb"><img src="../assets/b-stadium.jpg" alt=""><div class="shade"></div><div style="position: absolute; left: 8px; top: 8px"><span class="badge b-live">LIVE</span></div><div class="chlogo" style="position: absolute; left: 8px; bottom: 8px; width: 30px; height: 30px; font-size: 9px; border-radius: 8px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div></div><span class="t-title" style="font-size: 13px">Live card</span></div>
+        </div>
+        <div class="lab">Channel row · now playing</div>
+        <div style="position: relative; display: flex; align-items: center; gap: 12px; height: 66px; padding: 0 12px; border-radius: 16px; background: rgba(255,122,61,.1)">
+          <span style="position: absolute; left: 0; top: 16px; bottom: 16px; width: 3px; border-radius: 3px; background: #FF7A3D"></span>
+          <span class="mono-time" style="font-size: 11.5px; color: #8E8A97">102</span>
+          <div class="chlogo" style="width: 42px; height: 42px; font-size: 11px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div>
+          <div style="flex: 1"><div style="display: flex; align-items: center; gap: 6px"><span class="t-title" style="font-size: 14px">Pulse Sports 1</span><span class="badge b-fhd" style="height: 17px; font-size: 9.5px">FHD</span><span class="eq"><i></i><i></i><i></i></span></div><div style="display: flex; align-items: center; gap: 8px"><span class="t-cap" style="flex: 1; color: #FF9663">Coastal FC vs Northern United</span><div class="progress" style="width: 48px"><span style="width: 12%"></span></div></div></div>
+          <span class="ic ic-sm i-heart-fill" style="color: #FF7A3D"></span>
+        </div>
+        <div class="lab">Channel tiles</div>
+        <div class="wrap">
+          <div style="width: 96px; height: 112px; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px"><div class="chlogo" style="background: linear-gradient(145deg,#2F7DFF,#13306B)">MN</div><span class="t-cap">Meridian</span></div>
+          <div style="width: 96px; height: 112px; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px"><div class="chlogo" style="background: linear-gradient(145deg,#FF7A3D,#6B1E05)">CP</div><span class="t-cap">Cine Prime</span></div>
+          <div style="width: 96px; height: 112px; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px"><div class="chlogo" style="background: linear-gradient(145deg,#FFB547,#7A4A0B)">KZ</div><span class="t-cap">Kitezoo</span></div>
+          <div style="width: 96px; height: 112px; border-radius: 18px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px"><div class="chlogo" style="background: linear-gradient(145deg,#E2508F,#4E1235)">WV</div><span class="t-cap">Wave</span></div>
+        </div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C5</b><span>Progress &amp; loaders</span></div>
+        <div style="display: flex; flex-direction: column; gap: 12px">
+          <div class="progress"><span style="width: 64%"></span></div>
+          <div class="progress progress-lg"><span style="width: 38%"></span></div>
+          <div class="progress halo"><span style="width: 75%"></span></div>
+        </div>
+        <div class="wrap" style="gap: 26px">
+          <div class="orbit-loader"><i></i></div>
+          <span style="width: 28px; height: 28px; border-radius: 50%; border: 3px solid #FF7A3D; border-right-color: transparent; animation: ox-spin .9s linear infinite"></span>
+          <span class="eq" style="height: 18px"><i style="height: 18px"></i><i style="height: 18px"></i><i style="height: 18px"></i></span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13px"><span class="live-dot"></span>Live now</span>
+        </div>
+        <div class="lab">Skeletons</div>
+        <div style="display: flex; gap: 12px">
+          <div class="sk" style="width: 84px; height: 126px; border-radius: 14px; flex: none"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+            <div class="sk" style="height: 74px; border-radius: 14px"></div>
+            <div class="sk" style="height: 14px; width: 70%"></div>
+            <div class="sk" style="height: 12px; width: 45%"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px"><div class="sk" style="width: 42px; height: 42px; border-radius: 12px"></div><div style="flex: 1; display: flex; flex-direction: column; gap: 8px"><div class="sk" style="height: 12px; width: 50%"></div><div class="sk" style="height: 10px; width: 80%"></div></div></div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C6</b><span>Micro-interactions</span><i>Live in Play mode</i></div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 8px; border-radius: 18px; background: #101015">
+            <div style="position: relative; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: #FF7A3D"><div style="position: absolute; inset: 0; border-radius: 50%; border: 2px solid #FF7A3D; animation: ox-ring 1.8s infinite"></div><span class="ic ic-xl i-heart-fill anim-heart"></span></div>
+            <span class="t-cap" style="text-align: center">Favorite pop<br>900 ms spring</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 8px; border-radius: 18px; background: #101015">
+            <span class="ibtn ibtn-round anim-glow" style="width: 56px; height: 56px; background: #FF7A3D; color: #1C0C04"><span class="ic ic-lg i-play" style="margin-left: 3px"></span></span>
+            <span class="t-cap" style="text-align: center">Play glow<br>2.4 s loop</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 8px; border-radius: 18px; background: #101015">
+            <div class="poster" style="width: 48px; transform: translateY(-4px) scale(1.06); box-shadow: 0 16px 30px -10px rgba(0,0,0,.9), 0 0 0 2px #F5F1EB"><img src="../assets/p-avar.jpg" alt=""></div>
+            <span class="t-cap" style="text-align: center">Poster focus<br>lift + ring</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 32px">
+      <section class="kit">
+        <div class="kh"><b>C7</b><span>Navigation</span><i>Phone · tablet</i></div>
+        <div style="position: relative; height: 100px; border-radius: 22px; overflow: hidden">
+          <img class="fill-img" src="../assets/b-signal.jpg" alt="">
+          <nav class="bnav glass" aria-label="Sample bottom navigation" style="left: 8px; right: 8px; bottom: 12px">
+            <a href="Home.dc.html" class="on"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+            <a href="LiveTV.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+            <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+            <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+            <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+            <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+          </nav>
+        </div>
+        <div style="display: flex; gap: 14px">
+          <nav class="rail-nav" aria-label="Sample navigation rail" style="border-radius: 20px; padding: 16px 0; border: 1px solid rgba(255,255,255,.06)">
+            <a href="TabletHome.dc.html" class="on"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+            <a href="TabletLive.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+            <a href="TabletEPG.dc.html"><span class="pill"><span class="ic i-epg"></span></span>Guide</a>
+          </nav>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 6px 0 14px; border-radius: 18px; background: #101015">
+              <div class="logo-mark" style="width: 24px; height: 24px; margin-right: auto"><div class="ring" style="border-width: 2px"></div><div class="core" style="border-width: 4.5px 0 4.5px 7px"></div><div class="moon" style="width: 6px; height: 6px"></div></div>
+              <span class="ibtn" style="width: 40px"><span class="ic ic-md i-search"></span></span><span class="ibtn" style="width: 40px"><span class="ic ic-md i-cast"></span></span><span class="ibtn" style="width: 40px"><span class="ic ic-md i-bell"></span></span>
+            </div>
+            <p class="t-cap" style="line-height: 1.5">Top bar sits on a scrim over artwork. Active destination: ember pill + orbit dot. The rail replaces the bottom bar from 600 dp.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C8</b><span>Dialog</span></div>
+        <div class="dialog" style="padding: 24px; display: flex; flex-direction: column; gap: 14px" role="dialog" aria-label="Delete account">
+          <div style="width: 48px; height: 48px; border-radius: 16px; background: rgba(255,107,107,.12); color: #FF8C8C; display: flex; align-items: center; justify-content: center"><span class="ic i-trash"></span></div>
+          <div class="t-h2">Delete “Sports Pack”?</div>
+          <p class="t-body" style="font-size: 13.5px">This removes the account, its favorites and watch progress from this device. Your subscription with the provider isn’t affected.</p>
+          <div style="display: flex; justify-content: flex-end; gap: 8px"><button class="btn btn-ghost btn-sm">Cancel</button><button class="btn btn-sm" style="background: #FF6B6B; color: #2A0606">Delete</button></div>
+        </div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C9</b><span>Bottom sheet</span></div>
+        <div class="sheet" style="border-radius: 28px; padding: 0 8px 12px">
+          <div class="handle"></div>
+          <div style="padding: 6px 12px 10px" class="t-h2">Sort channels</div>
+          <button class="row" style="width: 100%; background: rgba(255,122,61,.1); border: 0; border-radius: 14px; min-height: 50px"><span class="ic ic-sm i-list" style="color: #FF7A3D"></span><span class="grow t-title" style="text-align: left; font-size: 14px">Channel number</span><span class="ic ic-sm i-check" style="color: #FF7A3D"></span></button>
+          <button class="row" style="width: 100%; background: none; border: 0; border-radius: 14px; min-height: 50px"><span class="ic ic-sm i-translate"></span><span class="grow t-title" style="text-align: left; font-size: 14px">Name A–Z</span></button>
+          <button class="row" style="width: 100%; background: none; border: 0; border-radius: 14px; min-height: 50px"><span class="ic ic-sm i-history"></span><span class="grow t-title" style="text-align: left; font-size: 14px">Recently watched</span></button>
+          <button class="row" style="width: 100%; background: none; border: 0; border-radius: 14px; min-height: 50px"><span class="ic ic-sm i-heart"></span><span class="grow t-title" style="text-align: left; font-size: 14px">Favorites first</span></button>
+        </div>
+      </section>
+
+      <section class="kit">
+        <div class="kh"><b>C10</b><span>Snackbars</span><i>4 s · above nav</i></div>
+        <div class="snack"><span class="ic ic-md i-heart-fill" style="color: #C93F0E"></span><span>Added to favorites</span><button class="act">Undo</button></div>
+        <div class="snack" style="background: #2A1414; color: #FFD6D6; border: 1px solid rgba(255,107,107,.35)"><span class="ic ic-md i-alert" style="color: #FF8C8C"></span><span>Stream unavailable</span><button class="act" style="color: #FFB4A0">Retry</button></div>
+        <div class="snack" style="background: #10261B; color: #CFF5E2; border: 1px solid rgba(91,214,155,.35)"><span class="ic ic-md i-check" style="color: #5BD69B"></span><span>Account connected</span></div>
+      </section>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1960}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

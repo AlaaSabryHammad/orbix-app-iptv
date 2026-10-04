@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Search</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <div style="padding: 40px 16px 0 8px; display: flex; align-items: center; gap: 6px">
+    <a href="Home.dc.html" class="ibtn" aria-label="Back"><span class="ic i-back flip"></span></a>
+    <div class="search input focus" style="flex: 1; border-radius: 999px; height: 50px">
+      <span class="ic ic-sm i-search" style="color: #F5F1EB"></span>
+      <label for="q" class="hide">Search</label>
+      <input id="q" placeholder="Channels, movies, series">
+      <a href="SearchVoice.dc.html" class="ibtn ibtn-round" aria-label="Voice search" style="width: 38px; height: 38px; background: rgba(255,122,61,.16); color: #FF7A3D"><span class="ic ic-md i-mic"></span></a>
+    </div>
+  </div>
+
+  <div class="scroll-x" style="gap: 8px; padding: 16px 20px 0">
+    <button class="chip on">All</button>
+    <button class="chip"><span class="ic ic-xs i-film"></span>Movies</button>
+    <button class="chip"><span class="ic ic-xs i-series"></span>Series</button>
+    <button class="chip"><span class="ic ic-xs i-live"></span>Channels</button>
+    <button class="chip">Genre <span class="ic ic-xs i-chev-d"></span></button>
+    <button class="chip">Year <span class="ic ic-xs i-chev-d"></span></button>
+  </div>
+
+  <section style="padding: 26px 20px 0; display: flex; flex-direction: column; gap: 6px">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px">
+      <h2 class="t-h2" style="font-size: 16px">Recent searches</h2>
+      <button class="btn btn-ghost btn-sm" style="color: #B4B0BA; padding: 0 8px">Clear all</button>
+    </div>
+    <sc-for list="{{recent}}" as="r" hint-placeholder-count="4">
+      <a href="SearchResults.dc.html" style="display: flex; align-items: center; gap: 14px; height: 46px; text-decoration: none">
+        <span class="ic ic-md i-history" style="color: #8E8A97"></span>
+        <span style="flex: 1; font-weight: 700; font-size: 15px">{{r.q}}</span>
+        <span class="t-cap">{{r.type}}</span>
+        <span class="ic ic-sm i-close" style="color: #8E8A97"></span>
+      </a>
+    </sc-for>
+  </section>
+
+  <section style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h2 class="t-h2" style="font-size: 16px; display: flex; align-items: center; gap: 8px"><span class="ic ic-md i-trending" style="color: #FF7A3D"></span>Trending searches</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{trending}}" as="t" hint-placeholder-count="5">
+        <a href="SearchResults.dc.html" class="chip" style="text-decoration: none; color: #F5F1EB"><span class="mono-time" style="font-size: 11px; color: #FF9663">{{t.n}}</span>{{t.q}}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: 26px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h2 class="t-h2" style="font-size: 16px">Browse</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{browse}}" as="b" hint-placeholder-count="4">
+        <a href="SearchResults.dc.html" style="position: relative; height: 84px; border-radius: 18px; overflow: hidden; text-decoration: none; display: block">
+          <img class="fill-img" src="{{b.img}}" alt="">
+          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,8,11,.9), rgba(8,8,11,.2))"></div>
+          <div style="position: absolute; left: 14px; top: 0; bottom: 0; display: flex; align-items: center; gap: 10px">
+            <span class="ic ic-md {{b.icon}}"></span><span style="font-weight: 800; font-size: 14.5px">{{b.name}}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      recent: [
+        { q: 'northbound', type: 'Movie' },
+        { q: 'pulse sports', type: 'Channel' },
+        { q: 'hollow crown', type: 'Series' },
+        { q: 'sci-fi 2026', type: 'Filter' }
+      ],
+      trending: [
+        { n: '1', q: 'Sands of Avar' }, { n: '2', q: 'Coastal FC' }, { n: '3', q: 'Parallel Station' },
+        { n: '4', q: 'Neon Requiem' }, { n: '5', q: 'Atlas of Rivers' }
+      ],
+      browse: [
+        { img: B('b-stadium.jpg'), icon: 'i-live', name: 'Live channels' },
+        { img: B('b-meridian.jpg'), icon: 'i-film', name: 'Movies' },
+        { img: B('b-hollow.jpg'), icon: 'i-series', name: 'Series' },
+        { img: B('b-kids.jpg'), icon: 'i-heart', name: 'Kids & family' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Movies</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 1980px; background: #08080B">
+  <div class="ambient" style="width: 340px; height: 260px; left: 40px; top: 120px; background: #FF8A3D; opacity: .14"></div>
+
+  <header style="position: relative; padding: 40px 12px 0 20px; display: flex; align-items: center; gap: 4px">
+    <h1 class="t-h1" style="font-size: 28px; margin-right: auto">Movies</h1>
+    <a href="Search.dc.html" class="ibtn" aria-label="Search movies"><span class="ic i-search"></span></a>
+    <div style="display: flex; padding: 3px; border-radius: 14px; background: #17171E; border: 1px solid rgba(255,255,255,.08)">
+      <button class="ibtn" aria-label="Grid view" aria-pressed="true" style="width: 38px; height: 38px; border-radius: 11px; background: #2C2C38"><span class="ic ic-sm i-grid"></span></button>
+      <button class="ibtn" aria-label="List view" aria-pressed="false" style="width: 38px; height: 38px; border-radius: 11px; color: #8E8A97"><span class="ic ic-sm i-list"></span></button>
+    </div>
+  </header>
+
+  <div class="scroll-x" style="gap: 8px; padding: 18px 20px 4px">
+    <sc-for list="{{genres}}" as="g" hint-placeholder-count="5">
+      <button class="chip {{g.on}}">{{g.name}}</button>
+    </sc-for>
+  </div>
+
+  <main style="display: flex; flex-direction: column; gap: 30px; padding: 18px 0 120px">
+    <section style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; gap: 12px; padding: 0 20px; overflow: hidden">
+        <a href="MovieDetails.dc.html" style="position: relative; width: 372px; height: 236px; flex: none; border-radius: 24px; overflow: hidden; text-decoration: none; box-shadow: 0 24px 50px -20px rgba(255,122,61,.45)">
+          <img class="fill-img" src="../assets/b-avar.jpg" alt="">
+          <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,11,.92) 0%, rgba(8,8,11,.2) 55%, rgba(8,8,11,0) 100%)"></div>
+          <div style="position: absolute; left: 18px; top: 16px; display: flex; gap: 6px"><span class="badge b-new">FEATURED</span><span class="badge b-4k">4K</span></div>
+          <div style="position: absolute; left: 18px; right: 18px; bottom: 16px; display: flex; align-items: flex-end; gap: 12px">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+              <div class="t-h1" style="text-transform: uppercase; font-size: 22px">Sands of Avar</div>
+              <div class="meta"><span class="rating"><span class="ic i-star"></span>8.3</span><span class="dot-sep"></span><span>2025</span><span class="dot-sep"></span><span>Adventure</span></div>
+            </div>
+            <span class="ibtn ibtn-round" style="width: 52px; height: 52px; background: #FF7A3D; color: #1C0C04; box-shadow: 0 10px 24px -6px rgba(255,122,61,.8)"><span class="ic i-play" style="margin-left: 2px"></span></span>
+          </div>
+        </a>
+        <div style="position: relative; width: 300px; height: 236px; flex: none; border-radius: 24px; overflow: hidden; opacity: .6">
+          <img class="fill-img" src="../assets/b-irontide.jpg" alt="">
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 5px">
+        <span style="width: 22px; height: 4px; border-radius: 4px; background: #F5F1EB"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.25)"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.25)"></span>
+        <span style="width: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.25)"></span>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2" style="display: flex; align-items: center; gap: 8px"><span class="ic ic-md i-trending" style="color: #FF7A3D"></span>Trending</h2><a href="Movies.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{trending}}" as="m" hint-placeholder-count="4">
+          <a href="MovieDetails.dc.html" class="poster" style="width: 120px">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div class="tl"><span class="badge {{m.qc}}">{{m.q}}</span></div>
+            <div class="ptitle" style="font-size: 12px">{{m.title}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Top rated</h2><span class="t-cap">List view</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 20px">
+        <sc-for list="{{top}}" as="m" hint-placeholder-count="3">
+          <a href="MovieDetails.dc.html" class="card" style="display: flex; align-items: center; gap: 14px; padding: 10px; border-radius: 18px; text-decoration: none">
+            <div class="poster" style="width: 62px; border-radius: 10px; box-shadow: none"><img src="{{m.img}}" alt=""></div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+              <div style="display: flex; align-items: center; gap: 8px"><span class="mono-time" style="font-size: 12px; color: #FF9663">{{m.rank}}</span><span class="t-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{m.title}}</span></div>
+              <div class="meta" style="font-size: 12px"><span>{{m.year}}</span><span class="dot-sep"></span><span>{{m.genre}}</span><span class="dot-sep"></span><span>{{m.dur}}</span></div>
+              <div style="display: flex; align-items: center; gap: 8px"><span class="rating"><span class="ic i-star"></span>{{m.r}}</span><span class="badge {{m.qc}}">{{m.q}}</span></div>
+            </div>
+            <span class="ibtn ibtn-tonal ibtn-round" style="width: 42px; height: 42px"><span class="ic ic-sm i-play" style="margin-left: 2px"></span></span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recently added</h2><span class="t-cap">Grid view</span></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 12px; padding: 0 20px">
+        <sc-for list="{{added}}" as="m" hint-placeholder-count="6">
+          <a href="MovieDetails.dc.html" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none">
+            <div class="poster" style="width: 100%">
+              <img src="{{m.img}}" alt="">
+              <div class="tl"><span class="badge {{m.qc}}">{{m.q}}</span></div>
+            </div>
+            <div>
+              <div class="t-title" style="font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{m.title}}</div>
+              <div class="meta" style="font-size: 11.5px; gap: 6px"><span>{{m.year}}</span><span class="rating" style="font-size: 11.5px"><span class="ic i-star"></span>{{m.r}}</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <div class="rail-head"><h2 class="t-h2">Recommended</h2><a href="Movies.dc.html">See all <span class="ic ic-xs i-chev-r flip"></span></a></div>
+      <div class="rail">
+        <sc-for list="{{reco}}" as="m" hint-placeholder-count="4">
+          <a href="MovieDetails.dc.html" class="poster" style="width: 120px">
+            <img src="{{m.img}}" alt="">
+            <div class="shade"></div>
+            <div class="ptitle" style="font-size: 12px">{{m.title}}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bnav glass" aria-label="Main">
+    <a href="Home.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":1980}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = (id) => '../assets/' + id;
+    return {
+      genres: [
+        { name: 'All', on: 'on' }, { name: 'Action', on: '' }, { name: 'Sci-Fi', on: '' }, { name: 'Drama', on: '' },
+        { name: 'Thriller', on: '' }, { name: 'Family', on: '' }, { name: 'Adventure', on: '' }
+      ],
+      trending: [
+        { img: B('p-neon.jpg'), title: 'Neon Requiem', q: '4K', qc: 'b-4k' },
+        { img: B('p-ashfall.jpg'), title: 'Ashfall', q: 'FHD', qc: 'b-fhd' },
+        { img: B('p-northbound.jpg'), title: 'Northbound', q: '4K', qc: 'b-4k' },
+        { img: B('p-halcyon.jpg'), title: 'Halcyon Drift', q: 'FHD', qc: 'b-fhd' }
+      ],
+      top: [
+        { rank: '01', img: B('p-meridian.jpg'), title: 'The Last Meridian', year: '2026', genre: 'Sci-Fi', dur: '2h 18m', r: '8.6', q: '4K', qc: 'b-4k' },
+        { rank: '02', img: B('p-lantern.jpg'), title: 'Little Lantern', year: '2025', genre: 'Family', dur: '1h 34m', r: '8.4', q: 'FHD', qc: 'b-fhd' },
+        { rank: '03', img: B('p-avar.jpg'), title: 'Sands of Avar', year: '2025', genre: 'Adventure', dur: '2h 06m', r: '8.3', q: '4K', qc: 'b-4k' }
+      ],
+      added: [
+        { img: B('p-irontide.jpg'), title: 'Iron Tide', year: '2026', r: '7.6', q: '4K', qc: 'b-4k' },
+        { img: B('p-harbor.jpg'), title: 'Quiet Harbor', year: '2024', r: '8.1', q: 'FHD', qc: 'b-fhd' },
+        { img: B('p-cartographer.jpg'), title: 'The Cartographer', year: '2024', r: '7.5', q: 'FHD', qc: 'b-fhd' },
+        { img: B('p-orchard.jpg'), title: 'Glass Orchard', year: '2023', r: '7.2', q: 'HD', qc: 'b-hd' },
+        { img: B('p-saltwater.jpg'), title: 'Saltwater Kings', year: '2024', r: '7.4', q: 'FHD', qc: 'b-fhd' },
+        { img: B('p-halcyon.jpg'), title: 'Halcyon Drift', year: '2025', r: '7.8', q: '4K', qc: 'b-4k' }
+      ],
+      reco: [
+        { img: B('p-ashfall.jpg'), title: 'Ashfall' },
+        { img: B('p-northbound.jpg'), title: 'Northbound' },
+        { img: B('p-meridian.jpg'), title: 'The Last Meridian' },
+        { img: B('p-neon.jpg'), title: 'Neon Requiem' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

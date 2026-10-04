@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Live TV</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <div class="ambient" style="width: 360px; height: 240px; left: 26px; top: 120px; background: #2FBF71; opacity: .12"></div>
+
+  <header style="padding: 40px 12px 0 20px; display: flex; align-items: center; gap: 4px">
+    <h1 class="t-h1" style="font-size: 28px; margin-right: auto">Live TV</h1>
+    <a href="SearchResults.dc.html" class="ibtn" aria-label="Search channels"><span class="ic i-search"></span></a>
+    <a href="EPG.dc.html" class="btn btn-tonal btn-sm"><span class="ic ic-sm i-epg"></span>Guide</a>
+  </header>
+
+  <div style="padding: 14px 12px 0">
+    <a href="PlayerLive.dc.html" class="thumb" style="border-radius: 20px; box-shadow: 0 24px 50px -20px rgba(47,191,113,.4), 0 0 0 1px rgba(255,255,255,.08)">
+      <img src="../assets/b-stadium.jpg" alt="">
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7) 100%)"></div>
+      <div style="position: absolute; left: 12px; top: 12px; display: flex; gap: 6px"><span class="badge b-live">LIVE</span><span class="badge b-fhd">FHD</span></div>
+      <div style="position: absolute; right: 8px; top: 6px; display: flex"><span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-volume"></span></span><span class="ibtn" style="width: 38px; height: 38px"><span class="ic ic-md i-pip"></span></span></div>
+      <div style="position: absolute; left: 12px; right: 8px; bottom: 10px; display: flex; align-items: center; gap: 10px">
+        <span class="mono-time" style="font-size: 11px">20:30</span>
+        <div class="progress" style="flex: 1"><span style="width: 12%"></span></div>
+        <span class="mono-time" style="font-size: 11px; color: #B4B0BA">22:30</span>
+        <span class="ibtn" style="width: 36px; height: 36px"><span class="ic ic-md i-fullscreen"></span></span>
+      </div>
+    </a>
+  </div>
+
+  <div style="margin: 12px 12px 0; padding: 14px; border-radius: 20px; background: #101015; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div class="chlogo" style="width: 44px; height: 44px; font-size: 12px; background: linear-gradient(145deg,#2FBF71,#0E4A2B)">P1</div>
+      <div style="flex: 1; min-width: 0">
+        <div style="display: flex; align-items: center; gap: 6px"><span class="t-title">Pulse Sports 1</span><span class="mono-time" style="font-size: 11px; color: #8E8A97">102</span></div>
+        <div class="t-small" style="color: #F5F1EB; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Coastal FC vs Northern United</div>
+      </div>
+      <button class="ibtn" aria-label="Remove from favorites" aria-pressed="true" style="color: #FF7A3D"><span class="ic i-heart-fill"></span></button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 14px; background: rgba(255,122,61,.08); border: 1px solid rgba(255,122,61,.22)">
+        <span class="t-over" style="color: #FF9663; font-size: 10px">Now · 20:30–22:30</span>
+        <span style="font-weight: 700; font-size: 13px; line-height: 1.3">Matchday 9, Harbor Park</span>
+        <div class="progress"><span style="width: 12%"></span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07)">
+        <span class="t-over" style="font-size: 10px">Next · 22:30</span>
+        <span style="font-weight: 700; font-size: 13px; line-height: 1.3; color: #D2CED8">Match Review</span>
+        <span class="t-cap">30 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-x" style="gap: 8px; padding: 14px 12px 6px">
+    <sc-for list="{{cats}}" as="c" hint-placeholder-count="5">
+      <button class="chip chip-sm {{c.on}}"><span class="ic ic-xs {{c.icon}}"></span>{{c.name}} <span style="opacity: .6">{{c.n}}</span></button>
+    </sc-for>
+  </div>
+
+  <div style="padding: 4px 8px 120px; display: flex; flex-direction: column; gap: 2px">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+      <a href="PlayerLive.dc.html" style="position: relative; display: flex; align-items: center; gap: 12px; height: 66px; padding: 0 10px; border-radius: 16px; text-decoration: none; background: {{r.bgRow}}">
+        <span style="position: absolute; left: 0; top: 16px; bottom: 16px; width: 3px; border-radius: 3px; background: {{r.bar}}"></span>
+        <span class="mono-time" style="width: 26px; font-size: 11.5px; color: #8E8A97">{{r.num}}</span>
+        <div class="chlogo" style="width: 42px; height: 42px; font-size: 11px; background: {{r.bg}}">{{r.logo}}</div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+          <div style="display: flex; align-items: center; gap: 6px">
+            <span class="t-title" style="font-size: 14px; white-space: nowrap">{{r.name}}</span>
+            <span class="badge {{r.qc}}" style="height: 17px; font-size: 9.5px">{{r.q}}</span>
+            <sc-if value="{{r.playing}}" hint-placeholder-val="{{false}}"><span class="eq" aria-label="Now playing"><i></i><i></i><i></i></span></sc-if>
+            <sc-if value="{{r.locked}}" hint-placeholder-val="{{false}}"><span class="badge b-lock"><span class="ic ic-xs i-lock"></span>PIN</span></sc-if>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span class="t-cap" style="flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: {{r.progCol}}">{{r.prog}}</span>
+            <div class="progress" style="width: 48px; flex: none"><span style="width: {{r.p}}%"></span></div>
+          </div>
+        </div>
+        <span class="ic ic-sm {{r.favIcon}}" style="color: {{r.favCol}}"></span>
+      </a>
+    </sc-for>
+  </div>
+
+  <nav class="bnav glass" aria-label="Main">
+    <a href="Home.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html"><span class="pill"><span class="ic i-heart"></span></span>Favorites</a>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const row = (o) => Object.assign({ playing: false, locked: false, bgRow: 'transparent', bar: 'transparent', progCol: '#8E8A97', favIcon: 'i-heart', favCol: '#5C5966' }, o);
+    return {
+      cats: [
+        { name: 'All', n: '1,284', icon: 'i-live', on: 'on' },
+        { name: 'Favorites', n: '12', icon: 'i-heart', on: '' },
+        { name: 'News', n: '86', icon: 'i-globe', on: '' },
+        { name: 'Sports', n: '142', icon: 'i-trending', on: '' },
+        { name: 'Entertainment', n: '210', icon: 'i-series', on: '' },
+        { name: 'Kids', n: '48', icon: 'i-sun', on: '' },
+        { name: 'Documentaries', n: '64', icon: 'i-film', on: '' },
+        { name: 'Movies', n: '120', icon: 'i-film', on: '' },
+        { name: 'Music', n: '37', icon: 'i-audio', on: '' },
+        { name: 'International', n: '515', icon: 'i-globe', on: '' }
+      ],
+      rows: [
+        row({ num: '101', logo: 'MN', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)', name: 'Meridian News', q: 'HD', qc: 'b-hd', prog: 'The Evening Bulletin · 20:00–21:00', p: 75, favIcon: 'i-heart-fill', favCol: '#FF7A3D' }),
+        row({ num: '102', logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', name: 'Pulse Sports 1', q: 'FHD', qc: 'b-fhd', prog: 'Coastal FC vs Northern United', p: 12, playing: true, bgRow: 'rgba(255,122,61,.1)', bar: '#FF7A3D', progCol: '#FF9663', favIcon: 'i-heart-fill', favCol: '#FF7A3D' }),
+        row({ num: '103', logo: 'P2', bg: 'linear-gradient(145deg,#1FA88A,#0B3A33)', name: 'Pulse Sports 2', q: '4K', qc: 'b-4k', prog: 'Grand Prix Qualifying · 20:00–21:30', p: 50 }),
+        row({ num: '104', logo: 'CP', bg: 'linear-gradient(145deg,#FF7A3D,#6B1E05)', name: 'Cine Prime', q: 'FHD', qc: 'b-fhd', prog: 'Neon Requiem · 19:45–21:50', p: 48, favIcon: 'i-heart-fill', favCol: '#FF7A3D' }),
+        row({ num: '105', logo: 'AD', bg: 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', name: 'Atlas Docs', q: '4K', qc: 'b-4k', prog: 'Atlas of Rivers: The Delta', p: 75 }),
+        row({ num: '106', logo: 'KZ', bg: 'linear-gradient(145deg,#FFB547,#7A4A0B)', name: 'Kitezoo Kids', q: 'HD', qc: 'b-hd', prog: 'Paper Planets · 20:30–21:00', p: 50 }),
+        row({ num: '107', logo: 'WV', bg: 'linear-gradient(145deg,#E2508F,#4E1235)', name: 'Wave Music', q: '4K', qc: 'b-4k', prog: 'Live at the Arena', p: 38 }),
+        row({ num: '190', logo: 'LN', bg: 'linear-gradient(145deg,#5A5A6E,#1E1E28)', name: 'Late Night Cinema', q: 'HD', qc: 'b-hd', prog: 'Locked by parental control', p: 0, locked: true })
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+{
+  "@@locale": "en",
+  "appTitle": "Orbix",
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Bottom nav / rail"
+  },
+  "navLive": "Live TV",
+  "navGuide": "Guide",
+  "@navGuide": {
+    "description": "Rail only (≥600dp)"
+  },
+  "navMovies": "Movies",
+  "navSeries": "Series",
+  "navFavorites": "Favorites",
+  "navProfile": "Profile",
+  "@navProfile": {
+    "description": "Bottom nav — opens Settings"
+  },
+  "navSettings": "Settings",
+  "@navSettings": {
+    "description": "Rail only (≥600dp)"
+  },
+  "devFoundations": "Design foundations",
+  "@devFoundations": {
+    "description": "Dev-only preview screen title"
+  },
+  "devGallery": "Component gallery",
+  "@devGallery": {
+    "description": "Dev-only gallery screen title"
+  },
+  "badgeLive": "LIVE",
+  "@badgeLive": {
+    "description": "Live badge; AR from HomeAR/LiveTVAR"
+  },
+  "badgeNew": "NEW",
+  "@badgeNew": {
+    "description": "New-content badge; AR from HomeAR"
+  },
+  "badgePin": "PIN",
+  "@badgePin": {
+    "description": "Parental-lock badge. AR not in reference screens — needs review"
+  },
+  "a11yLoading": "Loading",
+  "a11yNowPlaying": "Now playing",
+  "a11yLocked": "Locked",
+  "a11yAddFavorite": "Add to favorites",
+  "a11yRemoveFavorite": "Remove from favorites",
+  "a11yShowPassword": "Show password",
+  "a11yHidePassword": "Hide password",
+  "a11yClear": "Clear",
+  "a11yVoiceSearch": "Voice search",
+  "a11yDismiss": "Dismiss",
+  "@a11yLoading": {
+    "description": "Screen-reader labels (a11y*). AR versions not in reference screens — need review"
+  },
+  "splashTagline": "Every stream you own, in one orbit.",
+  "splashLoading": "Loading your library",
+  "playerOnlyNotice": "Orbix is a media player. It does not include channels or content.",
+  "actionSkip": "Skip",
+  "actionNext": "Next",
+  "actionBack": "Back",
+  "actionGetStarted": "Get started",
+  "onboardingStep": "Step {step} of {total}",
+  "@onboardingStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboarding1Title": "Connect your own IPTV service",
+  "onboarding1Body": "Sign in with Xtream Codes, an M3U link or a playlist file. Orbix plays what your provider gives you — it never supplies content itself.",
+  "onboarding2Title": "Live TV, movies and series together",
+  "onboarding2Body": "Flip channels with a full TV guide, then jump into films and box sets. Everything from your playlist, organized and fast.",
+  "onboarding3Title": "Keep favorites. Resume to the second.",
+  "onboarding3Body": "Heart any channel, movie or series. Progress is saved on this device, so every title opens exactly where you stopped.",
+  "onboardingXtreamCard": "Xtream Codes",
+  "onboardingOnline": "ONLINE",
+  "onboardingM3uChip": "M3U playlist",
+  "onboardingEpgChip": "EPG guide",
+  "onboardingFileChip": "Local .m3u file",
+  "onboardingCardCaption": "Living Room · 1,284 channels",
+  "onboardingResume": "Resume S3 · E4 “Ash on the Avenue”",
+  "onboardingMinLeft": "18 min left",
+  "onboardingFavorites": "favorites",
+  "addAccountTitle": "Add IPTV account",
+  "addAccountIntro": "Use a service you are authorized to access. Orbix doesn’t sell or provide channels.",
+  "savedProfiles": "{count, plural, =1{1 saved profile} other{{count} saved profiles}}",
+  "@savedProfiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sourceXtream": "Xtream",
+  "sourceM3u": "M3U",
+  "sourceFile": "File",
+  "fieldAccountName": "Account name",
+  "fieldServerUrl": "Server URL",
+  "fieldUsername": "Username",
+  "fieldPassword": "Password",
+  "fieldPlaylistName": "Playlist name",
+  "fieldM3uUrl": "M3U playlist URL",
+  "fieldEpgUrlXmltv": "EPG URL (XMLTV)",
+  "epgOptionalTitle": "EPG URL",
+  "epgOptionalTag": "· optional",
+  "epgOptionalHint": "Uses your provider’s guide when empty",
+  "saveProfileEncrypted": "Save as profile · stored encrypted on this device",
+  "actionTest": "Test",
+  "actionConnect": "Connect",
+  "actionCancel": "Cancel",
+  "actionRetry": "Retry",
+  "actionEditDetails": "Edit details",
+  "actionTryAgain": "Try again",
+  "or": "or",
+  "chooseLocalFile": "Choose a local file",
+  "chooseLocalFileHint": ".m3u or .m3u8 from this device",
+  "testingConnection": "Testing connection…",
+  "testingHint": "Usually takes under 10 seconds",
+  "testPassed": "Connection works",
+  "testPassedHint": "Everything checks out — tap Connect to save.",
+  "testFailed": "Couldn’t connect",
+  "stepReach": "Server reachable",
+  "stepSignIn": "Signed in",
+  "stepDownload": "Playlist downloaded",
+  "stepRead": "Reading channels & VOD",
+  "stepGuide": "Guide data (EPG)",
+  "stepWaiting": "Waiting",
+  "stepSkipped": "Not provided",
+  "stepGuideBroken": "Unavailable",
+  "requiredField": "Required",
+  "invalidUrl": "Enter a valid URL",
+  "useDemoProvider": "Use demo provider (debug)",
+  "errorOffline": "You’re offline",
+  "errorOfflineBody": "Check Wi‑Fi or mobile data. Orbix reconnects on its own as soon as you’re back.",
+  "errorHostNotFound": "We couldn’t find this server. Check the URL and port.",
+  "errorRefused": "The server refused the connection. Check the port.",
+  "errorTimeout": "Server isn’t responding",
+  "errorTimeoutBody": "{host} didn’t answer within 10 seconds. This is usually temporary on the provider’s side.",
+  "@errorTimeoutBody": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "errorServer": "The provider’s server has a problem (error {code}). Try again later.",
+  "@errorServer": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "errorAccessDenied": "The provider refused access (error {code}). Your IP or app may be blocked.",
+  "@errorAccessDenied": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "errorCredentials": "Username or password is incorrect. Check the details from your provider and try again.",
+  "errorExpired": "This account has expired",
+  "errorExpiredBody": "Your provider reports that “{name}” ended on {date}. Renew it with your provider, then refresh here.",
+  "@errorExpiredBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "errorExpiredShort": "This subscription has expired.",
+  "errorDisabled": "The provider has disabled this account ({status}).",
+  "@errorDisabled": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotIptv": "This address doesn’t look like an IPTV server.",
+  "errorPlaylist": "This isn’t a valid M3U playlist.",
+  "errorGuide": "The guide couldn’t be read.",
+  "errorTls": "Secure connection failed (certificate problem).",
+  "errorUnknown": "Something went wrong. Please try again.",
+  "passwordsCaseSensitive": "Passwords are case-sensitive",
+  "loadingPlaylist": "Loading your playlist",
+  "loadingPlaylistBody": "Live TV is ready first — movies and series keep loading in the background.",
+  "sectionChannels": "Channels",
+  "sectionMovies": "Movies",
+  "sectionSeries": "Series",
+  "watchLiveNow": "Watch Live TV now",
+  "allSetTitle": "You’re all set",
+  "allSetBody": "“{name}” is connected and saved on this device.",
+  "@allSetBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "statLive": "Live channels",
+  "statMovies": "Movies",
+  "statSeries": "Series",
+  "statGuide": "TV guide",
+  "guideDays": "{count, plural, =1{1 day} other{{count} days}}",
+  "@guideDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "startWatching": "Start watching",
+  "profilesTitle": "Choose an account",
+  "profilesSubtitle": "Your IPTV profiles on this device",
+  "actionEdit": "Edit",
+  "actionDone": "Done",
+  "addAccount": "Add account",
+  "addAccountTypes": "Xtream · M3U",
+  "editAccount": "Edit account",
+  "setAsDefault": "Set as default",
+  "actionDelete": "Delete",
+  "openDefaultOnLaunch": "Open default account on launch",
+  "openDefaultOnLaunchHint": "Skip this screen next time",
+  "continueWith": "Continue with {name}",
+  "@continueWith": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "expiresOn": "expires {date}",
+  "@expiresOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAccountTitle": "Delete “{name}”?",
+  "@deleteAccountTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAccountBody": "This removes the account, its favorites and watch progress from this device. Your subscription with the provider isn’t affected.",
+  "accountDeleted": "Account deleted",
+  "actionUndo": "Undo",
+  "lastUsedNever": "Not opened yet",
+  "justNow": "Just now",
+  "minutesAgo": "{count} min ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{count} h ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "yesterday": "Yesterday",
+  "daysAgo": "{count} days ago",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "kindXtream": "XTREAM",
+  "kindM3u": "M3U",
+  "kindFile": "FILE",
+  "actionPlay": "Play",
+  "actionResume": "Resume",
+  "actionMoreInfo": "More info",
+  "actionSearch": "Search",
+  "actionSeeAll": "See all",
+  "actionAll": "All",
+  "switchAccount": "Switch account",
+  "homeContinue": "Continue watching",
+  "homeLiveNow": "Live now",
+  "homeAllChannels": "All channels",
+  "homeRecentlyAdded": "Recently added",
+  "homePopularMovies": "Popular movies",
+  "homePopularSeries": "Popular series",
+  "homeRecommended": "Recommended for you",
+  "homeRecentlyWatched": "Recently watched",
+  "homeFavorites": "Your favorites",
+  "homeManage": "Manage",
+  "becauseYouWatched": "Because you watched {title}",
+  "@becauseYouWatched": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "topPicksTonight": "Top picks for tonight",
+  "watched": "Watched",
+  "goodMorning": "Good morning",
+  "goodAfternoon": "Good afternoon",
+  "goodEvening": "Good evening",
+  "searchHint": "Channels, movies, series",
+  "searchHintLong": "Search channels, movies, series",
+  "seasonsCount": "{count, plural, =1{1 season} other{{count} seasons}}",
+  "@seasonsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeEmptyTitle": "Your library is loading",
+  "homeEmptyBody": "Channels, movies and series appear here as soon as your playlist is ready.",
+  "moviesTitle": "Movies",
+  "seriesTitle": "Series",
+  "trending": "Trending",
+  "topRated": "Top rated",
+  "recommended": "Recommended",
+  "popular": "Popular",
+  "genres": "Genres",
+  "featuredBadge": "FEATURED",
+  "featuredSeries": "Featured series",
+  "actionDetails": "Details",
+  "resumeEpisode": "Resume S{season} · E{episode}",
+  "@resumeEpisode": {
+    "placeholders": {
+      "season": {
+        "type": "int"
+      },
+      "episode": {
+        "type": "int"
+      }
+    }
+  },
+  "seriesCount": "{count, plural, =1{1 series} other{{count} series}}",
+  "@seriesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moviesCount": "{count, plural, =1{1 movie} other{{count} movies}}",
+  "@moviesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gridView": "Grid view",
+  "listView": "List view",
+  "actionFilter": "Filter",
+  "sortTitle": "Sort by",
+  "sortPlaylist": "Playlist order",
+  "sortRecent": "Recently watched",
+  "sortRating": "Top rated",
+  "sortName": "Name A–Z",
+  "emptyCategoryTitle": "Nothing here yet",
+  "emptyCategoryBody": "This category is empty in your playlist.",
+  "resumeAt": "Resume · {time}",
+  "@resumeAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "trailer": "Trailer",
+  "favorited": "Favorited",
+  "favorite": "Favorite",
+  "share": "Share",
+  "markWatched": "Watched",
+  "markUnwatched": "Mark unwatched",
+  "director": "Director",
+  "castLabel": "Cast",
+  "released": "Released",
+  "cast": "Cast",
+  "relatedMovies": "Related movies",
+  "moreLikeThis": "More like this",
+  "moreActions": "More",
+  "shareText": "{title} — I’m watching it on Orbix",
+  "@shareText": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "seasonN": "Season {n}",
+  "@seasonN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "episodesTitle": "Episodes",
+  "upNext": "Up next",
+  "continueWatchingShort": "Continue watching",
+  "episodeN": "Episode {n}",
+  "@episodeN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "minutesShort": "{count} min",
+  "@minutesShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playEpisode": "Play S{season} · E{episode}",
+  "@playEpisode": {
+    "placeholders": {
+      "season": {
+        "type": "int"
+      },
+      "episode": {
+        "type": "int"
+      }
+    }
+  },
+  "episodesCount": "{count, plural, =1{1 episode} other{{count} episodes}}",
+  "@episodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "recentSearches": "Recent searches",
+  "clearAll": "Clear all",
+  "trendingSearches": "Popular right now",
+  "browse": "Browse",
+  "browseLive": "Live channels",
+  "browseMovies": "Movies",
+  "browseSeries": "Series",
+  "browseFavorites": "Favorites",
+  "filterMovies": "Movies",
+  "filterSeries": "Series",
+  "filterChannels": "Channels",
+  "filterGenre": "Genre",
+  "filterYear": "Year",
+  "allCount": "All · {count}",
+  "@allCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "typeCount": "{type} · {count}",
+  "@typeCount": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "kindMovie": "Movie",
+  "kindSeries": "Series",
+  "liveNowLabel": "Live now",
+  "searchChannels": "Channels",
+  "searchTitles": "Movies & series",
+  "noResultsTitle": "No matches for “{query}”",
+  "@noResultsTitle": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "noResultsBody": "Check the spelling, or remove the filters to search everything.",
+  "clearFilters": "Clear filters",
+  "listening": "Listening…",
+  "voiceHint": "Try “Pulse Sports 1” or “Comedy series”",
+  "tapToStop": "Tap to stop",
+  "voiceUnavailable": "Voice search isn’t available on this device.",
+  "voiceNoPermission": "Microphone access is needed for voice search.",
+  "anyYear": "Any year",
+  "anyGenre": "Any genre",
+  "favoritesTitle": "Favorites",
+  "dragToReorder": "Drag to reorder · tap − to remove",
+  "removeFavorite": "Remove from favorites",
+  "removedFromFavorites": "{name} removed from favorites",
+  "@removedFromFavorites": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noFavoritesTitle": "Nothing saved yet",
+  "noFavoritesBody": "Tap the heart on any channel, movie or series and it will wait for you here.",
+  "browseLiveTv": "Browse Live TV",
+  "endsAt": "ends {time}",
+  "@endsAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "liveTitle": "Live TV",
+  "guide": "Guide",
+  "allChannels": "All channels",
+  "favoritesCategory": "Favorites",
+  "lockedCategory": "Locked",
+  "nowAt": "Now · {range}",
+  "@nowAt": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "nextAt": "Next · {time}",
+  "@nextAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "channelNumber": "Channel {number}",
+  "@channelNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "lockedByParental": "Locked by parental control",
+  "noGuideData": "No guide data",
+  "filterCategory": "Filter {name}",
+  "@filterCategory": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sortChannels": "Sort channels",
+  "sortNumber": "Channel number",
+  "sortFavoritesFirst": "Favorites first",
+  "actionFullscreen": "Full screen",
+  "actionMute": "Mute",
+  "actionPip": "Picture-in-picture",
+  "scheduleLater": "Later",
+  "scheduleNow": "Now",
+  "scheduleNext": "Next",
+  "scheduleEnded": "Ended",
+  "noChannelsTitle": "No channels here",
+  "noChannelsBody": "This category has no channels in your playlist.",
+  "tvGuideTitle": "TV Guide",
+  "pickDate": "Pick date",
+  "filterCategories": "Filter categories",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "yesterdayShort": "Yesterday",
+  "nowButton": "Now",
+  "watchNow": "Watch now",
+  "watch": "Watch",
+  "onNow": "ON NOW",
+  "minLeft": "{count} min left",
+  "@minLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "updatingPercent": "Updating {percent}%",
+  "@updatingPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "guideEmptyTitle": "No guide data yet",
+  "guideEmptyBody": "Your provider hasn’t sent a TV guide for these channels. Refresh, or add an EPG URL to the account.",
+  "refreshGuide": "Refresh guide",
+  "allCategories": "All categories",
+  "categoriesSummary": "{first} +{more}",
+  "@categoriesSummary": {
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "more": {
+        "type": "int"
+      }
+    }
+  },
+  "guideSources": "Guide data from {count, plural, =1{1 source} other{{count} sources}} · {days}",
+  "@guideSources": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsTitle": "Settings",
+  "searchSettings": "Search settings",
+  "activeBadge": "ACTIVE",
+  "catalogCounts": "{channels} channels · {movies} movies · {series} series",
+  "@catalogCounts": {
+    "placeholders": {
+      "channels": {
+        "type": "String"
+      },
+      "movies": {
+        "type": "String"
+      },
+      "series": {
+        "type": "String"
+      }
+    }
+  },
+  "refreshLists": "Refresh lists",
+  "refreshingLists": "Refreshing lists…",
+  "sectionGeneral": "General",
+  "language": "Language",
+  "languageSystem": "System default",
+  "startScreen": "Start screen",
+  "autoplayNext": "Auto-play next episode",
+  "autoplayNextHint": "Starts after a 10 s countdown",
+  "sectionPlayback": "Playback & player",
+  "preferredPlayer": "Preferred player",
+  "orbixPlayer": "Orbix Player",
+  "hardwareDecoding": "Hardware decoding",
+  "hardwareDecodingHint": "Smoother 4K, lower battery use",
+  "audioLanguage": "Audio language",
+  "audioLanguageHint": "Tap in order of preference",
+  "audioLanguagesValue": "{first}, then {second}",
+  "@audioLanguagesValue": {
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "second": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleSettings": "Subtitle settings",
+  "subtitleSize": "Size",
+  "subtitleStyle": "Style",
+  "sizeSmall": "Small",
+  "sizeMedium": "Medium",
+  "sizeLarge": "Large",
+  "styleOutline": "outline",
+  "styleShadow": "shadow",
+  "styleBox": "box",
+  "defaultQuality": "Default quality",
+  "qualityAuto": "Auto",
+  "sectionAppearance": "Appearance",
+  "theme": "Theme",
+  "themeDark": "Dark",
+  "themeAmoled": "AMOLED black",
+  "themeSystem": "System",
+  "sectionGuide": "TV guide (EPG)",
+  "epgSources": "EPG sources",
+  "epgSourcesValue": "{count, plural, =0{Provider} other{Provider + {count}}}",
+  "epgSourcesNone": "None",
+  "providerGuide": "From your provider",
+  "yourGuide": "Your EPG URL",
+  "epgRefresh": "EPG refresh",
+  "lastUpdated": "Last updated {when}",
+  "neverUpdated": "Not downloaded yet",
+  "everyHours": "{hours, plural, =1{Every hour} other{Every {hours} h}}",
+  "guideShift": "Guide time shift",
+  "shiftHours": "{value} h",
+  "sectionPlaylist": "Playlist",
+  "autoUpdatePlaylist": "Auto-update playlist",
+  "autoUpdatePlaylistHint": "On launch, at most once a day",
+  "sectionSecurity": "Security & accounts",
+  "parentalControls": "Parental controls",
+  "parentalSummaryOn": "{count, plural, =0{PIN on} =1{PIN on · 1 category locked} other{PIN on · {count} categories locked}}",
+  "parentalSummaryOff": "Off — set a PIN to lock content",
+  "manageAccounts": "Manage IPTV accounts",
+  "sectionStorage": "Storage",
+  "cache": "Cache",
+  "cacheBreakdown": "Artwork {artwork} · Guide {guide} · Lists {lists}",
+  "@cacheBreakdown": {
+    "placeholders": {
+      "artwork": {
+        "type": "String"
+      },
+      "guide": {
+        "type": "String"
+      },
+      "lists": {
+        "type": "String"
+      }
+    }
+  },
+  "clearCache": "Clear cache",
+  "clearCacheTitle": "Clear cache?",
+  "clearCacheBody": "Artwork and the TV guide are downloaded again when needed. Accounts, favorites and progress are kept.",
+  "cacheCleared": "Cache cleared",
+  "sectionAbout": "About",
+  "version": "Version",
+  "legalNotice": "Legal notice",
+  "legalNoticeBody": "Orbix is a media player only. It does not provide, host or sell channels, movies or series. Use it only with services you are authorized to access.",
+  "noSettingsMatch": "No settings match “{query}”",
+  "actionSave": "Save",
+  "langArabic": "Arabic",
+  "langEnglish": "English",
+  "langFrench": "French",
+  "langSpanish": "Spanish",
+  "langGerman": "German",
+  "langTurkish": "Turkish",
+  "parentalTitle": "Parental controls",
+  "protectionOn": "Protection is on",
+  "protectionOnBody": "PIN needed for locked categories, channels and these settings.",
+  "protectionOff": "Protection is off",
+  "protectionOffBody": "Turn on PIN protection to lock categories and channels.",
+  "pinProtection": "PIN protection",
+  "pinSetOn": "4-digit PIN · set {date}",
+  "pinNotSet": "No PIN set",
+  "changePin": "Change PIN",
+  "adultProtection": "Adult content protection",
+  "adultProtectionHint": "Hide 18+ titles and categories everywhere",
+  "relockAfter": "Re-lock after",
+  "minutesN": "{count, plural, =1{1 minute} other{{count} minutes}}",
+  "lockedCategories": "Locked categories",
+  "lockedOfTotal": "{locked} of {total}",
+  "@lockedOfTotal": {
+    "placeholders": {
+      "locked": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "lockLocked": "Locked",
+  "lockOpen": "Open",
+  "toggleLock": "Toggle lock",
+  "channelsCount": "{count, plural, =1{1 channel} other{{count} channels}}",
+  "hiddenSuffix": "{count} · hidden",
+  "lockedChannels": "Locked channels",
+  "actionAdd": "Add",
+  "noLockedChannels": "No locked channels yet",
+  "unlockChannel": "Unlock channel",
+  "lockChannelTitle": "Lock a channel",
+  "enterPin": "Enter PIN",
+  "createPin": "Create a 4-digit PIN",
+  "confirmPin": "Enter it again",
+  "newPin": "Enter a new PIN",
+  "isLocked": "{name} is locked",
+  "contentLocked": "This content is locked",
+  "parentalLocked": "Parental settings are locked",
+  "wrongPin": "Wrong PIN. Try again.",
+  "pinsDontMatch": "PINs didn't match. Start again.",
+  "tryAgainIn": "Too many tries. Wait {seconds} s.",
+  "forgotPin": "Forgot PIN?",
+  "forgotPinHint": "Reset it with your IPTV account password",
+  "pinDigitsEntered": "{count} of 4 digits entered",
+  "a11yDelete": "Delete",
+  "pinSaved": "PIN saved",
+  "pinRemoved": "PIN protection turned off",
+  "resetPinTitle": "Reset PIN",
+  "resetPinBody": "Enter the password of “{account}” to turn PIN protection off.",
+  "resetPinNoPassword": "This account has no password. Remove and add the account again to reset the PIN.",
+  "actionReset": "Reset",
+  "wrongPassword": "That password doesn't match.",
+  "lastUpdatedToday": "Last updated today, {time}",
+  "accountKindXtream": "Xtream Codes",
+  "accountKindM3u": "M3U playlist",
+  "accountKindFile": "Playlist file",
+  "a11ySubtitles": "Subtitles",
+  "a11yAudioTrack": "Audio track",
+  "a11yPlaybackSettings": "Playback settings",
+  "a11yLockControls": "Lock controls",
+  "a11yUnlockControls": "Unlock controls",
+  "a11yPrevEpisode": "Previous episode",
+  "a11yNextEpisode": "Next episode",
+  "a11yBack10": "Back 10 seconds",
+  "a11yForward10": "Forward 10 seconds",
+  "a11yPause": "Pause",
+  "a11yPlay": "Play",
+  "a11yRotate": "Rotate screen",
+  "a11yExitPlayer": "Exit full screen",
+  "a11yChannelUp": "Channel up",
+  "a11yChannelDown": "Channel down",
+  "a11yCloseChannels": "Close channel list",
+  "a11yBrightness": "Brightness",
+  "a11yVolume": "Volume",
+  "a11ySeek": "Seek",
+  "aspectFit": "Fit",
+  "aspectFill": "Fill",
+  "aspectZoom": "Zoom",
+  "aspect169": "16:9",
+  "subtitlesOff": "Off",
+  "playbackSettings": "Playback settings",
+  "audioTrackTitle": "Audio track",
+  "subtitlesTitle": "Subtitles",
+  "sizeAndStyle": "Size & style",
+  "playbackSpeed": "Playback speed",
+  "videoQuality": "Video quality",
+  "aspectRatio": "Aspect ratio",
+  "qualityNow": "{quality} NOW",
+  "pausedAt": "Paused · {time}",
+  "playingAt": "Playing · {time}",
+  "changesApply": "Changes apply instantly. Your audio and subtitle languages and subtitle style are remembered.",
+  "audioMono": "Mono",
+  "audioStereo": "Stereo",
+  "audioSurround": "{layout} Surround",
+  "trackN": "Track {n}",
+  "channelsChip": "Channels",
+  "upNextIn": "Up next in {seconds}",
+  "playNow": "Play now",
+  "episodeShort": "S{season} · E{episode}",
+  "@episodeShort": {
+    "placeholders": {
+      "season": {
+        "type": "int"
+      },
+      "episode": {
+        "type": "int"
+      }
+    }
+  },
+  "playbackFailedTitle": "Can't play this stream",
+  "playbackFailedBody": "The provider didn't send a playable stream. It may be offline, busy or not allowed on this connection.",
+  "seekBackLabel": "−{seconds} s",
+  "seekForwardLabel": "+{seconds} s",
+  "pipUnavailable": "Picture-in-picture isn't available on this device",
+  "goLive": "LIVE",
+  "behindLive": "Back to live",
+  "durationHours": "{hours}h",
+  "durationHoursMinutes": "{hours}h {minutes}m",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "timeLeft": "{time} left",
+  "offlineBanner": "No connection",
+  "networkSettings": "Network settings",
+  "retryingAutomatically": "Retrying automatically",
+  "retryNow": "Retry now",
+  "statusLabel": "Status",
+  "statusExpired": "Expired",
+  "statusDisabled": "Disabled",
+  "refreshStatus": "Refresh status",
+  "useAnotherAccount": "Use another account",
+  "signInFailedTitle": "Sign-in no longer works",
+  "noResultsFiltered": "Check the spelling, or remove the {filter} filter to search everything.",
+  "addedToFavorites": "Added to favorites",
+  "playlistUpdated": "{count, plural, =1{Playlist updated · 1 new channel} other{Playlist updated · {count} new channels}}",
+  "streamUnavailable": "Stream unavailable",
+  "cacheClearedFreed": "Cache cleared · {size} freed",
+  "reconnectingStream": "Reconnecting to stream…",
+  "controlsLockedTap": "Controls locked · tap to unlock"
+}

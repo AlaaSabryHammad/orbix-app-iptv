@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orbix — Favorites</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../orbix.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+</style>
+</helmet>
+<div class="ox" style="width: 412px; height: 915px; background: #08080B">
+  <header style="padding: 40px 12px 0 20px; display: flex; align-items: center; gap: 6px">
+    <h1 class="t-h1" style="font-size: 28px; margin-right: auto">Favorites</h1>
+    <button class="btn btn-sm" style="background: rgba(255,122,61,.16); color: #FF9663"><span class="ic ic-sm i-check"></span>Done</button>
+  </header>
+
+  <div class="tabs" role="tablist" style="margin-top: 14px">
+    <button class="on" role="tab" aria-selected="true">Channels <span style="color: #8E8A97">12</span></button>
+    <button role="tab" aria-selected="false">Movies <span style="color: #8E8A97">18</span></button>
+    <button role="tab" aria-selected="false">Series <span style="color: #8E8A97">7</span></button>
+  </div>
+
+  <div class="t-cap" style="padding: 14px 20px 6px; display: flex; align-items: center; gap: 8px"><span class="ic ic-xs i-grip"></span>Drag to reorder · tap − to remove</div>
+
+  <div style="padding: 4px 12px 0; display: flex; flex-direction: column; gap: 6px">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+      <div style="display: flex; align-items: center; gap: 12px; height: 66px; padding: 0 8px 0 4px; border-radius: 18px; {{r.lift}}">
+        <button class="ibtn" aria-label="Drag to reorder" style="width: 32px; color: #8E8A97"><span class="ic ic-md i-grip"></span></button>
+        <span class="mono-time" style="width: 22px; font-size: 12px; color: #8E8A97">{{r.n}}</span>
+        <div class="chlogo" style="width: 44px; height: 44px; font-size: 11px; background: {{r.bg}}">{{r.logo}}</div>
+        <div style="flex: 1; min-width: 0">
+          <div class="t-title" style="font-size: 14.5px">{{r.name}}</div>
+          <div class="t-cap" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.now}}</div>
+        </div>
+        <button class="ibtn" aria-label="Remove from favorites" style="width: 40px; color: #FF8C8C"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.8px solid currentColor; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 2px; border-radius: 2px; background: currentColor"></span></span></button>
+      </div>
+    </sc-for>
+  </div>
+
+  <div class="snack" style="position: absolute; left: 16px; right: 16px; bottom: 100px; animation: ox-rise 400ms both">
+    <span class="ic ic-md i-heart" style="color: #C24A10"></span>
+    <span>Globe 24 removed from favorites</span>
+    <button class="act">Undo</button>
+  </div>
+
+  <nav class="bnav glass" aria-label="Main">
+    <a href="Home.dc.html"><span class="pill"><span class="ic i-home"></span></span>Home</a>
+    <a href="LiveTV.dc.html"><span class="pill"><span class="ic i-live"></span></span>Live TV</a>
+    <a href="Movies.dc.html"><span class="pill"><span class="ic i-film"></span></span>Movies</a>
+    <a href="Series.dc.html"><span class="pill"><span class="ic i-series"></span></span>Series</a>
+    <a href="Favorites.dc.html" class="on" aria-current="page"><span class="pill"><span class="ic i-heart-fill"></span></span>Favorites</a>
+    <a href="Settings.dc.html"><span class="pill"><span class="ic i-user"></span></span>Profile</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const base = 'background: transparent;';
+    const lifted = 'background: #1C1C24; box-shadow: 0 18px 40px rgba(0,0,0,.6), 0 0 0 1.5px rgba(255,122,61,.55); transform: rotate(-1.2deg) scale(1.03); position: relative; z-index: 2;';
+    return {
+      rows: [
+        { n: '01', logo: 'MN', bg: 'linear-gradient(145deg,#2F7DFF,#13306B)', name: 'Meridian News', now: 'The Evening Bulletin · ends 21:00', lift: base },
+        { n: '02', logo: 'P1', bg: 'linear-gradient(145deg,#2FBF71,#0E4A2B)', name: 'Pulse Sports 1', now: 'Coastal FC vs Northern United', lift: lifted },
+        { n: '03', logo: 'CP', bg: 'linear-gradient(145deg,#FF7A3D,#6B1E05)', name: 'Cine Prime', now: 'Neon Requiem · ends 21:50', lift: base },
+        { n: '04', logo: 'AD', bg: 'linear-gradient(145deg,#4FD1C5,#0F4C4A)', name: 'Atlas Docs', now: 'Atlas of Rivers: The Delta', lift: base },
+        { n: '05', logo: 'KZ', bg: 'linear-gradient(145deg,#FFB547,#7A4A0B)', name: 'Kitezoo Kids', now: 'Little Lantern Tales', lift: base },
+        { n: '06', logo: 'WV', bg: 'linear-gradient(145deg,#E2508F,#4E1235)', name: 'Wave Music', now: 'Live at the Arena', lift: base },
+        { n: '07', logo: 'H1', bg: 'linear-gradient(145deg,#9B8CFF,#2B1A6B)', name: 'Horizon One', now: 'Hollow Crown District · S3', lift: base }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
