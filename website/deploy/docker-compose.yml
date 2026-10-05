@@ -1,0 +1,24 @@
+# orbix.handaza.cloud — static landing page behind the shared Traefik
+# (n8n-traefik-1, network n8n_default, Let's Encrypt TLS challenge).
+# On the VPS: /docker/orbix-site/{docker-compose.yml,default.conf,site/}
+services:
+  web:
+    image: nginx:alpine
+    container_name: orbix-site
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.orbix.rule=Host(`orbix.handaza.cloud`)
+      - traefik.http.routers.orbix.entrypoints=web,websecure
+      - traefik.http.routers.orbix.tls=true
+      - traefik.http.routers.orbix.tls.certresolver=mytlschallenge
+      - traefik.http.services.orbix.loadbalancer.server.port=80
+    networks:
+      - n8n_default
+
+networks:
+  n8n_default:
+    external: true

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Orbix — Your IPTV, in one orbit</title>
+  <meta name="description" content="Orbix is a cinematic IPTV player for Android phones, tablets and foldables. Connect your own Xtream Codes, M3U or EPG source. Live TV, movies, series — in English and Arabic.">
+  <meta name="theme-color" content="#08080B">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Orbix — Your IPTV, in one orbit">
+  <meta property="og:description" content="A cinematic IPTV player for Android. Bring your own Xtream Codes, M3U or EPG source.">
+  <meta property="og:image" content="https://orbix.handaza.cloud/assets/og.jpg">
+  <meta property="og:url" content="https://orbix.handaza.cloud/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Pick the language before first paint (no flash): saved choice, else browser.
+    (function () {
+      var l = null;
+      try { l = localStorage.getItem('orbix-lang'); } catch (e) {}
+      if (!l) l = (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+      document.documentElement.lang = l;
+      document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    })();
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="mark" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="18.5" fill="none" stroke="#F5F1EB" stroke-width="3.2"/>
+        <path d="M20 15.5v17l13-8.5z" fill="#FF7A3D"/>
+        <circle cx="39" cy="9.5" r="4.2" fill="#FF7A3D"/>
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-live" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="19" height="14" rx="3"/><path d="M8 2.5l4 4 4-4"/></g></symbol>
+      <symbol id="i-epg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 9v11M14 14h4"/></g></symbol>
+      <symbol id="i-film" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 3v18M16.5 3v18M3 8h4.5M3 16h4.5M16.5 8H21M16.5 16H21M3 12h18"/></g></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+      <symbol id="i-pip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><rect x="12" y="11" width="7" height="6" rx="1.5" fill="currentColor"/></g></symbol>
+      <symbol id="i-tablet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M8 16h8"/></g></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></g></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10.5" rx="3"/><path d="M8 10.5V7.5a4 4 0 018 0v3M12 15v2"/></g></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></g></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.4C1.6 7.2 3.8 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.4 0 5.6 3.2 4.4 6.6C19.5 15.4 12 20 12 20z" fill="currentColor"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Orbix"><svg><use href="#mark"/></svg>ORBIX</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#features" data-i18n="navFeatures">Features</a>
+        <a href="#screens" data-i18n="navScreens">Screens</a>
+        <a href="#faq" data-i18n="navFaq">FAQ</a>
+      </nav>
+      <button class="lang" id="lang" type="button" aria-label="العربية">ع</button>
+      <a class="btn btn-primary btn-sm" href="#download"><svg><use href="#i-download"/></svg><span data-i18n="navDownload">Download</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="glow a"></div>
+      <div class="glow b"></div>
+      <div class="orbits" aria-hidden="true">
+        <svg viewBox="0 0 1600 1600">
+          <g class="orbit o1"><ellipse cx="800" cy="800" rx="420" ry="420" fill="none" stroke="rgba(255,255,255,.07)"/><circle cx="1220" cy="800" r="6" fill="#FF7A3D"/></g>
+          <g class="orbit o2"><ellipse cx="800" cy="800" rx="600" ry="600" fill="none" stroke="rgba(255,255,255,.05)" stroke-dasharray="3 9"/><circle cx="800" cy="200" r="4" fill="#7CC4FF"/></g>
+          <g class="orbit o3"><ellipse cx="800" cy="800" rx="780" ry="780" fill="none" stroke="rgba(255,122,61,.08)"/><circle cx="20" cy="800" r="5" fill="#FF9663"/></g>
+        </svg>
+      </div>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal" data-i18n="heroEyebrow">IPTV player for Android</span>
+          <h1 class="reveal d1"><span data-i18n="heroTitleA">Every stream you own,</span> <span class="grad" data-i18n="heroTitleB">in one orbit.</span></h1>
+          <p class="lead reveal d2" data-i18n="heroLead">Live TV with a full guide, movies and series that resume to the second, and a player built for big screens. Connect your own Xtream Codes, M3U or EPG source — Orbix does the rest.</p>
+          <div class="cta reveal d3">
+            <a class="btn btn-primary" href="/download/orbix-1.0.0.apk" download data-download>
+              <svg><use href="#i-download"/></svg><span data-i18n="ctaDownload">Download for Android</span><span class="meta" dir="ltr">APK · 108 MB</span>
+            </a>
+            <a class="btn btn-glass" href="#features" data-i18n="ctaExplore">Explore features</a>
+          </div>
+          <div class="fine reveal d3">
+            <span data-i18n="fine1">Free</span><span data-i18n="fine2">No sign-up</span><span data-i18n="fine3">Android 9+</span><span data-i18n="fine4">English &amp; العربية</span>
+          </div>
+        </div>
+        <div class="stage" id="stage" aria-hidden="true">
+          <div class="device tablet parallax" data-depth="10"><img src="assets/shots/tablet_home.webp" alt="" width="2560" height="1600" fetchpriority="high"></div>
+          <div class="device phone parallax" data-depth="22"><img src="assets/shots/home.webp" data-ar="assets/shots/home_ar.webp" alt="" width="824" height="1784"></div>
+          <div class="chip c1 parallax" data-depth="34"><i style="background:rgba(201,63,14,.9)"><svg width="16" height="16" style="color:#fff"><use href="#i-live"/></svg></i><span><span data-i18n="chip1">Live now</span><small>Pulse Sports 1 · FHD</small></span></div>
+          <div class="chip c2 parallax" data-depth="28"><i style="background:rgba(124,196,255,.16);color:#7CC4FF"><svg width="16" height="16"><use href="#i-epg"/></svg></i><span><span data-i18n="chip2">TV guide</span><small data-i18n="chip2s">7 days · 2 sources</small></span></div>
+          <div class="chip c3 parallax" data-depth="40"><i style="background:rgba(255,122,61,.16);color:#FF7A3D"><svg width="16" height="16"><use href="#i-heart"/></svg></i><span data-i18n="chip3">Resume S3 · E4</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Xtream Codes</span><span>M3U · M3U8</span><span>XMLTV EPG</span><span data-i18n="mq1">Picture-in-picture</span><span data-i18n="mq2">Tablets &amp; foldables</span><span data-i18n="mq3">Parental PIN</span><span data-i18n="mq4">English &amp; Arabic</span><span>4K · HDR</span>
+        <span>Xtream Codes</span><span>M3U · M3U8</span><span>XMLTV EPG</span><span data-i18n="mq1">Picture-in-picture</span><span data-i18n="mq2">Tablets &amp; foldables</span><span data-i18n="mq3">Parental PIN</span><span data-i18n="mq4">English &amp; Arabic</span><span>4K · HDR</span>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="eyebrow" data-i18n="featEyebrow">Everything in one place</span>
+          <h2 data-i18n="featTitle">Designed like cinema. Built like a remote.</h2>
+          <p class="lead" data-i18n="featLead">Orbix turns a raw playlist into a beautiful library — fast to browse, comfortable from the couch, and private by design.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-4 wide reveal">
+            <div>
+              <div class="ico"><svg><use href="#i-live"/></svg></div>
+              <h3 data-i18n="f1t">Live TV with a real guide</h3>
+              <p data-i18n="f1p">Now and next on every channel, a seven-day TV guide with a live time line, categories, favorites and instant channel zapping. On tablets: categories, channels and preview side by side.</p>
+            </div>
+            <div class="shot"><img src="assets/shots/tablet_live.webp" alt="" loading="lazy" width="2560" height="1600"></div>
+          </article>
+          <article class="card span-2 reveal d1">
+            <div class="ico halo"><svg><use href="#i-film"/></svg></div>
+            <h3 data-i18n="f2t">Movies &amp; series</h3>
+            <p data-i18n="f2p">Posters, plots, cast and seasons — with progress saved to the second and the next episode ready to roll.</p>
+          </article>
+          <article class="card span-2 reveal">
+            <div class="ico"><svg><use href="#i-pip"/></svg></div>
+            <h3 data-i18n="f3t">A player that feels native</h3>
+            <p data-i18n="f3p">Swipe for brightness and volume, double-tap to skip, pinch to zoom, lock the controls, keep watching in picture-in-picture.</p>
+          </article>
+          <article class="card span-2 reveal d1">
+            <div class="ico halo"><svg><use href="#i-tablet"/></svg></div>
+            <h3 data-i18n="f4t">Every screen size</h3>
+            <p data-i18n="f4p">Bottom bar on phones, navigation rail on tablets, two panes on foldables and a three-pane Live TV on large screens.</p>
+          </article>
+          <article class="card span-2 reveal d2">
+            <div class="ico warn"><svg><use href="#i-lock"/></svg></div>
+            <h3 data-i18n="f5t">Parental controls</h3>
+            <p data-i18n="f5p">Lock categories or single channels behind a 4-digit PIN, and hide adult content everywhere.</p>
+          </article>
+          <article class="card span-3 reveal">
+            <div class="ico ok"><svg><use href="#i-shield"/></svg></div>
+            <h3 data-i18n="f6t">Private by design</h3>
+            <p data-i18n="f6p">No account, no tracking, no ads. Your server addresses and passwords are encrypted with the Android Keystore and never leave your device.</p>
+          </article>
+          <article class="card span-3 reveal d1">
+            <div class="ico halo"><svg><use href="#i-globe"/></svg></div>
+            <h3 data-i18n="f7t">Your sources, your way</h3>
+            <p data-i18n="f7p">Xtream Codes logins, M3U links or local playlist files, plus your own XMLTV guide. Several accounts on one device, switch in a tap.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screens -->
+    <section class="section" id="screens" style="padding-top:0">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow" data-i18n="scrEyebrow">See it in action</span>
+          <h2 data-i18n="scrTitle">Made for the way you watch</h2>
+        </div>
+        <div style="text-align:center" class="reveal">
+          <div class="tabs" role="tablist">
+            <button role="tab" aria-selected="true" data-tab="phone" data-i18n="tabPhone">Phone</button>
+            <button role="tab" aria-selected="false" data-tab="tablet" data-i18n="tabTablet">Tablet</button>
+            <button role="tab" aria-selected="false" data-tab="player" data-i18n="tabPlayer">Player</button>
+          </div>
+        </div>
+        <div class="showcase reveal">
+          <div class="panel on" data-panel="phone">
+            <div class="phones">
+              <div class="device phone"><img src="assets/shots/live.webp" data-ar="assets/shots/live_ar.webp" alt="Live TV" loading="lazy" width="824" height="1784"></div>
+              <div class="device phone"><img src="assets/shots/movie.webp" alt="Movie details" loading="lazy" width="824" height="1784"></div>
+              <div class="device phone"><img src="assets/shots/guide.webp" alt="TV guide" loading="lazy" width="824" height="1784"></div>
+            </div>
+          </div>
+          <div class="panel" data-panel="tablet">
+            <div class="device wide-shot"><img src="assets/shots/tablet_guide.webp" alt="TV guide on a tablet" loading="lazy" width="2560" height="1600"></div>
+          </div>
+          <div class="panel" data-panel="player">
+            <div class="device wide-shot"><img src="assets/shots/player.webp" data-ar="assets/shots/player_ar.webp" alt="Live player" loading="lazy" width="1830" height="824"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bilingual -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap bilingual">
+        <div class="reveal">
+          <span class="eyebrow" data-i18n="arEyebrow">Truly bilingual</span>
+          <h2 style="margin-top:18px" data-i18n="arTitle">Fluent in English and Arabic.</h2>
+          <p class="ar-sample" lang="ar">كل بثّ تملكه، في مدار واحد.</p>
+          <ul class="checks">
+            <li data-i18n="ar1">A full right-to-left layout — not a mirrored afterthought.</li>
+            <li data-i18n="ar2">Readex Pro typography tuned for Arabic, Western digits for times and channels.</li>
+            <li data-i18n="ar3">Arabic subtitles and mixed-language titles always read in the right direction.</li>
+          </ul>
+        </div>
+        <div class="phones reveal d1">
+          <div class="device phone"><img src="assets/shots/home_ar.webp" alt="الرئيسية بالعربية" loading="lazy" width="824" height="1784"></div>
+          <div class="device phone"><img src="assets/shots/live_ar.webp" alt="البث المباشر بالعربية" loading="lazy" width="824" height="1784"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow" data-i18n="stEyebrow">Up and running in a minute</span>
+          <h2 data-i18n="stTitle">Three steps to your library</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><h3 data-i18n="s1t">Install Orbix</h3><p data-i18n="s1p">Download the APK below and open it on your Android phone, tablet or foldable.</p></div>
+          <div class="step reveal d1"><h3 data-i18n="s2t">Add your provider</h3><p data-i18n="s2p">Enter your Xtream Codes details or paste an M3U link. Orbix tests the connection before saving.</p></div>
+          <div class="step reveal d2"><h3 data-i18n="s3t">Press play</h3><p data-i18n="s3p">Live TV is ready first while movies, series and the guide finish loading in the background.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download" id="download">
+      <div class="wrap">
+        <div class="dl-card reveal">
+          <div>
+            <span class="eyebrow" data-i18n="dlEyebrow">Version 1.0.0</span>
+            <h2 style="margin-top:18px" data-i18n="dlTitle">Get Orbix for Android</h2>
+            <p class="lead" data-i18n="dlLead">One APK for every Android phone, tablet and foldable running Android 9 or newer.</p>
+            <a class="btn btn-primary" href="/download/orbix-1.0.0.apk" download data-download>
+              <svg><use href="#i-download"/></svg><span data-i18n="ctaDownload">Download for Android</span><span class="meta" dir="ltr">APK · 108 MB</span>
+            </a>
+            <ul class="specs">
+              <li><span data-i18n="spVersion">Version</span> <b dir="ltr">1.0.0</b></li>
+              <li><span data-i18n="spSize">Size</span> <b dir="ltr">108 MB</b></li>
+              <li><span data-i18n="spReq">Requires</span> <b dir="ltr">Android 9+</b></li>
+              <li><span data-i18n="spLang">Languages</span> <b dir="ltr">EN · AR</b></li>
+            </ul>
+            <div class="hash">
+              <code id="sha" title="SHA-256">SHA-256 2768c459225b7744d96c496b4bcd6e0faed13f8cb478976ec5c8fa5188a5483c</code>
+              <button class="copy" type="button" id="copy" data-i18n="copy">Copy</button>
+            </div>
+          </div>
+          <div class="qr">
+            <img src="assets/qr.svg" alt="QR code to orbix.handaza.cloud" width="200" height="200">
+            <span data-i18n="qr">Scan to download on your phone</span>
+          </div>
+        </div>
+        <div class="install reveal">
+          <div><b data-i18n="in1t">1 · Download</b><span data-i18n="in1p">Tap the button on your Android device.</span></div>
+          <div><b data-i18n="in2t">2 · Allow the install</b><span data-i18n="in2p">If asked, allow your browser to install unknown apps.</span></div>
+          <div><b data-i18n="in3t">3 · Open Orbix</b><span data-i18n="in3p">Add your IPTV account and start watching.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" style="padding-top:clamp(40px,6vw,80px)">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow" data-i18n="faqEyebrow">Questions</span>
+          <h2 data-i18n="faqTitle">Good to know</h2>
+        </div>
+        <div class="faq">
+          <details class="reveal"><summary data-i18n="q1">Does Orbix include channels or content?</summary><p data-i18n="a1">No. Orbix is a media player only. It doesn't provide, host or sell any channels, movies or series. You connect a service you are authorized to use, and Orbix plays it.</p></details>
+          <details class="reveal"><summary data-i18n="q2">Which sources are supported?</summary><p data-i18n="a2">Xtream Codes accounts, M3U / M3U8 playlist links, local playlist files, and XMLTV guides — from your provider or your own URL.</p></details>
+          <details class="reveal"><summary data-i18n="q3">Is it free? Do I need an account?</summary><p data-i18n="a3">Orbix is free, with no sign-up, no ads and no tracking. Everything you add stays on your device.</p></details>
+          <details class="reveal"><summary data-i18n="q4">How do I know the file is genuine?</summary><p data-i18n="a4">The APK is signed by the Orbix developer. Compare the SHA-256 fingerprint shown above with your downloaded file.</p></details>
+          <details class="reveal"><summary data-i18n="q5">Which devices does it run on?</summary><p data-i18n="a5">Android 9 or newer: phones, tablets and foldables, with layouts designed for each.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <a class="brand" href="#top" aria-label="Orbix"><svg><use href="#mark"/></svg>ORBIX</a>
+        <p data-i18n="legal">Orbix is a media player only. It does not provide, host or sell channels, movies or series. Use it only with services you are authorized to access.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#features" data-i18n="navFeatures">Features</a>
+        <a href="#download" data-i18n="navDownload">Download</a>
+        <a href="#faq" data-i18n="navFaq">FAQ</a>
+      </nav>
+    </div>
+    <div class="wrap" style="margin-top:30px">© <span id="year">2026</span> Orbix · handaza.cloud</div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

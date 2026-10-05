@@ -14,6 +14,9 @@ class FakeEngine implements PlayerEngine {
   static void reset() => created.clear();
   static FakeEngine get last => created.last;
 
+  /// Optional still drawn as "the video" (screenshots); null = flat colour.
+  static String? pictureAsset;
+
   final bool hardwareDecoding;
   final opened = <({String url, Duration? start, bool loop})>[];
   final calls = <String>[];
@@ -105,5 +108,6 @@ class FakeEngine implements PlayerEngine {
   Future<void> dispose() async => disposed = true;
 
   @override
-  Widget video({BoxFit fit = BoxFit.contain, double? aspectRatio}) => const ColoredBox(color: Color(0xFF101018));
+  Widget video({BoxFit fit = BoxFit.contain, double? aspectRatio}) =>
+      pictureAsset == null ? const ColoredBox(color: Color(0xFF101018)) : Image.asset(pictureAsset!, fit: BoxFit.cover);
 }
