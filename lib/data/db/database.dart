@@ -1,5 +1,8 @@
+import 'dart:io' show Platform;
+
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../models/catalog.dart';
 import 'tables.dart';
@@ -23,9 +26,16 @@ part 'database.g.dart';
   ],
 )
 class OrbixDatabase extends _$OrbixDatabase {
-  /// Opens `orbix.sqlite` in app support storage. Queries run on a background
+  /// Opens `orbix.sqlite` in app storage. Queries run on a background
   /// isolate (drift_flutter), so large catalog writes never block the UI.
-  OrbixDatabase([QueryExecutor? executor]) : super(executor ?? driftDatabase(name: 'orbix'));
+  /// On Windows that's %APPDATA%\Orbix\Orbix — drift's default there is the
+  /// user's Documents folder. Android keeps the default (existing installs).
+  OrbixDatabase([QueryExecutor? executor])
+      : super(executor ??
+            driftDatabase(
+              name: 'orbix',
+              native: Platform.isWindows ? const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory) : null,
+            ));
 
   @override
   int get schemaVersion => 2;

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,6 +21,7 @@ class OrbixApp extends ConsumerWidget {
       locale: ref.watch(appLocaleProvider),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
+      scrollBehavior: const _OrbixScrollBehavior(),
       themeMode: ThemeMode.dark,
       theme: OrbixTheme.dark(),
       darkTheme: OrbixTheme.dark(),
@@ -32,4 +34,13 @@ class OrbixApp extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// Lets a mouse drag scroll too (Windows): the horizontal rails have no other
+/// way to move with a plain vertical wheel.
+class _OrbixScrollBehavior extends MaterialScrollBehavior {
+  const _OrbixScrollBehavior();
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => PointerDeviceKind.values.toSet();
 }

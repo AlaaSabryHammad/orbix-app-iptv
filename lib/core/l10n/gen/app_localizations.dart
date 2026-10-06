@@ -2732,6 +2732,12 @@ abstract class AppLocalizations {
   /// **'Exit full screen'**
   String get a11yExitPlayer;
 
+  /// No description provided for @a11yEnterFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full screen'**
+  String get a11yEnterFullscreen;
+
   /// No description provided for @a11yChannelUp.
   ///
   /// In en, this message translates to:

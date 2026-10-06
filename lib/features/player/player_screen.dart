@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -68,7 +69,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
   (bool forward, int seconds)? _seek;
   Timer? _seekTimer;
 
-  bool get _isPhone => MediaQuery.sizeOf(context).shortestSide < 600;
+  /// A small window on Windows isn't a phone: no rotation, no orientation lock.
+  bool get _isPhone => !PlayerWindow.isDesktop && MediaQuery.sizeOf(context).shortestSide < 600;
 
   @override
   void initState() {
@@ -76,6 +78,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
     _c = PlaybackController(ProviderScope.containerOf(context, listen: false), widget.target);
     _c.engine.state.addListener(_onEngine);
     PlayerWindow.inPip.addListener(_onPip);
+    PlayerWindow.fullscreen.addListener(_onFullscreen);
     unawaited(PlayerWindow.enterImmersive());
     unawaited(PlayerWindow.brightness().then((b) => _brightness = b));
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -94,6 +97,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
     _seekTimer?.cancel();
     _c.engine.state.removeListener(_onEngine);
     PlayerWindow.inPip.removeListener(_onPip);
+    PlayerWindow.fullscreen.removeListener(_onFullscreen);
     unawaited(PlayerWindow.setAutoPip(false));
     unawaited(PlayerWindow.setBrightness(null));
     unawaited(PlayerWindow.setOrientations(PlayerWindow.any));
@@ -105,7 +109,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
 
   void _onEngine() {
     final s = _c.engine.state.value;
-    if (_autoPip != s.playing) {
+    if (PlayerWindow.hasPip && _autoPip != s.playing) {
       _autoPip = s.playing;
       unawaited(PlayerWindow.setAutoPip(s.playing, width: s.width, height: s.height));
     }
@@ -123,6 +127,13 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
         // The PiP window is tiny: no panels, no chrome.
         if (_pip) _panel = _Panel.none;
       });
+
+  void _onFullscreen() => setState(() {});
+
+  void _toggleFullscreen() {
+    unawaited(PlayerWindow.setFullscreen(!PlayerWindow.fullscreen.value));
+    _bump();
+  }
 
   /// Shows the controls and (re)starts the auto-hide timer.
   void _bump() {
@@ -233,10 +244,39 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
 
   // Gestures ------------------------------------------------------------------
 
-  void _onTapUp() => _locked ? _showLockHint() : _toggleControls();
+  void _onTapUp(TapUpDetails d) {
+    if (_locked) return _showLockHint();
+    // Mouse: the controls follow the pointer, so a click plays / pauses.
+    if (d.kind == PointerDeviceKind.mouse) {
+      if (_panel != _Panel.none) return _closePanel();
+      unawaited(_c.togglePlay());
+      return _bump();
+    }
+    _toggleControls();
+  }
+
+  /// Mouse movement reveals the controls (and the pointer).
+  void _onHover(PointerHoverEvent _) {
+    if (!_locked && !_pip) _bump();
+  }
+
+  /// Mouse wheel: volume, with the same pill as the swipe.
+  void _onPointerSignal(PointerSignalEvent e) {
+    if (e is! PointerScrollEvent || e.scrollDelta.dy == 0 || _locked || _panel != _Panel.none) return;
+    final from = _drag == _Drag.volume ? _level : _c.engine.state.value.volume / 100;
+    final v = (from + (e.scrollDelta.dy < 0 ? 0.05 : -0.05)).clamp(0.0, 1.0);
+    unawaited(_c.engine.setVolume(v * 100));
+    _levelTimer?.cancel();
+    setState(() {
+      _drag = _Drag.volume;
+      _level = v;
+    });
+    _levelTimer = Timer(const Duration(milliseconds: 700), () => mounted ? setState(() => _drag = null) : null);
+  }
 
   void _onDoubleTap(TapDownDetails d, Size size) {
     if (_locked) return;
+    if (PlayerWindow.isDesktop && d.kind == PointerDeviceKind.mouse) return _toggleFullscreen();
     final x = d.localPosition.dx / size.width;
     final live = _c.item.value?.isLive ?? false;
     if (x < 1 / 3) {
@@ -275,7 +315,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
         _drag = _Drag.scrub;
         _scrubStart = _c.engine.position.value;
       } else {
-        _drag = start.dx < size.width / 2 ? _Drag.brightness : _Drag.volume;
+        _drag = PlayerWindow.hasBrightness && start.dx < size.width / 2 ? _Drag.brightness : _Drag.volume;
         _levelStart = _drag == _Drag.brightness ? _brightness : s.volume / 100;
       }
       _levelTimer?.cancel();
@@ -331,6 +371,20 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
       _showLockHint();
       return KeyEventResult.handled;
     }
+    if (k == LogicalKeyboardKey.escape) {
+      if (_panel != _Panel.none) {
+        _closePanel();
+      } else if (PlayerWindow.fullscreen.value) {
+        unawaited(PlayerWindow.setFullscreen(false));
+      } else {
+        _exit();
+      }
+      return KeyEventResult.handled;
+    }
+    if (PlayerWindow.isDesktop && (k == LogicalKeyboardKey.keyF || k == LogicalKeyboardKey.f11)) {
+      _toggleFullscreen();
+      return KeyEventResult.handled;
+    }
     if (k == LogicalKeyboardKey.space || k == LogicalKeyboardKey.mediaPlayPause || k == LogicalKeyboardKey.keyK) {
       unawaited(_c.togglePlay());
       _bump();
@@ -380,161 +434,169 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
         body: Focus(
           focusNode: _focus,
           onKeyEvent: _onKey,
-          child: LayoutBuilder(
-            builder: (context, box) {
-              final size = box.biggest;
-              return ValueListenableBuilder(
-                valueListenable: _c.item,
-                builder: (context, item, _) {
-                  final live = item?.isLive ?? widget.target.kind == PlayKind.live;
-                  final chrome = _controls && !_locked && !_pip && _panel != _Panel.settings;
-                  return Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      // Picture (artwork until the first frame).
-                      ValueListenableBuilder(
-                        valueListenable: _c.engine.state,
-                        builder: (context, s, _) => Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            if (s.width == null && item?.artwork != null)
-                              Opacity(opacity: 0.45, child: OxImage(item!.artwork, fit: BoxFit.cover)),
-                            _c.engine.video(fit: _aspect.fit, aspectRatio: _aspect.ratio),
-                          ],
+          child: MouseRegion(
+            onHover: _onHover,
+            // The pointer hides with the controls.
+            cursor: _controls ? MouseCursor.defer : SystemMouseCursors.none,
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final size = box.biggest;
+                return ValueListenableBuilder(
+                  valueListenable: _c.item,
+                  builder: (context, item, _) {
+                    final live = item?.isLive ?? widget.target.kind == PlayKind.live;
+                    final chrome = _controls && !_locked && !_pip && _panel != _Panel.settings;
+                    return Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        // Picture (artwork until the first frame).
+                        ValueListenableBuilder(
+                          valueListenable: _c.engine.state,
+                          builder: (context, s, _) => Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              if (s.width == null && item?.artwork != null)
+                                Opacity(opacity: 0.45, child: OxImage(item!.artwork, fit: BoxFit.cover)),
+                              _c.engine.video(fit: _aspect.fit, aspectRatio: _aspect.ratio),
+                            ],
+                          ),
                         ),
-                      ),
-                      // Gesture surface.
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: _onTapUp,
-                        onDoubleTapDown: (d) => _onDoubleTap(d, size),
-                        onDoubleTap: () {},
-                        onScaleStart: _onScaleStart,
-                        onScaleUpdate: (d) => _onScaleUpdate(d, size),
-                        onScaleEnd: _onScaleEnd,
-                      ),
-                      // Buffering.
-                      ValueListenableBuilder(
-                        valueListenable: _c.engine.state,
-                        builder: (context, s, _) => IgnorePointer(
-                          child: Center(
-                            child: AnimatedOpacity(
-                              duration: OxMotion.base,
-                              opacity: s.buffering && _c.failure.value == null && !(chrome && !live) ? 1 : 0,
-                              child: const OxSpinner(size: 44, strokeWidth: 3, color: OxColors.text1),
+                        // Gesture surface (and the mouse wheel).
+                        Listener(
+                          onPointerSignal: _onPointerSignal,
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTapUp: _onTapUp,
+                            onDoubleTapDown: (d) => _onDoubleTap(d, size),
+                            onDoubleTap: () {},
+                            onScaleStart: _onScaleStart,
+                            onScaleUpdate: (d) => _onScaleUpdate(d, size),
+                            onScaleEnd: _onScaleEnd,
+                          ),
+                        ),
+                        // Buffering.
+                        ValueListenableBuilder(
+                          valueListenable: _c.engine.state,
+                          builder: (context, s, _) => IgnorePointer(
+                            child: Center(
+                              child: AnimatedOpacity(
+                                duration: OxMotion.base,
+                                opacity: s.buffering && _c.failure.value == null && !(chrome && !live) ? 1 : 0,
+                                child: const OxSpinner(size: 44, strokeWidth: 3, color: OxColors.text1),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      // Chrome.
-                      if (!_pip)
+                        // Chrome.
+                        if (!_pip)
+                          IgnorePointer(
+                            ignoring: !chrome,
+                            child: AnimatedOpacity(
+                              duration: OxMotion.base,
+                              opacity: chrome ? 1 : 0,
+                              child: item == null
+                                  ? _loadingChrome(l, pad)
+                                  : live
+                                      ? _liveChrome(context, item, size, pad)
+                                      : _vodChrome(context, item, size, pad),
+                            ),
+                          ),
+                        // Subtitles.
                         IgnorePointer(
-                          ignoring: !chrome,
-                          child: AnimatedOpacity(
-                            duration: OxMotion.base,
-                            opacity: chrome ? 1 : 0,
-                            child: item == null
-                                ? _loadingChrome(l, pad)
-                                : live
-                                    ? _liveChrome(context, item, size, pad)
-                                    : _vodChrome(context, item, size, pad),
-                          ),
-                        ),
-                      // Subtitles.
-                      IgnorePointer(
-                        child: ValueListenableBuilder(
-                          valueListenable: _c.engine.state,
-                          builder: (context, s, _) => SubtitleOverlay(
-                            // Live chrome fills short screens; settings cover the picture.
-                            lines: _panel == _Panel.settings || (live && chrome && size.height < 500) ? const [] : s.subtitle,
-                            size: settings.$1,
-                            style: settings.$2,
-                            bottom: _pip ? 6 : (chrome ? (live ? 190 : 118) : 28) + pad.bottom,
-                            end: _pip ? 0 : (_panel == _Panel.channels ? 320 : 0) + pad.right,
-                            side: _pip ? 6 : 24,
-                          ),
-                        ),
-                      ),
-                      // Brightness / volume.
-                      if (_drag == _Drag.brightness || _drag == _Drag.volume)
-                        Positioned(
-                          left: _drag == _Drag.brightness ? 24 + pad.left : null,
-                          right: _drag == _Drag.volume ? 24 + pad.right : null,
-                          top: 0,
-                          bottom: 0,
-                          child: Center(
-                            child: _drag == _Drag.brightness
-                                ? LevelPill(icon: OxIcons.sun, value: _level, color: OxColors.text1, label: l.a11yBrightness)
-                                : LevelPill(icon: OxIcons.volume, value: _level, color: OxColors.ember, label: l.a11yVolume),
-                          ),
-                        ),
-                      // Double-tap seek.
-                      if (_seek != null)
-                        Positioned(
-                          left: _seek!.$1 ? null : size.width * 0.12,
-                          right: _seek!.$1 ? size.width * 0.12 : null,
-                          top: 0,
-                          bottom: 0,
-                          child: Center(child: IgnorePointer(child: SeekBadge(forward: _seek!.$1, seconds: _seek!.$2))),
-                        ),
-                      // States 12 pills: a stalled stream, and locked controls.
-                      Positioned(
-                        top: 16 + pad.top,
-                        left: 0,
-                        right: 0,
-                        child: Center(
                           child: ValueListenableBuilder(
                             valueListenable: _c.engine.state,
-                            builder: (context, s, _) {
-                              final reconnecting = !_pip && s.buffering && _playedTarget != null && _playedTarget == item?.target && _c.failure.value == null;
-                              if (_locked && _lockHint && !_pip) {
-                                return _Pill(
-                                  icon: const OxIcon(OxIcons.lock, size: OxIconSize.sm, color: OxColors.text1),
-                                  label: l.controlsLockedTap,
-                                  semanticLabel: l.a11yUnlockControls,
-                                  onTap: () => _setLocked(false),
-                                );
-                              }
-                              if (reconnecting && !chrome) {
-                                return _Pill(
-                                  icon: const OxOrbitLoader(size: 16),
-                                  label: l.reconnectingStream,
-                                  color: const Color(0x1F7CC4FF),
-                                  foreground: OxColors.halo,
-                                );
-                              }
-                              return const SizedBox.shrink();
-                            },
+                            builder: (context, s, _) => SubtitleOverlay(
+                              // Live chrome fills short screens; settings cover the picture.
+                              lines: _panel == _Panel.settings || (live && chrome && size.height < 500) ? const [] : s.subtitle,
+                              size: settings.$1,
+                              style: settings.$2,
+                              bottom: _pip ? 6 : (chrome ? (live ? 190 : 118) : 28) + pad.bottom,
+                              end: _pip ? 0 : (_panel == _Panel.channels ? 320 : 0) + pad.right,
+                              side: _pip ? 6 : 24,
+                            ),
                           ),
                         ),
-                      ),
-                      // Panels.
-                      if (!_pip && _panel == _Panel.settings) ..._settingsPanel(context, size, pad),
-                      if (!_pip && _panel == _Panel.channels && item?.channel != null)
-                        PositionedDirectional(
-                          end: 12 + pad.right,
-                          top: 12 + pad.top,
-                          bottom: 12 + pad.bottom,
-                          width: 300,
-                          child: ChannelPanel(
-                            current: item!.channel!,
-                            categoryName: item.categoryName,
-                            onSelect: _zap,
-                            onClose: _closePanel,
+                        // Brightness / volume.
+                        if (_drag == _Drag.brightness || _drag == _Drag.volume)
+                          Positioned(
+                            left: _drag == _Drag.brightness ? 24 + pad.left : null,
+                            right: _drag == _Drag.volume ? 24 + pad.right : null,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: _drag == _Drag.brightness
+                                  ? LevelPill(icon: OxIcons.sun, value: _level, color: OxColors.text1, label: l.a11yBrightness)
+                                  : LevelPill(icon: OxIcons.volume, value: _level, color: OxColors.ember, label: l.a11yVolume),
+                            ),
+                          ),
+                        // Double-tap seek.
+                        if (_seek != null)
+                          Positioned(
+                            left: _seek!.$1 ? null : size.width * 0.12,
+                            right: _seek!.$1 ? size.width * 0.12 : null,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(child: IgnorePointer(child: SeekBadge(forward: _seek!.$1, seconds: _seek!.$2))),
+                          ),
+                        // States 12 pills: a stalled stream, and locked controls.
+                        Positioned(
+                          top: 16 + pad.top,
+                          left: 0,
+                          right: 0,
+                          child: Center(
+                            child: ValueListenableBuilder(
+                              valueListenable: _c.engine.state,
+                              builder: (context, s, _) {
+                                final reconnecting = !_pip && s.buffering && _playedTarget != null && _playedTarget == item?.target && _c.failure.value == null;
+                                if (_locked && _lockHint && !_pip) {
+                                  return _Pill(
+                                    icon: const OxIcon(OxIcons.lock, size: OxIconSize.sm, color: OxColors.text1),
+                                    label: l.controlsLockedTap,
+                                    semanticLabel: l.a11yUnlockControls,
+                                    onTap: () => _setLocked(false),
+                                  );
+                                }
+                                if (reconnecting && !chrome) {
+                                  return _Pill(
+                                    icon: const OxOrbitLoader(size: 16),
+                                    label: l.reconnectingStream,
+                                    color: const Color(0x1F7CC4FF),
+                                    foreground: OxColors.halo,
+                                  );
+                                }
+                                return const SizedBox.shrink();
+                              },
+                            ),
                           ),
                         ),
-                      // Up next.
-                      if (!_pip) _upNextCard(context, item, pad),
-                      // Failure.
-                      ValueListenableBuilder(
-                        valueListenable: _c.failure,
-                        builder: (context, f, _) => f == null ? const SizedBox.shrink() : _failure(context, f, item, pad),
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
+                        // Panels.
+                        if (!_pip && _panel == _Panel.settings) ..._settingsPanel(context, size, pad),
+                        if (!_pip && _panel == _Panel.channels && item?.channel != null)
+                          PositionedDirectional(
+                            end: 12 + pad.right,
+                            top: 12 + pad.top,
+                            bottom: 12 + pad.bottom,
+                            width: 300,
+                            child: ChannelPanel(
+                              current: item!.channel!,
+                              categoryName: item.categoryName,
+                              onSelect: _zap,
+                              onClose: _closePanel,
+                            ),
+                          ),
+                        // Up next.
+                        if (!_pip) _upNextCard(context, item, pad),
+                        // Failure.
+                        ValueListenableBuilder(
+                          valueListenable: _c.failure,
+                          builder: (context, f, _) => f == null ? const SizedBox.shrink() : _failure(context, f, item, pad),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -631,7 +693,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
                     ],
                   ),
                 ),
-                PlayerIconButton(icon: OxIcons.pip, semanticLabel: l.actionPip, onPressed: _enterPip),
+                if (PlayerWindow.hasPip) PlayerIconButton(icon: OxIcons.pip, semanticLabel: l.actionPip, onPressed: _enterPip),
                 if (!compact) PlayerIconButton(icon: OxIcons.cc, semanticLabel: l.a11ySubtitles, onPressed: () => _openPanel(_Panel.settings)),
                 if (!compact) PlayerIconButton(icon: OxIcons.audio, semanticLabel: l.a11yAudioTrack, onPressed: () => _openPanel(_Panel.settings)),
                 PlayerIconButton(icon: OxIcons.settings, semanticLabel: l.a11yPlaybackSettings, onPressed: () => _openPanel(_Panel.settings)),
@@ -698,7 +760,9 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
                       ),
                     ),
                     if (_isPhone) PlayerIconButton(icon: OxIcons.rotate, semanticLabel: l.a11yRotate, size: 40, onPressed: _rotate),
-                    PlayerIconButton(icon: OxIcons.fullscreen, semanticLabel: l.a11yExitPlayer, size: 40, onPressed: _exit),
+                    PlayerWindow.isDesktop
+                        ? _fullscreenButton(l)
+                        : PlayerIconButton(icon: OxIcons.fullscreen, semanticLabel: l.a11yExitPlayer, size: 40, onPressed: _exit),
                   ],
                 ),
               ],
@@ -708,6 +772,14 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
       ),
     );
   }
+
+  /// Desktop: window ↔ full screen (also F, F11, double-click; Esc leaves).
+  Widget _fullscreenButton(AppLocalizations l) => PlayerIconButton(
+        icon: OxIcons.fullscreen,
+        semanticLabel: PlayerWindow.fullscreen.value ? l.a11yExitPlayer : l.a11yEnterFullscreen,
+        size: 40,
+        onPressed: _toggleFullscreen,
+      );
 
   List<Widget> _chips(BuildContext context, EngineState s, {required bool live}) {
     final l = context.l10n;
@@ -791,7 +863,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
                       ],
                     ),
                   ),
-                  PlayerIconButton(icon: OxIcons.pip, semanticLabel: l.actionPip, size: 40, onPressed: _enterPip),
+                  if (PlayerWindow.hasPip) PlayerIconButton(icon: OxIcons.pip, semanticLabel: l.actionPip, size: 40, onPressed: _enterPip),
+                  if (PlayerWindow.isDesktop) _fullscreenButton(l),
                   PlayerIconButton(icon: OxIcons.cc, semanticLabel: l.a11yPlaybackSettings, size: 40, onPressed: () => _openPanel(_Panel.settings)),
                   PlayerIconButton(icon: OxIcons.lock, semanticLabel: l.a11yLockControls, glass: true, size: 40, onPressed: () => _setLocked(true)),
                 ],

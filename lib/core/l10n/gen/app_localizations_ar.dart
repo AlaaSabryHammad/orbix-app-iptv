@@ -1614,6 +1614,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get a11yExitPlayer => 'الخروج من ملء الشاشة';
 
   @override
+  String get a11yEnterFullscreen => 'ملء الشاشة';
+
+  @override
   String get a11yChannelUp => 'القناة السابقة';
 
   @override

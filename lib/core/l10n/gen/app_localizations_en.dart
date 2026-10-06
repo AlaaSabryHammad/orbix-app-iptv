@@ -1541,6 +1541,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get a11yExitPlayer => 'Exit full screen';
 
   @override
+  String get a11yEnterFullscreen => 'Full screen';
+
+  @override
   String get a11yChannelUp => 'Channel up';
 
   @override

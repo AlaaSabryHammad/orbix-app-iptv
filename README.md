@@ -26,6 +26,29 @@ flutter build appbundle --release --flavor prod   # Play Store upload
 flutter build apk --release --flavor prod         # sideloadable APK
 ```
 
+**Windows.** Windows 10/11 x64. Needs Developer Mode (Settings › System › For developers;
+Flutter links plugins with symlinks), Visual Studio 2022 with "Desktop development with
+C++", and [Inno Setup](https://jrsoftware.org/isdl.php) 6 or later for the installer:
+
+```bash
+powershell -ExecutionPolicy Bypass -File tool/windows/build_installer.ps1
+```
+
+It builds the `prod` flavor and writes `dist/Orbix-Setup-<version>-x64.exe` (per-user
+install, Start menu + desktop shortcut, uninstaller, upgrades in place) and a portable
+`dist/Orbix-<version>-windows-x64.zip`, both with the VC++ runtime next to `Orbix.exe`.
+The installer is `windows/installer/orbix.iss`; never change its `AppId`. Data lives in
+`%APPDATA%\Orbix\Orbix` (database, settings, DPAPI-encrypted credentials) and stays on
+uninstall. The runner (`windows/runner/`) opens one window only, 1280×800 and centred, at
+least 360×640, and answers `app.orbix.player/window` with full screen (F / F11 / double-click,
+Esc leaves) and network settings. It renders with Skia (`main.cpp` turns Impeller off): on
+Flutter 3.47, Impeller drew white rings round coloured glows on Windows and used ~3× the
+memory; recheck after a Flutter upgrade. Radial gradients fading to transparent
+(`OxAmbient`) can still show a faint speckled edge on some systems.
+The icon comes from `tool/launcher_icon/render_test.dart`.
+Unsigned builds get a SmartScreen warning ("More info › Run anyway"); signing `Orbix.exe`
+and the setup with a code-signing certificate removes it.
+
 **Release signing.** `android/key.properties` (git-ignored) points at the upload
 keystore, kept outside the repo. Without it, release builds fall back to the debug key
 and can't be uploaded. Back up the keystore and its password: Play updates must be
@@ -84,7 +107,9 @@ saves progress every 15 s and on exit, applies Settings (hardware decoding, audi
 language order, remembered subtitle language, default quality), zaps channels and
 runs the up-next countdown. Subtitles are drawn by Orbix, not media_kit, so each line
 gets its own text direction (Arabic reads right-to-left) and the Settings size and style.
-PiP and window brightness go through `MainActivity.kt` (`player_window.dart`).
+PiP and window brightness go through `MainActivity.kt`, full screen on Windows through
+`windows/runner/flutter_window.cpp` (`player_window.dart`). With a mouse, a click plays /
+pauses, moving shows the controls, the wheel sets the volume.
 - No `BackdropFilter` over video: re-blurring a frame that changes every 1/30 s
   stalls input and timers on mid-range tablets. Use `VideoGlass` (solid
   translucent fill) for overlays on the player.

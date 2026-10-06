@@ -3,13 +3,27 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-/// Android window features for the player (MainActivity.kt): picture-in-
-/// picture and the brightness gesture. Calls are no-ops where unsupported.
+/// Window features for the player: picture-in-picture and the brightness
+/// gesture on Android (MainActivity.kt), full screen on Windows
+/// (flutter_window.cpp). Calls are no-ops where unsupported.
 abstract final class PlayerWindow {
   static const _channel = MethodChannel('app.orbix.player/window');
 
+  static bool get _android => !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+
+  /// Windows: a resizable window driven by mouse and keyboard.
+  static bool get isDesktop => !kIsWeb && defaultTargetPlatform == TargetPlatform.windows;
+
+  /// Picture-in-picture and window brightness exist on Android only.
+  static bool get hasPip => _android;
+  static bool get hasBrightness => _android;
+
   /// True while the activity is in picture-in-picture.
   static final inPip = ValueNotifier(false);
+
+  /// True while the desktop window covers the whole monitor.
+  static final fullscreen = ValueNotifier(false);
+
   static bool _listening = false;
 
   static void _listen() {
@@ -21,7 +35,7 @@ abstract final class PlayerWindow {
   }
 
   static Future<T?> _call<T>(String method, [Map<String, Object?>? args]) async {
-    if (defaultTargetPlatform != TargetPlatform.android || kIsWeb) return null;
+    if (!_android && !isDesktop) return null;
     _listen();
     try {
       return await _channel.invokeMethod<T>(method, args);
@@ -45,10 +59,20 @@ abstract final class PlayerWindow {
   /// Overrides the window brightness; null restores the system setting.
   static Future<void> setBrightness(double? value) => _call<void>('setBrightness', {'value': value ?? -1.0});
 
+  /// Desktop: borderless over the whole monitor, or back to the window.
+  static Future<void> setFullscreen(bool value) async {
+    if (!isDesktop) return;
+    fullscreen.value = await _call<bool>('setFullScreen', {'value': value}) ?? false;
+  }
+
   /// Full-screen player: system bars hidden until swiped.
   static Future<void> enterImmersive() => SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
-  static Future<void> exitImmersive() => SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  /// Also leaves desktop full screen, so the app never stays borderless.
+  static Future<void> exitImmersive() async {
+    if (fullscreen.value) await setFullscreen(false);
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  }
 
   static Future<void> setOrientations(List<DeviceOrientation> o) => SystemChrome.setPreferredOrientations(o);
 

@@ -164,7 +164,7 @@ abstract final class OrbixTheme {
         systemOverlayStyle: overlayStyle,
       ),
       pageTransitionsTheme: const PageTransitionsTheme(
-        builders: {TargetPlatform.android: OxPageTransitionsBuilder()},
+        builders: {TargetPlatform.android: OxPageTransitionsBuilder(), TargetPlatform.windows: OxPageTransitionsBuilder()},
       ),
       extensions: [OxTokens(typography: type)],
     );

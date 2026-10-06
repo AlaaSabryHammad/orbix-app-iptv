@@ -816,6 +816,7 @@
   "a11yPlay": "Play",
   "a11yRotate": "Rotate screen",
   "a11yExitPlayer": "Exit full screen",
+  "a11yEnterFullscreen": "Full screen",
   "a11yChannelUp": "Channel up",
   "a11yChannelDown": "Channel down",
   "a11yCloseChannels": "Close channel list",
