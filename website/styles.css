@@ -117,7 +117,7 @@ h2 { font-size: clamp(30px, 4.4vw, 54px); line-height: 1.08; font-weight: 600; }
   box-shadow: 0 0 0 1px rgba(255, 150, 99, 0.5) inset, 0 18px 50px -12px rgba(255, 122, 61, 0.75), 0 0 80px -10px rgba(255, 122, 61, 0.45);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(255, 170, 130, 0.7) inset, 0 24px 60px -12px rgba(255, 122, 61, 0.9), 0 0 110px -10px rgba(255, 122, 61, 0.55); }
-.btn-primary .meta { font-weight: 700; font-size: 13px; opacity: 0.7; }
+.btn .meta { font-weight: 700; font-size: 13px; opacity: 0.7; }
 .btn-glass { background: rgba(255, 255, 255, 0.06); border-color: var(--line2); backdrop-filter: blur(14px); color: var(--text1); }
 .btn-glass:hover { background: rgba(255, 255, 255, 0.1); }
 .btn-sm { height: 44px; padding: 0 18px; border-radius: 14px; font-size: 14px; }
@@ -355,6 +355,7 @@ section { position: relative; }
 .specs li { padding: 8px 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--text2); }
 .specs b { color: var(--text1); font-weight: 800; }
 .hash { margin-top: 18px; display: flex; align-items: center; gap: 10px; max-width: 100%; }
+.hash + .hash { margin-top: 10px; }
 .hash code { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 10px 14px; border-radius: 12px; background: rgba(0, 0, 0, 0.35); border: 1px solid var(--line); color: var(--text3); font: 600 12px/1.4 ui-monospace, Consolas, monospace; direction: ltr; text-align: left; }
 .copy { flex: none; height: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line2); background: transparent; cursor: pointer; font-weight: 800; font-size: 13px; }
 .qr { width: 220px; padding: 18px; border-radius: 28px; background: var(--text1); color: var(--ink1); text-align: center; font-weight: 800; font-size: 13px; box-shadow: 0 30px 80px -30px rgba(255, 122, 61, 0.6); }
@@ -364,6 +365,8 @@ section { position: relative; }
 .install div { padding: 18px 20px; border-radius: 20px; border: 1px solid var(--line); background: var(--ink2); color: var(--text2); font-size: 14px; }
 .install b { display: block; color: var(--text1); margin-bottom: 4px; font-size: 15px; }
 @media (max-width: 860px) { .install { grid-template-columns: 1fr; } }
+.win-note { margin: 14px 0 0; padding: 16px 20px; border-radius: 20px; border: 1px solid var(--line); background: var(--ink2); color: var(--text2); font-size: 14px; }
+.win-note b { color: var(--text1); }
 
 /* FAQ */
 .faq { display: grid; gap: 12px; max-width: 860px; margin: 0 auto; }
@@ -399,8 +402,8 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 60px; color: var(--t
 /* Small phones: full-width buttons, size shown in the specs instead. */
 .dl-card > * { min-width: 0; }
 @media (max-width: 560px) {
-  .cta .btn, .dl-card .btn-primary { width: 100%; padding: 0 18px; }
-  .btn-primary .meta { display: none; }
+  .cta .btn { width: 100%; padding: 0 18px; }
+  .btn .meta { display: none; }
   .nav .btn-sm span { display: none; }
   .nav .btn-sm { width: 44px; padding: 0; }
 }
